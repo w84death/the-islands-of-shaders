@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/palm.obj-0fd11157b97e44f6008d7de4c1ef1fe4.mesh"
+
+[deps]
+
+files=[ "res://.import/palm.obj-0fd11157b97e44f6008d7de4c1ef1fe4.mesh" ]
+
+source_file="res://features/trees/models/palm.obj"
+dest_files=[ "res://.import/palm.obj-0fd11157b97e44f6008d7de4c1ef1fe4.mesh", "res://.import/palm.obj-0fd11157b97e44f6008d7de4c1ef1fe4.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
