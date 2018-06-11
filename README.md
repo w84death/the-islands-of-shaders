@@ -1,4 +1,4 @@
-# ths-islands-of-shaders
+# The Island of Shaders
 Project to learn and test Godot Engine 3.x Shaders
 
 ![screen](https://i.imgur.com/CKzrT42.png)
