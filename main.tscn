@@ -69,7 +69,7 @@ current = true
 fov = 70.0
 size = 1.0
 near = 0.1
-far = 140.0
+far = 160.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="settings" type="Node" parent="." index="1"]
@@ -77,8 +77,8 @@ _sections_unfolded = [ "Transform" ]
 [node name="DirectionalLight" type="DirectionalLight" parent="settings" index="0"]
 transform = Transform( 0.961563, 0.115122, 0.249284, -0.168614, 0.964094, 0.205163, -0.216715, -0.23931, 0.946449, 0, 0, 0 )
 layers = 1
-light_color = Color( 1, 0.988235, 0.729412, 1 )
-light_energy = 4.0
+light_color = Color( 0.92549, 0.960784, 0.968627, 1 )
+light_energy = 5.0
 light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.5
@@ -99,7 +99,7 @@ directional_shadow_normal_bias = 0.8
 directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
-_sections_unfolded = [ "Light", "Shadow" ]
+_sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="settings" index="1"]
 environment = ExtResource( 2 )
@@ -161,6 +161,7 @@ spacing = 2.0
 
 [node name="palms" type="Particles" parent="map" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7398, 1.84899, 7.00503 )
+visible = false
 layers = 1
 material_override = ExtResource( 9 )
 cast_shadow = 1
@@ -222,6 +223,7 @@ blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="GUI" type="Control" parent="." index="3"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -236,6 +238,7 @@ theme = ExtResource( 13 )
 _sections_unfolded = [ "Theme", "theme" ]
 
 [node name="top-left" type="Control" parent="GUI" index="0"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -257,7 +260,7 @@ centered = false
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="bottom-middle" type="Control" parent="GUI" index="1"]
-visible = false
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
