@@ -10,9 +10,10 @@ config_version=4
 
 [application]
 
-config/name="Fly Over Terrain"
+config/name="The Island of Shaders"
 run/main_scene="res://main.tscn"
-config/icon="res://icon.png"
+boot_splash/image="res://system/splash.png"
+config/icon="res://system/icon.png"
 
 [debug]
 
@@ -125,5 +126,6 @@ quality/filters/anisotropic_filter_level=8
 quality/shadows/filter_mode=2
 quality/reflections/high_quality_ggx=false
 quality/voxel_cone_tracing/high_quality=false
+environment/default_clear_color=Color( 1, 1, 1, 1 )
 quality/filters/msaa=3
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://system/world_enviroment.tres"
