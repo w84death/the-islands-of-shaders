@@ -22,6 +22,7 @@ settings/fps/force_fps=75
 
 window/size/width=640
 window/size/height=480
+window/size/fullscreen=true
 window/per_pixel_transparency=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
