@@ -155,12 +155,12 @@ process_material = ExtResource( 6 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 7 )
 script = ExtResource( 8 )
-_sections_unfolded = [ "Draw Passes", "Process Material", "Transform", "material_override", "process_material", "script" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "process_material", "script" ]
 rows = 128
 spacing = 2.0
 
 [node name="palms" type="Particles" parent="map" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43051e-06, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7398, 1.84899, 7.00503 )
 layers = 1
 material_override = ExtResource( 9 )
 cast_shadow = 1
@@ -207,6 +207,9 @@ mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Geometry", "Material", "material_override", "mesh" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="map/water" index="0"]
 root_node = NodePath("..")
@@ -254,6 +257,7 @@ centered = false
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="bottom-middle" type="Control" parent="GUI" index="1"]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

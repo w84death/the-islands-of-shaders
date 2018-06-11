@@ -1,3 +1,4 @@
+// terrain shader
 shader_type spatial;
 
 uniform sampler2D albedo : hint_albedo;
@@ -21,8 +22,8 @@ void vertex() {
 }
 
 void fragment() {
-	ALBEDO = texture(albedo, UV * 64.0).rgb;
-	NORMALMAP = texture(normalmap, UV * 64.0).rgb;
+	ALBEDO = texture(albedo, UV * 32.0).rgb;
+	NORMALMAP = texture(normalmap, UV * 32.0).rgb;
 	METALLIC = 0.0;
-	ROUGHNESS = 0.7;
+	ROUGHNESS = 1.0;
 }
