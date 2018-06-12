@@ -34,20 +34,20 @@ subdivide_depth = 128
 
 [sub_resource type="Animation" id=3]
 
-length = 10.0
+length = 4.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:material_override:uv1_offset")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 10 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 24, 24, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 1, 0, 1 ), Vector3( 0, 1, 0 ), Vector3( -1, 0, 0 ) ]
 }
 
 [node name="FOT" type="Spatial" index="0"]
@@ -74,18 +74,18 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="settings" type="Node" parent="." index="1"]
 
-[node name="DirectionalLight" type="DirectionalLight" parent="settings" index="0"]
-transform = Transform( 0.961563, 0.115122, 0.249284, -0.168614, 0.964094, 0.205163, -0.216715, -0.23931, 0.946449, 0, 0, 0 )
+[node name="sun" type="DirectionalLight" parent="settings" index="0"]
+transform = Transform( 0.761432, -0.246229, 0.599661, -0.147262, 0.835164, 0.529919, -0.631296, -0.491804, 0.599661, 0, 0, 0 )
 layers = 1
-light_color = Color( 0.92549, 0.960784, 0.968627, 1 )
-light_energy = 5.0
+light_color = Color( 1, 0.980392, 0.894118, 1 )
+light_energy = 3.0
 light_indirect_energy = 1.0
 light_negative = false
-light_specular = 0.5
+light_specular = 0.0
 light_bake_mode = 1
 light_cull_mask = -1
 shadow_enabled = true
-shadow_color = Color( 0.179764, 0.276578, 0.300781, 1 )
+shadow_color = Color( 0.0352941, 0.196078, 0.231373, 1 )
 shadow_bias = 0.1
 shadow_contact = 0.0
 shadow_reverse_cull_face = true
@@ -99,7 +99,7 @@ directional_shadow_normal_bias = 0.8
 directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
-_sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
+_sections_unfolded = [ "Transform" ]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="settings" index="1"]
 environment = ExtResource( 2 )
@@ -139,7 +139,7 @@ lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 emitting = true
-amount = 9216
+amount = 20736
 lifetime = 1.0
 one_shot = false
 preprocess = 0.0
@@ -156,12 +156,11 @@ draw_passes = 1
 draw_pass_1 = ExtResource( 7 )
 script = ExtResource( 8 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "process_material", "script" ]
-rows = 128
-spacing = 2.0
+rows = 144
+spacing = 1.5
 
 [node name="palms" type="Particles" parent="map" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7398, 1.84899, 7.00503 )
-visible = false
 layers = 1
 material_override = ExtResource( 9 )
 cast_shadow = 1
@@ -217,7 +216,7 @@ root_node = NodePath("..")
 autoplay = "wave"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-playback_speed = 0.02
+playback_speed = 0.1
 anims/wave = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]

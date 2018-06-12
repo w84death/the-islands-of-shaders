@@ -22,8 +22,7 @@ settings/fps/force_fps=75
 [display]
 
 window/size/width=640
-window/size/height=480
-window/size/fullscreen=true
+window/size/height=640
 window/per_pixel_transparency=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
@@ -122,10 +121,8 @@ common/physics_fps=75
 [rendering]
 
 quality/filters/use_nearest_mipmap_filter=true
-quality/filters/anisotropic_filter_level=8
 quality/shadows/filter_mode=2
 quality/reflections/high_quality_ggx=false
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 1, 1, 1, 1 )
-quality/filters/msaa=3
 environment/default_environment="res://system/world_enviroment.tres"
