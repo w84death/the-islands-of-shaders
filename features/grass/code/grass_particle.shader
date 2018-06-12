@@ -37,7 +37,7 @@ void vertex() {
 	pos.z += EMISSION_TRANSFORM[3][2] - mod(EMISSION_TRANSFORM[3][2], spacing);
 	
 	// now add some noise based on our _world_ position
-	vec3 noise = texture(noisemap, pos.xz * 0.2).rgb;
+	vec3 noise = texture(noisemap, pos.xz * 0.02).rgb;
 	pos.x += (noise.x * 4.0 ) * spacing;
 	pos.z += (noise.y * 4.0 ) * spacing;
 	
