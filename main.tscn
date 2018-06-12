@@ -1,20 +1,42 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://system/camera_rig.gd" type="Script" id=1]
-[ext_resource path="res://system/world_enviroment.tres" type="Environment" id=2]
-[ext_resource path="res://features/terrain/code/terrain.material" type="Material" id=3]
-[ext_resource path="res://features/terrain/code/terrain.gd" type="Script" id=4]
-[ext_resource path="res://features/grass/code/grass_shader.material" type="Material" id=5]
-[ext_resource path="res://features/grass/code/grass_particle.material" type="Material" id=6]
-[ext_resource path="res://features/grass/models/grass.obj" type="ArrayMesh" id=7]
-[ext_resource path="res://features/grass/code/grass.gd" type="Script" id=8]
-[ext_resource path="res://features/trees/code/palm.material" type="Material" id=9]
-[ext_resource path="res://features/trees/code/palms_particle.material" type="Material" id=10]
-[ext_resource path="res://features/trees/models/palm.obj" type="ArrayMesh" id=11]
-[ext_resource path="res://features/terrain/code/water.material" type="Material" id=12]
-[ext_resource path="res://features/gui/theme.tres" type="Theme" id=13]
-[ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=14]
-[ext_resource path="res://features/gui/fps.gd" type="Script" id=15]
+[ext_resource path="res://system/tios_main.gd" type="Script" id=1]
+[ext_resource path="res://system/camera_rig.gd" type="Script" id=2]
+[ext_resource path="res://system/world_enviroment.tres" type="Environment" id=3]
+[ext_resource path="res://features/terrain/code/terrain.material" type="Material" id=4]
+[ext_resource path="res://features/terrain/code/terrain.gd" type="Script" id=5]
+[ext_resource path="res://features/grass/code/grass_shader.material" type="Material" id=6]
+[ext_resource path="res://features/grass/code/grass_particle.material" type="Material" id=7]
+[ext_resource path="res://features/grass/models/grass.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://features/grass/code/grass.gd" type="Script" id=9]
+[ext_resource path="res://features/trees/code/palm.material" type="Material" id=10]
+[ext_resource path="res://features/trees/code/palms_particle.material" type="Material" id=11]
+[ext_resource path="res://features/trees/models/palm.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://features/terrain/code/water.material" type="Material" id=13]
+[ext_resource path="res://features/gui/theme.tres" type="Theme" id=14]
+[ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=15]
+[ext_resource path="res://features/gui/fps.gd" type="Script" id=16]
+[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=17]
+[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=18]
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "menu"
+length = 8.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 78.4306, 32.8634, 21.2152 ), Vector3( -72.1302, 32.8634, 21.2152 ) ]
+}
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -50,14 +72,30 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 1, 0, 1 ), Vector3( 0, 1, 0 ), Vector3( -1, 0, 0 ) ]
 }
 
-[node name="FOT" type="Spatial" index="0"]
+[sub_resource type="Animation" id=4]
 
-[node name="camera_rig" type="Position3D" parent="." index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0 )
+resource_name = "gay"
+length = 3.5
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.9, 1.4, 1.9, 2.4, 2.9, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.34902, 0.34902, 1 ), Color( 1, 0.941176, 0.34902, 1 ), Color( 0.384314, 1, 0.34902, 1 ), Color( 0.34902, 0.968627, 1, 1 ), Color( 0.34902, 0.372549, 1, 1 ), Color( 0.901961, 0.34902, 1, 1 ), Color( 1, 0.34902, 0.576471, 1 ), Color( 1, 0.34902, 0.34902, 1 ) ]
+}
+
+[node name="TIOS" type="Spatial" index="0"]
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Camera" type="Camera" parent="camera_rig" index="0"]
+[node name="camera_menu" type="Camera" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 0.549977, 0.83518, 0, -0.83518, 0.549977, 78.4306, 32.8634, 21.2152 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -72,7 +110,37 @@ near = 0.1
 far = 160.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="settings" type="Node" parent="." index="1"]
+[node name="menu_anim" type="AnimationPlayer" parent="camera_menu" index="0"]
+root_node = NodePath("..")
+autoplay = "menu"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 0.1
+anims/menu = SubResource( 5 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="camera_rig" type="Position3D" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Camera" type="Camera" parent="camera_rig" index="0"]
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.1
+far = 160.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="settings" type="Node" parent="." index="2"]
 
 [node name="sun" type="DirectionalLight" parent="settings" index="0"]
 transform = Transform( 0.761432, -0.246229, 0.599661, -0.147262, 0.835164, 0.529919, -0.631296, -0.491804, 0.599661, 0, 0, 0 )
@@ -102,15 +170,15 @@ directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="settings" index="1"]
-environment = ExtResource( 2 )
+environment = ExtResource( 3 )
 _sections_unfolded = [ "environment" ]
 
-[node name="map" type="Spatial" parent="." index="2"]
+[node name="map" type="Spatial" parent="." index="3"]
 
 [node name="terrain" type="MeshInstance" parent="map" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90735e-06, 0 )
 layers = 1
-material_override = ExtResource( 3 )
+material_override = ExtResource( 4 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -121,7 +189,7 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
 material/0 = null
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 _sections_unfolded = [ "Geometry", "Material", "material_override", "mesh" ]
 __meta__ = {
 "_edit_lock_": true
@@ -130,7 +198,7 @@ __meta__ = {
 [node name="grass" type="Particles" parent="map" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0918102, -0.19283, -2.77525 )
 layers = 1
-material_override = ExtResource( 5 )
+material_override = ExtResource( 6 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -151,10 +219,10 @@ fract_delta = true
 visibility_aabb = AABB( -9.63663, -2.37216, -8.1309, 21.0731, 10.0266, 16.2618 )
 local_coords = false
 draw_order = 0
-process_material = ExtResource( 6 )
+process_material = ExtResource( 7 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 7 )
-script = ExtResource( 8 )
+draw_pass_1 = ExtResource( 8 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "process_material", "script" ]
 rows = 144
 spacing = 1.5
@@ -162,7 +230,7 @@ spacing = 1.5
 [node name="palms" type="Particles" parent="map" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7398, 1.84899, 7.00503 )
 layers = 1
-material_override = ExtResource( 9 )
+material_override = ExtResource( 10 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -183,10 +251,10 @@ fract_delta = true
 visibility_aabb = AABB( -9.63663, -2.37216, -8.1309, 21.0731, 10.0266, 16.2618 )
 local_coords = false
 draw_order = 0
-process_material = ExtResource( 10 )
+process_material = ExtResource( 11 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 11 )
-script = ExtResource( 8 )
+draw_pass_1 = ExtResource( 12 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Time", "Transform", "material_override", "process_material" ]
 rows = 48
 spacing = 8.0
@@ -195,7 +263,7 @@ spacing = 8.0
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75734, 0 )
 layers = 1
-material_override = ExtResource( 12 )
+material_override = ExtResource( 13 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -221,8 +289,7 @@ anims/wave = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="GUI" type="Control" parent="." index="3"]
-editor/display_folded = true
+[node name="GUI" type="Control" parent="." index="4"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -233,16 +300,33 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 13 )
+theme = ExtResource( 14 )
 _sections_unfolded = [ "Theme", "theme" ]
 
-[node name="top-left" type="Control" parent="GUI" index="0"]
+[node name="demo" type="Control" parent="GUI" index="0"]
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="top-left" type="Control" parent="GUI/demo" index="0"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 12.0
 margin_top = 12.0
+margin_right = 12.0
+margin_bottom = 12.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -251,22 +335,18 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="logo" type="Sprite" parent="GUI/top-left" index="0"]
+[node name="logo" type="Sprite" parent="GUI/demo/top-left" index="0"]
 modulate = Color( 1, 1, 1, 0.25098 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 centered = false
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="bottom-middle" type="Control" parent="GUI" index="1"]
+[node name="bottom-middle" type="Control" parent="GUI/demo" index="1"]
 editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -20.0
-margin_right = -20.0
-margin_bottom = -20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -274,7 +354,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="fps" type="Label" parent="GUI/bottom-middle" index="0"]
+[node name="fps" type="Label" parent="GUI/demo/bottom-middle" index="0"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -299,6 +379,94 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
+
+[node name="intro" type="Control" parent="GUI" index="1"]
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="center" type="Control" parent="GUI/intro" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Margin" ]
+
+[node name="tios" type="Sprite" parent="GUI/intro/center" index="0"]
+editor/display_folded = true
+modulate = Color( 0.857723, 0.350902, 1, 1 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 15 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/intro/center/tios" index="0"]
+root_node = NodePath("..")
+autoplay = "gay"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/gay = SubResource( 4 )
+blend_times = [  ]
+
+[node name="bottom-middle2" type="Control" parent="GUI/intro" index="1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="info" type="Label" parent="GUI/intro/bottom-middle2" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -175.0
+margin_top = -100.0
+margin_right = 175.0
+margin_bottom = -21.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 1
+text = "PRESS ENTER TO START DEMO
+MOUSE > LEFT BUTTON TO GRAB TERRAIN / RIGHT TO ROTATE CAMERA"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Custom Colors", "Custom Constants" ]
+
+[node name="p1x" type="Sprite" parent="GUI/intro/bottom-middle2" index="1"]
+position = Vector2( -230, -64 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 17 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
+
+[node name="corners" parent="GUI" index="2" instance=ExtResource( 18 )]
 

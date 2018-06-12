@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tios-logo.png-56ded0c0a41e473ba077ca7099133516.stex"
+path="res://.import/corner.png-3d2dfc5645a262cc1aba5e939c614fa0.stex"
 
 [deps]
 
-source_file="res://features/gui/tios-logo.png"
-dest_files=[ "res://.import/tios-logo.png-56ded0c0a41e473ba077ca7099133516.stex" ]
+source_file="res://features/gui/corner.png"
+dest_files=[ "res://.import/corner.png-3d2dfc5645a262cc1aba5e939c614fa0.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

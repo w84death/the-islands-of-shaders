@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tios-logo.png-56ded0c0a41e473ba077ca7099133516.stex"
+path="res://.import/p1x_pixelart.png-ade8e895223190d5d483b28fb894318b.stex"
 
 [deps]
 
-source_file="res://features/gui/tios-logo.png"
-dest_files=[ "res://.import/tios-logo.png-56ded0c0a41e473ba077ca7099133516.stex" ]
+source_file="res://features/gui/p1x_pixelart.png"
+dest_files=[ "res://.import/p1x_pixelart.png-ade8e895223190d5d483b28fb894318b.stex" ]
 
 [params]
 
