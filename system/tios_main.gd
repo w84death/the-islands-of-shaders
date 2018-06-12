@@ -4,7 +4,7 @@ var in_game = false
 
 
 func _input(event):
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_pressed("ui_accept") or event is InputEventMouseButton:
 		show_game()
 		in_game = true
 	if Input.is_action_pressed("fullscreen"):
