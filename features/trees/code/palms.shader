@@ -1,9 +1,9 @@
 shader_type spatial;
 render_mode cull_disabled;
 
-uniform sampler2D texture_map : hint_albedo;
-uniform sampler2D normal_map : hint_normal;
-uniform sampler2D specular_map : hint_black;
+uniform sampler2D tex : hint_albedo;
+uniform sampler2D spec: hint_black;
+
 uniform float amplitude = 0.1;
 uniform vec2 speed = vec2(2.0, 1.5);
 uniform vec2 scale = vec2(0.1, 0.2);
@@ -17,15 +17,13 @@ void vertex() {
 }
 
 void fragment() {
-	vec4 color = texture(texture_map, UV);
+	vec4 color = texture(tex, UV);
 	ALBEDO = color.rgb;
-	ALPHA = color.a;
-	ALPHA_SCISSOR = 0.4;
-	
-	NORMALMAP = texture(normal_map, UV).rgb;
+	ALPHA = color.a ;
+	ALPHA_SCISSOR = 0.2;
 	
 	METALLIC = 0.9;
-	SPECULAR = texture(specular_map, UV).r;
+	SPECULAR = texture(spec, UV).r;
 	ROUGHNESS = 1.0 - SPECULAR;
 	TRANSMISSION = vec3(0.2, 0.2, 0.2);
 }

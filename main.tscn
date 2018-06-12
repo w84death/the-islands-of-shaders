@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
 [ext_resource path="res://system/camera_rig.gd" type="Script" id=2]
@@ -9,17 +9,16 @@
 [ext_resource path="res://features/grass/code/grass_particle.material" type="Material" id=7]
 [ext_resource path="res://features/grass/models/grass.obj" type="ArrayMesh" id=8]
 [ext_resource path="res://features/grass/code/grass.gd" type="Script" id=9]
-[ext_resource path="res://features/trees/code/palm.material" type="Material" id=10]
-[ext_resource path="res://features/trees/code/palms_particle.material" type="Material" id=11]
-[ext_resource path="res://features/trees/models/palm.obj" type="ArrayMesh" id=12]
-[ext_resource path="res://features/terrain/code/water.material" type="Material" id=13]
-[ext_resource path="res://features/gui/theme.tres" type="Theme" id=14]
-[ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=15]
-[ext_resource path="res://features/gui/fps.gd" type="Script" id=16]
-[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=17]
-[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=18]
+[ext_resource path="res://features/trees/code/palms_particle.material" type="Material" id=10]
+[ext_resource path="res://features/trees/models/palm.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://features/terrain/code/water.material" type="Material" id=12]
+[ext_resource path="res://features/gui/theme.tres" type="Theme" id=13]
+[ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=14]
+[ext_resource path="res://features/gui/fps.gd" type="Script" id=15]
+[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=16]
+[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=17]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 
 resource_name = "menu"
 length = 8.0
@@ -38,7 +37,7 @@ tracks/0/keys = {
 "values": [ Vector3( -72.1302, 32.8634, 21.2152 ), Vector3( 78.4306, 32.8634, 21.2152 ) ]
 }
 
-[sub_resource type="PlaneMesh" id=1]
+[sub_resource type="PlaneMesh" id=2]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
@@ -46,7 +45,7 @@ size = Vector2( 512, 512 )
 subdivide_width = 256
 subdivide_depth = 256
 
-[sub_resource type="PlaneMesh" id=2]
+[sub_resource type="PlaneMesh" id=3]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
@@ -54,7 +53,7 @@ size = Vector2( 768, 768 )
 subdivide_width = 128
 subdivide_depth = 128
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
 length = 4.0
 loop = true
@@ -72,9 +71,8 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 1, 0, 1 ), Vector3( 0, 1, 0 ), Vector3( -1, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
-resource_name = "gay"
 length = 3.5
 loop = true
 step = 0.1
@@ -116,7 +114,7 @@ autoplay = "menu"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 0.1
-anims/menu = SubResource( 5 )
+anims/menu = SubResource( 1 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
@@ -186,7 +184,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 script = ExtResource( 5 )
@@ -230,7 +228,7 @@ spacing = 2.0
 [node name="palms" type="Particles" parent="map" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7398, 1.84899, 7.00503 )
 layers = 1
-material_override = ExtResource( 10 )
+material_override = null
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -239,7 +237,7 @@ lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 emitting = true
-amount = 2304
+amount = 4096
 lifetime = 1.0
 one_shot = false
 preprocess = 0.0
@@ -251,19 +249,19 @@ fract_delta = true
 visibility_aabb = AABB( -9.63663, -2.37216, -8.1309, 21.0731, 10.0266, 16.2618 )
 local_coords = false
 draw_order = 0
-process_material = ExtResource( 11 )
+process_material = ExtResource( 10 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 12 )
+draw_pass_1 = ExtResource( 11 )
 script = ExtResource( 9 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Time", "Transform", "material_override", "process_material" ]
-rows = 48
-spacing = 8.0
+_sections_unfolded = [ "Draw Passes", "Process Material", "Time", "Transform", "draw_pass_1", "material_override", "process_material" ]
+rows = 64
+spacing = 5.0
 
 [node name="water" type="MeshInstance" parent="map" index="3"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75734, 0 )
 layers = 1
-material_override = ExtResource( 13 )
+material_override = ExtResource( 12 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -271,7 +269,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Geometry", "Material", "material_override", "mesh" ]
@@ -285,7 +283,7 @@ autoplay = "wave"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 0.1
-anims/wave = SubResource( 3 )
+anims/wave = SubResource( 4 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
@@ -300,7 +298,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 14 )
+theme = ExtResource( 13 )
 _sections_unfolded = [ "Theme", "theme" ]
 
 [node name="demo" type="Control" parent="GUI" index="0"]
@@ -337,7 +335,7 @@ _sections_unfolded = [ "Margin" ]
 
 [node name="logo" type="Sprite" parent="GUI/demo/top-left" index="0"]
 modulate = Color( 1, 1, 1, 0.25098 )
-texture = ExtResource( 15 )
+texture = ExtResource( 14 )
 centered = false
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -379,7 +377,7 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 16 )
+script = ExtResource( 15 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
 [node name="intro" type="Control" parent="GUI" index="1"]
@@ -412,7 +410,7 @@ _sections_unfolded = [ "Margin" ]
 editor/display_folded = true
 modulate = Color( 0.857723, 0.350902, 1, 1 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 15 )
+texture = ExtResource( 14 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/intro/center/tios" index="0"]
@@ -421,7 +419,7 @@ autoplay = "gay"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/gay = SubResource( 4 )
+anims/gay = SubResource( 5 )
 blend_times = [  ]
 
 [node name="bottom-middle" type="Control" parent="GUI/intro" index="1"]
@@ -468,8 +466,8 @@ _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 [node name="p1x" type="Sprite" parent="GUI/intro/bottom-middle" index="1"]
 position = Vector2( -230, -64 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 17 )
+texture = ExtResource( 16 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
-[node name="corners" parent="GUI" index="2" instance=ExtResource( 18 )]
+[node name="corners" parent="GUI" index="2" instance=ExtResource( 17 )]
 

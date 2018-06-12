@@ -13,8 +13,9 @@ uniform sampler2D noisemap;
 float get_height(vec2 pos) {
 	pos -= 0.5 * heightmap_size;
 	pos /= heightmap_size;
+	vec3 noise = texture(noisemap, pos).rgb;
 	
-	return max_height * texture(height_map, pos).r;
+	return max_height * texture(height_map, pos).r - (noise.r * 6.0);
 }
 
 void vertex() {
@@ -35,6 +36,8 @@ void vertex() {
 	pos.x += EMISSION_TRANSFORM[3][0] - mod(EMISSION_TRANSFORM[3][0], spacing);
 	pos.z += EMISSION_TRANSFORM[3][2] - mod(EMISSION_TRANSFORM[3][2], spacing);
 	
+
+	
 	// now add some noise based on our _world_ position
 	vec3 noise = texture(noisemap, pos.xz * 0.01).rgb;
 	pos.x += (noise.x) * spacing;
@@ -42,14 +45,16 @@ void vertex() {
 	
 	// apply our height
 	pos.y = get_height(pos.xz);
-	pos.y -= (noise.x * 0.6 );
+	//pos.y -= (noise.x * 0.1) * 10.0;
 	
-	float y2 = get_height(pos.xz + vec2(1.0, 0.0));
-	float y3 = get_height(pos.xz + vec2(0.0, 1.0));
+	
 	vec2 feat_pos = pos.xz;
 	feat_pos -= 0.5 * heightmap_size;
 	feat_pos /= heightmap_size;
 	float terrain_mask = texture(features_map, feat_pos).b;
+	
+	float y2 = get_height(pos.xz + vec2(1.0, 0.0));
+	float y3 = get_height(pos.xz + vec2(0.0, 1.0));
 	
 	if (terrain_mask < 1.0) {
 		pos.y = -10000.0;
@@ -59,15 +64,12 @@ void vertex() {
 		pos.y = -10000.0;
 	}
 
-	
 	// rotate our transform
 	TRANSFORM[0][0] = cos(noise.z * 3.0);
 	TRANSFORM[0][2] = -sin(noise.z * 3.0);
+	
 	TRANSFORM[2][0] = sin(noise.z * 3.0);
 	TRANSFORM[2][2] = cos(noise.z * 3.0);
-	
-	//TRANSFORM[1][0] = cos(noise.z * 3.0);
-	//TRANSFORM[2][0] = sin(noise.z * 3.5);
 	
 	// update our transform to place
 	TRANSFORM[3][0] = pos.x;
