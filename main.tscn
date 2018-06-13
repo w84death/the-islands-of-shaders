@@ -143,7 +143,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="sun" type="DirectionalLight" parent="settings" index="0"]
 transform = Transform( 0.761432, -0.246229, 0.599661, -0.147262, 0.835164, 0.529919, -0.631296, -0.491804, 0.599661, 0, 0, 0 )
 layers = 1
-light_color = Color( 1, 0.980392, 0.894118, 1 )
+light_color = Color( 1, 0.968627, 0.901961, 1 )
 light_energy = 3.0
 light_indirect_energy = 1.0
 light_negative = false
@@ -165,7 +165,7 @@ directional_shadow_normal_bias = 0.8
 directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Light", "Transform" ]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="settings" index="1"]
 environment = ExtResource( 3 )
