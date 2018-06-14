@@ -137,7 +137,6 @@ common/physics_fps=75
 
 quality/filters/use_nearest_mipmap_filter=true
 quality/shadows/filter_mode=2
-quality/reflections/high_quality_ggx=false
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0.47451, 0.47451, 0.47451, 1 )
 environment/default_environment="res://system/world_enviroment.tres"

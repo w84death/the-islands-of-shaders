@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
 [ext_resource path="res://system/camera_rig.gd" type="Script" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://features/grass/code/grass.gd" type="Script" id=9]
 [ext_resource path="res://features/trees/code/palms_particle.material" type="Material" id=10]
 [ext_resource path="res://features/trees/models/palm.mesh" type="ArrayMesh" id=11]
-[ext_resource path="res://features/terrain/code/water.material" type="Material" id=12]
+[ext_resource path="res://features/terrain/code/new_water.material" type="Material" id=12]
 [ext_resource path="res://features/gui/theme.tres" type="Theme" id=13]
 [ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=14]
 [ext_resource path="res://features/gui/fps.gd" type="Script" id=15]
@@ -49,29 +49,11 @@ subdivide_depth = 256
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
-size = Vector2( 768, 768 )
-subdivide_width = 128
-subdivide_depth = 128
+size = Vector2( 512, 512 )
+subdivide_width = 64
+subdivide_depth = 64
 
 [sub_resource type="Animation" id=4]
-
-length = 4.0
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:material_override:uv1_offset")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 1, 0, 1 ), Vector3( 0, 1, 0 ), Vector3( -1, 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=5]
 
 length = 3.5
 loop = true
@@ -143,8 +125,8 @@ _sections_unfolded = [ "Transform" ]
 [node name="sun" type="DirectionalLight" parent="settings" index="0"]
 transform = Transform( 0.761432, -0.246229, 0.599661, -0.147262, 0.835164, 0.529919, -0.631296, -0.491804, 0.599661, 0, 0, 0 )
 layers = 1
-light_color = Color( 1, 0.968627, 0.901961, 1 )
-light_energy = 3.0
+light_color = Color( 1, 0.878431, 0.52549, 1 )
+light_energy = 1.0
 light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.0
@@ -165,7 +147,7 @@ directional_shadow_normal_bias = 0.8
 directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
-_sections_unfolded = [ "Light", "Transform" ]
+_sections_unfolded = [ "Transform" ]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="settings" index="1"]
 environment = ExtResource( 3 )
@@ -188,7 +170,7 @@ mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 script = ExtResource( 5 )
-_sections_unfolded = [ "Geometry", "Material", "material_override", "mesh" ]
+_sections_unfolded = [ "Geometry", "Material", "material_override" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -258,10 +240,9 @@ rows = 64
 spacing = 5.0
 
 [node name="water" type="MeshInstance" parent="map" index="3"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75734, 0 )
 layers = 1
-material_override = ExtResource( 12 )
+material_override = null
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -271,21 +252,11 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 3 )
 skeleton = NodePath("..")
-material/0 = null
-_sections_unfolded = [ "Geometry", "Material", "material_override", "mesh" ]
+material/0 = ExtResource( 12 )
+_sections_unfolded = [ "Material", "material/0", "material_override" ]
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="map/water" index="0"]
-root_node = NodePath("..")
-autoplay = "wave"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 0.1
-anims/wave = SubResource( 4 )
-blend_times = [  ]
-_sections_unfolded = [ "Playback Options" ]
 
 [node name="GUI" type="Control" parent="." index="4"]
 anchor_left = 0.0
@@ -381,6 +352,7 @@ script = ExtResource( 15 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
 [node name="intro" type="Control" parent="GUI" index="1"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -419,7 +391,7 @@ autoplay = "gay"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/gay = SubResource( 5 )
+anims/gay = SubResource( 4 )
 blend_times = [  ]
 
 [node name="bottom-middle" type="Control" parent="GUI/intro" index="1"]

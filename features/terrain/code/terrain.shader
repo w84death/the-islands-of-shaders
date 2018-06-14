@@ -1,10 +1,3 @@
-// terrain shader
-// kj/P1X http://p1x.in
-// code taken from:
-// -
-// -
-//
-
 shader_type spatial;
 
 uniform vec2 map_size = vec2(512.0, 512.0);
@@ -30,7 +23,6 @@ float get_height(vec2 pos) {
 
 void vertex() {
 	VERTEX.y = get_height(VERTEX.xz);
-	//VERTEX = vec3(VERTEX.x, texture(height_map, UV).r * float(max_height), VERTEX.z);
 	
 	TANGENT = normalize(vec3(1.0, get_height(VERTEX.xz + vec2(1.0, 0.0)) - VERTEX.y, 0.0));
 	BINORMAL = normalize(vec3(0.0, get_height(VERTEX.xz + vec2(0.0, 1.0)) - VERTEX.y, 1.0));
@@ -53,8 +45,10 @@ void fragment() {
 	vec3 green_normal = texture(normalmap_green, uv2).rgb * green_vis;
 	vec3 blue_normal = texture(normalmap_blue, uv2).rgb * blue_vis;
 	
-	ALBEDO = red_color + green_color + blue_color;
-	METALLIC = 0.0;
+	
+	METALLIC = 0.3;
 	ROUGHNESS = 1.0;
-	//NORMALMAP = red_normal + green_normal + blue_normal;
+	ALBEDO = red_color + green_color + blue_color;
+	NORMALMAP = red_normal + green_normal + blue_normal;
+	SPECULAR = 0.0;
 }

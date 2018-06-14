@@ -1,4 +1,3 @@
-// GRASS SHADER
 shader_type spatial;
 render_mode cull_disabled;
 
@@ -22,9 +21,9 @@ void fragment() {
 	ALBEDO = color.rgb;
 	ALPHA = color.a;
 	ALPHA_SCISSOR = 0.2;
-	
+
 	NORMALMAP = texture(normal_map, UV).rgb;
-	
+
 	METALLIC = 0.9;
 	SPECULAR = texture(specular_map, UV).r;
 	ROUGHNESS = 1.0 - SPECULAR;
