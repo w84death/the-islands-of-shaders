@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
 [ext_resource path="res://system/camera_rig.gd" type="Script" id=2]
@@ -11,12 +11,14 @@
 [ext_resource path="res://features/grass/code/grass.gd" type="Script" id=9]
 [ext_resource path="res://features/trees/code/palms_particle.material" type="Material" id=10]
 [ext_resource path="res://features/trees/models/palm.mesh" type="ArrayMesh" id=11]
-[ext_resource path="res://features/terrain/code/new_water.material" type="Material" id=12]
-[ext_resource path="res://features/gui/theme.tres" type="Theme" id=13]
-[ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=14]
-[ext_resource path="res://features/gui/fps.gd" type="Script" id=15]
-[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=16]
-[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=17]
+[ext_resource path="res://features/terrain/code/rocks.material" type="Material" id=12]
+[ext_resource path="res://features/terrain/code/rocks_particle.material" type="Material" id=13]
+[ext_resource path="res://features/terrain/code/new_water.material" type="Material" id=14]
+[ext_resource path="res://features/gui/theme.tres" type="Theme" id=15]
+[ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=16]
+[ext_resource path="res://features/gui/fps.gd" type="Script" id=17]
+[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=18]
+[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=19]
 
 [sub_resource type="Animation" id=1]
 
@@ -44,6 +46,16 @@ flip_faces = false
 size = Vector2( 512, 512 )
 subdivide_width = 256
 subdivide_depth = 256
+
+[sub_resource type="SphereMesh" id=6]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 1.0
+height = 2.0
+radial_segments = 6
+rings = 4
+is_hemisphere = false
 
 [sub_resource type="PlaneMesh" id=3]
 
@@ -239,7 +251,38 @@ _sections_unfolded = [ "Draw Passes", "Process Material", "Time", "Transform", "
 rows = 64
 spacing = 5.0
 
-[node name="water" type="MeshInstance" parent="map" index="3"]
+[node name="rocks" type="Particles" parent="map" index="3"]
+layers = 1
+material_override = ExtResource( 12 )
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = true
+amount = 4096
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 1.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
+local_coords = false
+draw_order = 0
+process_material = ExtResource( 13 )
+draw_passes = 1
+draw_pass_1 = SubResource( 6 )
+script = ExtResource( 9 )
+_sections_unfolded = [ "Draw Passes", "Geometry", "material_override", "process_material" ]
+rows = 64
+spacing = 2.0
+
+[node name="water" type="MeshInstance" parent="map" index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75734, 0 )
 layers = 1
 material_override = null
@@ -252,7 +295,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 3 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 12 )
+material/0 = ExtResource( 14 )
 _sections_unfolded = [ "Material", "material/0", "material_override" ]
 __meta__ = {
 "_edit_lock_": true
@@ -269,7 +312,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 13 )
+theme = ExtResource( 15 )
 _sections_unfolded = [ "Theme", "theme" ]
 
 [node name="demo" type="Control" parent="GUI" index="0"]
@@ -306,7 +349,7 @@ _sections_unfolded = [ "Margin" ]
 
 [node name="logo" type="Sprite" parent="GUI/demo/top-left" index="0"]
 modulate = Color( 1, 1, 1, 0.25098 )
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 centered = false
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -348,7 +391,7 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
 [node name="intro" type="Control" parent="GUI" index="1"]
@@ -382,7 +425,7 @@ _sections_unfolded = [ "Margin" ]
 editor/display_folded = true
 modulate = Color( 0.857723, 0.350902, 1, 1 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/intro/center/tios" index="0"]
@@ -438,8 +481,8 @@ _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 [node name="p1x" type="Sprite" parent="GUI/intro/bottom-middle" index="1"]
 position = Vector2( -230, -64 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 16 )
+texture = ExtResource( 18 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
-[node name="corners" parent="GUI" index="2" instance=ExtResource( 17 )]
+[node name="corners" parent="GUI" index="2" instance=ExtResource( 19 )]
 

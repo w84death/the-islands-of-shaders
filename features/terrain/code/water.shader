@@ -2,8 +2,7 @@ shader_type spatial;
 render_mode vertex_lighting;
 
 uniform float uv_scale = 32.0;
-uniform float flow_speed = 0.02;
-uniform float time_shift = 0.005;
+uniform float flow_speed = 0.01;
 
 uniform sampler2D height_map;
 uniform sampler2D flow_map;
@@ -26,12 +25,13 @@ void fragment() {
 	
 	// calc water color/alpha on land height
 	float line_color = clamp(land_line * 4.0, 0.0, 1.0);
-	ALBEDO = clamp(vec3(0.1, 1.0-line_color, 1.0-line_color) - vec3(0.15,0.4,0.4), 0.0, 1.0);
+	ALBEDO = clamp(vec3(0.1, .6-line_color, .5-line_color) - vec3(0.15, 0.4, 0.4), 0.0, 1.0);
 	ALPHA = 1.0 - line_color;
-	ROUGHNESS = line_color;
+	ROUGHNESS = clamp(line_color, 0.25, 1.0);
+	METALLIC = 0.25;
 
 	// animate normals with flow
-	float lerp_time = (abs(0.5 - TIME) / 0.5) * time_shift;
+	float lerp_time = (abs(0.5 - TIME) / 0.5) * flow_speed;
 	vec2 flow_normal = uv2.yx * (flow) + lerp_time;
 	NORMALMAP = texture(normal_map, flow_normal * uv_scale).rgb;
 }
