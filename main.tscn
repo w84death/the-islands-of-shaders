@@ -44,26 +44,26 @@ tracks/0/keys = {
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 512, 512 )
-subdivide_width = 256
-subdivide_depth = 256
+subdivide_width = 64
+subdivide_depth = 64
 
 [sub_resource type="SphereMesh" id=6]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 radius = 1.0
-height = 2.0
-radial_segments = 6
-rings = 4
-is_hemisphere = false
+height = 1.0
+radial_segments = 5
+rings = 2
+is_hemisphere = true
 
 [sub_resource type="PlaneMesh" id=3]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 512, 512 )
-subdivide_width = 512
-subdivide_depth = 512
+subdivide_width = 32
+subdivide_depth = 32
 
 [sub_resource type="Animation" id=4]
 
@@ -182,7 +182,7 @@ mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 script = ExtResource( 5 )
-_sections_unfolded = [ "Geometry", "Material", "material_override" ]
+_sections_unfolded = [ "Geometry", "Material", "material_override", "mesh" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -278,7 +278,7 @@ process_material = ExtResource( 13 )
 draw_passes = 1
 draw_pass_1 = SubResource( 6 )
 script = ExtResource( 9 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "material_override", "process_material" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "draw_pass_1", "material_override", "process_material" ]
 rows = 64
 spacing = 2.0
 
