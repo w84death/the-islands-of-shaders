@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="The Island of Shaders"
+config/name="The Islands of Shaders"
 run/main_scene="res://main.tscn"
 boot_splash/image="res://system/splash.png"
 config/icon="res://system/icon.png"
