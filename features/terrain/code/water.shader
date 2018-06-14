@@ -20,13 +20,13 @@ void fragment() {
 	vec2 uv2 = UV;
 	uv2 *= vec2(-1.0,-1.0);
 	
+	// get pixel color
 	float land_line = texture(height_map, uv2.xy).r;
-	float noise = texture(noise_map, uv2.xy * 0.01).r;
 	vec2 flow = texture(flow_map, uv2.xy).gr * 2.0 - 1.0;
 	
-	// land/water line
-	float line_color = clamp(land_line * 3.0, 0.0, 1.0);
-	ALBEDO = vec3(0.1, 1.0-line_color, 1.0-line_color);
+	// calc water color/alpha on land height
+	float line_color = clamp(land_line * 4.0, 0.0, 1.0);
+	ALBEDO = clamp(vec3(0.1, 1.0-line_color, 1.0-line_color) - vec3(0.15,0.4,0.4), 0.0, 1.0);
 	ALPHA = 1.0 - line_color;
 	ROUGHNESS = line_color;
 
