@@ -50,8 +50,8 @@ subdivide_depth = 256
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 512, 512 )
-subdivide_width = 64
-subdivide_depth = 64
+subdivide_width = 512
+subdivide_depth = 512
 
 [sub_resource type="Animation" id=4]
 
