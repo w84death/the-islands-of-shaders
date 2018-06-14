@@ -47,7 +47,7 @@ void vertex() {
 	feat_pos /= heightmap_size;
 	float terrain_mask = texture(height_map, feat_pos).r;
 	
-	if (terrain_mask > .30) {
+	if (terrain_mask > 0.25 || terrain_mask < 0.1) {
 		pos.y = -10000.0;
 	}
 	noise = texture(noisemap, pos.xz * 0.01).rgb;
@@ -55,11 +55,6 @@ void vertex() {
 	TRANSFORM[1][0] = scale;
 	TRANSFORM[1][1] = scale;
 
-	//TRANSFORM[2][0] = 1.0 + scale;
-	//TRANSFORM[2][1] =  1.0 + scale;
-	//TRANSFORM[2][2] = scale * 0.3;
-
-	// update our transform to place
 	TRANSFORM[3][0] = pos.x;
 	TRANSFORM[3][1] = pos.y;
 	TRANSFORM[3][2] = pos.z;

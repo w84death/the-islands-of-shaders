@@ -47,7 +47,7 @@ size = Vector2( 512, 512 )
 subdivide_width = 64
 subdivide_depth = 64
 
-[sub_resource type="SphereMesh" id=6]
+[sub_resource type="SphereMesh" id=3]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
@@ -57,7 +57,7 @@ radial_segments = 5
 rings = 2
 is_hemisphere = true
 
-[sub_resource type="PlaneMesh" id=3]
+[sub_resource type="PlaneMesh" id=4]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
@@ -65,7 +65,7 @@ size = Vector2( 512, 512 )
 subdivide_width = 32
 subdivide_depth = 32
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
 length = 3.5
 loop = true
@@ -276,9 +276,9 @@ local_coords = false
 draw_order = 0
 process_material = ExtResource( 13 )
 draw_passes = 1
-draw_pass_1 = SubResource( 6 )
+draw_pass_1 = SubResource( 3 )
 script = ExtResource( 9 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "draw_pass_1", "material_override", "process_material" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "draw_pass_1", "material_override", "process_material" ]
 rows = 64
 spacing = 2.0
 
@@ -293,7 +293,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 skeleton = NodePath("..")
 material/0 = ExtResource( 14 )
 _sections_unfolded = [ "Material", "material/0", "material_override" ]
@@ -434,7 +434,7 @@ autoplay = "gay"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/gay = SubResource( 4 )
+anims/gay = SubResource( 5 )
 blend_times = [  ]
 
 [node name="bottom-middle" type="Control" parent="GUI/intro" index="1"]
