@@ -34,7 +34,7 @@ func _input(event):
 			front_back = front_back.normalized()
 			
 			move_to += front_back * event.relative.y * -0.1
-		elif Input.is_key_pressed(KEY_CONTROL):
+		elif Input.is_action_pressed("ZOOM_CAMERA"):
 			var cam_origin = $Camera.transform.origin
 			cam_origin.z = clamp(cam_origin.z + (event.relative.y * 0.1), 10.0, 1000.0)
 			$Camera.transform.origin = cam_origin

@@ -1,11 +1,12 @@
 shader_type particles;
 
-uniform float rows = 12;
-uniform float spacing = 1.0;
+uniform float rows = 64;
+uniform float spacing = 2.0;
 
 uniform sampler2D height_map;
-uniform sampler2D features_map;
-uniform float max_height = 18.0;
+uniform float max_height = 45.0;
+uniform float height_mask_min = 0.02;
+uniform float height_mask_max = 0.20;
 uniform vec2 heightmap_size = vec2(512.0, 512.0);
 
 uniform sampler2D noisemap;
@@ -13,7 +14,7 @@ uniform sampler2D noisemap;
 float get_height(vec2 pos) {
 	pos -= 0.5 * heightmap_size;
 	pos /= heightmap_size;
-	return max_height * texture(height_map, pos).r - 0.5;
+	return max_height * texture(height_map, pos).r - 0.6;
 }
 
 void vertex() {
@@ -47,13 +48,13 @@ void vertex() {
 	feat_pos /= heightmap_size;
 	float terrain_mask = texture(height_map, feat_pos).r;
 	
-	if (terrain_mask > 0.25 || terrain_mask < 0.1) {
+	if (terrain_mask > height_mask_max || terrain_mask < height_mask_min) {
 		pos.y = -10000.0;
 	}
 	noise = texture(noisemap, pos.xz * 0.01).rgb;
-	float scale = noise.x * 2.0;
-	TRANSFORM[1][0] = scale;
-	TRANSFORM[1][1] = scale;
+	float scale = noise.x * 1.5;
+	TRANSFORM[2][0] = scale;
+	TRANSFORM[2][1] = scale;
 
 	TRANSFORM[3][0] = pos.x;
 	TRANSFORM[3][1] = pos.y;

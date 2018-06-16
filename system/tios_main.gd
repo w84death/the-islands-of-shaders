@@ -9,13 +9,11 @@ func _input(event):
 		in_game = true
 	if Input.is_action_pressed("fullscreen"):
 		toggle_fullscreen()
-		
 	if in_game && Input.is_action_pressed("quit"):
 		show_menu()
 		in_game = false
 	elif Input.is_action_pressed("quit"):
 		get_tree().quit()
-		
 
 func show_game():
 		get_node("camera_rig/Camera").make_current()

@@ -1,5 +1,7 @@
 shader_type spatial;
 render_mode cull_disabled;
+//render_mode vertex_lighting;
+render_mode depth_draw_alpha_prepass;
 
 uniform sampler2D tex : hint_albedo;
 uniform sampler2D spec: hint_black;
@@ -19,11 +21,12 @@ void vertex() {
 void fragment() {
 	vec4 color = texture(tex, UV);
 	ALBEDO = color.rgb;
-	ALPHA = color.a ;
-	ALPHA_SCISSOR = 0.2;
+	ALPHA = color.a;
+	ALPHA_SCISSOR = 0.45;
 	
-	METALLIC = 0.9;
+	METALLIC = 0.7;
 	SPECULAR = texture(spec, UV).r;
+	
 	ROUGHNESS = 1.0 - SPECULAR;
 	TRANSMISSION = vec3(0.2, 0.2, 0.2);
 }

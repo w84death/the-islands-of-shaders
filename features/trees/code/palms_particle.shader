@@ -44,9 +44,7 @@ void vertex() {
 	pos.z += (noise.y) * spacing;
 	
 	// apply our height
-	pos.y = get_height(pos.xz);
-	//pos.y -= (noise.x * 0.1) * 10.0;
-	
+	pos.y = get_height(pos.xz);	
 	
 	vec2 feat_pos = pos.xz;
 	feat_pos -= 0.5 * heightmap_size;
@@ -56,7 +54,7 @@ void vertex() {
 	float y2 = get_height(pos.xz + vec2(1.0, 0.0));
 	float y3 = get_height(pos.xz + vec2(0.0, 1.0));
 	
-	if (terrain_mask < 1.0) {
+	if (terrain_mask < 0.7) {
 		pos.y = -10000.0;
 	} else if (abs(y2 - pos.y) > 0.5) {
 		pos.y = -10000.0;
@@ -71,8 +69,14 @@ void vertex() {
 	TRANSFORM[2][0] = sin(noise.z * 3.0);
 	TRANSFORM[2][2] = cos(noise.z * 3.0);
 	
+	noise = texture(noisemap, pos.xz).rgb;
+	float height_noise = noise.r * 16.0;
+	float rot_noise = clamp(-0.5 + noise.r*2.0,-0.2,0.2);
+	TRANSFORM[0][1] = rot_noise;
+	TRANSFORM[2][1] = rot_noise;
+	
 	// update our transform to place
 	TRANSFORM[3][0] = pos.x;
-	TRANSFORM[3][1] = pos.y;
+	TRANSFORM[3][1] = pos.y - height_noise;
 	TRANSFORM[3][2] = pos.z;
 }

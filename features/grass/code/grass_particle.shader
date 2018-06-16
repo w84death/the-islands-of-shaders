@@ -2,7 +2,6 @@ shader_type particles;
 
 uniform float rows = 12;
 uniform float spacing = 1.0;
-uniform float trees_level = 4;
 
 uniform sampler2D height_map;
 uniform sampler2D features_map;
@@ -66,11 +65,14 @@ void vertex() {
 	TRANSFORM[2][0] = sin(noise.z * 3.0);
 	TRANSFORM[2][2] = cos(noise.z * 3.0);
 	
-	//TRANSFORM[1][0] = cos(noise.z * 3.0);
-	//TRANSFORM[2][0] = sin(noise.z * 3.5);
+	noise = texture(noisemap, pos.xz).rgb;
+	float height_noise = noise.r * 6.0;
+	float rot_noise = clamp(-0.5 + noise.r * 2.0, -0.4, 0.4);
+	TRANSFORM[0][1] = rot_noise;
+	TRANSFORM[2][1] = rot_noise;
 	
 	// update our transform to place
 	TRANSFORM[3][0] = pos.x;
-	TRANSFORM[3][1] = pos.y;
+	TRANSFORM[3][1] = pos.y - height_noise;
 	TRANSFORM[3][2] = pos.z;
 }
