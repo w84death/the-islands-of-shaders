@@ -12,7 +12,7 @@ uniform sampler2D normal_map;
 
 void vertex() {
 	vec3 noise = texture(noise_map, VERTEX.xz * 0.1).rgb;
-	VERTEX.y -= noise.x * 4.0 * (sin(VERTEX.x + VERTEX.y + TIME) * 0.4);
+	VERTEX.y += noise.x * 4.0 * (sin(VERTEX.x + VERTEX.y + TIME) * 0.4);
 }
 
 void fragment() {
