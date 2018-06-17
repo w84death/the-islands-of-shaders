@@ -148,7 +148,7 @@ lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 emitting = true
-amount = 4096
+amount = 2048
 lifetime = 1.0
 one_shot = false
 preprocess = 0.0
@@ -165,6 +165,6 @@ draw_passes = 1
 draw_pass_1 = ExtResource( 12 )
 script = ExtResource( 6 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Transform", "material_override", "process_material" ]
-rows = 64
-spacing = 11.9999
+rows = 32
+spacing = 24.0
 
