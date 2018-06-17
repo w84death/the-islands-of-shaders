@@ -22,7 +22,7 @@ settings/fps/force_fps=75
 [display]
 
 window/size/width=640
-window/size/height=380
+window/size/height=480
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

@@ -164,7 +164,7 @@ process_material = ExtResource( 11 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 12 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "process_material" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Transform", "material_override", "process_material" ]
 rows = 64
 spacing = 11.9999
 

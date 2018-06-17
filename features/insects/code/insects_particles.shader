@@ -2,9 +2,12 @@ shader_type particles;
 
 uniform float rows = 32;
 uniform float spacing = 1.0;
-
+uniform float flapping_speed = 28.0;
+uniform float fly_range = 24.0;
 uniform float max_height = 64.0;
+
 uniform sampler2D noisemap;
+
 
 
 void vertex() {
@@ -31,10 +34,9 @@ void vertex() {
 	pos.y += (noise.x * max_height );
 	
 	
-	TRANSFORM[1][1] = 1.5 + sin(TIME * 24.0 + pos.x);
-	//TRANSFORM[2][1] = sin(TIME);
+	TRANSFORM[1][1] = 1.5 + sin(TIME * flapping_speed + pos.x);
 	
-	TRANSFORM[3][0] = pos.x  + sin(TIME + pos.x)*8.0;
-	TRANSFORM[3][1] = pos.y  + sin(TIME + pos.y)*5.0;
-	TRANSFORM[3][2] = pos.z  + sin(TIME + + pos.z)*8.0;
+	TRANSFORM[3][0] = pos.x + sin(TIME + noise.x + pos.x) * fly_range;
+	TRANSFORM[3][1] = pos.y + sin(TIME - noise.x + pos.y) * (fly_range * 0.25);
+	TRANSFORM[3][2] = pos.z + sin(TIME + noise.y + pos.z) * fly_range;
 }

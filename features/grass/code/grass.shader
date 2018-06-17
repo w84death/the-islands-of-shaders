@@ -17,10 +17,6 @@ void vertex() {
 		VERTEX.x += amplitude * sin(worldpos.x * scale.x * 0.75 + TIME * speed.x) * cos(worldpos.z * scale.x + TIME * speed.x * 0.25);
 		VERTEX.z += amplitude * sin(worldpos.x * scale.y + TIME * speed.y * 0.35) * cos(worldpos.z * scale.y * 0.80 + TIME * speed.y);
 	}
-	vec4 color = texture(noise_map, VERTEX.xy);
-	VERTEX.x += color.r * 0.2;
-	VERTEX.z += color.g * 0.2;
-	VERTEX.y += color.b * 0.5;
 }
 
 void fragment() {
