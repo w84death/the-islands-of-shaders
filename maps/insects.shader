@@ -32,7 +32,7 @@ void fragment() {
 	//NORMALMAP = texture(normal_map, UV).rgb;
 	
 	METALLIC = 0.80;
-	//SPECULAR = texture(specular_map, UV).r;
-	//ROUGHNESS = clamp(1.0-SPECULAR, 0.4, 1.0);
-	//TRANSMISSION = vec3(0.2, 0.2, 0.2);
+	SPECULAR = texture(specular_map, UV).r;
+	ROUGHNESS = clamp(1.0-SPECULAR, 0.2, 1.0);
+	TRANSMISSION = vec3(0.2, 0.2, 0.2);
 }

@@ -21,7 +21,7 @@ size = Vector2( 2048, 2048 )
 subdivide_width = 512
 subdivide_depth = 512
 
-[sub_resource type="PlaneMesh" id=4]
+[sub_resource type="PlaneMesh" id=2]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
@@ -128,7 +128,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
+mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = ExtResource( 9 )
 _sections_unfolded = [ "Material", "material/0", "material_override", "mesh" ]
@@ -164,7 +164,7 @@ process_material = ExtResource( 11 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 12 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Transform", "material_override", "process_material" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Transform", "material_override" ]
 rows = 32
 spacing = 24.0
 
