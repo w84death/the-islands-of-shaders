@@ -1,6 +1,6 @@
 shader_type spatial;
 render_mode cull_disabled;
-//render_mode vertex_lighting;
+render_mode diffuse_lambert_wrap;
 render_mode depth_draw_alpha_prepass;
 
 uniform sampler2D tex : hint_albedo;

@@ -140,6 +140,7 @@ common/physics_fps=75
 [rendering]
 
 quality/filters/use_nearest_mipmap_filter=true
+quality/filters/anisotropic_filter_level=2
 quality/shadows/filter_mode=0
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false

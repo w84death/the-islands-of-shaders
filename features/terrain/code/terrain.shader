@@ -1,4 +1,6 @@
 shader_type spatial;
+//render_mode vertex_lighting;
+render_mode diffuse_burley;
 
 uniform vec2 map_size = vec2(512.0, 512.0);
 uniform float max_height = 18.0;
@@ -41,9 +43,9 @@ void fragment() {
 	vec3 green_color = texture(albedo_green, uv2 * uv_scale).rgb * green_vis;
 	vec3 blue_color = texture(albedo_blue, uv2 * uv_scale).rgb * blue_vis;
 	
-	vec3 red_normal = texture(normalmap_red, uv2).rgb * red_vis;
-	vec3 green_normal = texture(normalmap_green, uv2).rgb * green_vis;
-	vec3 blue_normal = texture(normalmap_blue, uv2).rgb * blue_vis;
+	vec3 red_normal = texture(normalmap_red, uv2 * uv_scale).rgb * red_vis;
+	vec3 green_normal = texture(normalmap_green, uv2 * uv_scale).rgb * green_vis;
+	vec3 blue_normal = texture(normalmap_blue, uv2 * uv_scale).rgb * blue_vis;
 	
 	float underwater_color = 1.0;
 	float height = texture(height_map, uv2).r;
@@ -51,7 +53,7 @@ void fragment() {
 		underwater_color = clamp(0.1 + height * 3.0, 0.0, 1.0);
 	}
 	
-	METALLIC = 0.3;
+	METALLIC = 0.5;
 	ROUGHNESS = 1.0;
 	ALBEDO = clamp((red_color + green_color + blue_color) * underwater_color, 0.0, 1.0);
 	//NORMALMAP = red_normal + green_normal + blue_normal;

@@ -1,6 +1,7 @@
 shader_type spatial;
 render_mode cull_disabled;
 //render_mode depth_draw_alpha_prepass;
+render_mode diffuse_lambert_wrap;
 
 uniform sampler2D texture_map : hint_albedo;
 uniform sampler2D normal_map : hint_normal;
@@ -26,12 +27,12 @@ void fragment() {
 	vec4 color = texture(texture_map, UV);
 	ALBEDO = color.rgb;
 	ALPHA = color.a;
-	ALPHA_SCISSOR = 0.35;
+	ALPHA_SCISSOR = 0.20;
 	NORMALMAP = texture(normal_map, UV).rgb;
 	
-	METALLIC = 0.70;
+	METALLIC = 0.90;
 	SPECULAR = texture(specular_map, UV).r;
-	ROUGHNESS = clamp(1.0-SPECULAR, 0.3, 1.0);
+	ROUGHNESS = clamp(1.0-SPECULAR, 0.4, 1.0);
 	TRANSMISSION = vec3(0.2, 0.2, 0.2);
 }
 
