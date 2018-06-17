@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/butterfly.obj-e00dcb7757aab4bf247748daee5be88d.mesh"
+
+[deps]
+
+files=[ "res://.import/butterfly.obj-e00dcb7757aab4bf247748daee5be88d.mesh" ]
+
+source_file="res://features/insects/models/butterfly.obj"
+dest_files=[ "res://.import/butterfly.obj-e00dcb7757aab4bf247748daee5be88d.mesh", "res://.import/butterfly.obj-e00dcb7757aab4bf247748daee5be88d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

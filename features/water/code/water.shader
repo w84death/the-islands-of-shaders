@@ -26,7 +26,8 @@ void fragment() {
 	
 	// calc water color/alpha on land height
 	float line_color = clamp(land_line * 4.0, 0.0, 1.0);
-	ALBEDO = clamp(vec3(0.1, .6-line_color, .5-line_color) - vec3(0.15, 0.4, 0.4), 0.0, 1.0);
+	vec3 new_color = vec3(0.1, .6-line_color, .5-line_color) - vec3(0.15, 0.4, 0.4);
+	ALBEDO = clamp(new_color, vec3(0.0,0.0,0.0), vec3(1.0,1.0,1.0));
 	ALPHA = 1.0 - line_color * 2.0;
 	ROUGHNESS = clamp(line_color, 0.27, 1.0);
 	METALLIC = 0.35;

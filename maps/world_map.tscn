@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://features/terrain/code/terrain.material" type="Material" id=1]
 [ext_resource path="res://features/terrain/code/terrain.gd" type="Script" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://features/trees/code/palms_particle.material" type="Material" id=7]
 [ext_resource path="res://features/trees/models/palm.mesh" type="ArrayMesh" id=8]
 [ext_resource path="res://features/water/code/water.material" type="Material" id=9]
+[ext_resource path="res://maps/insects.material" type="Material" id=10]
+[ext_resource path="res://features/insects/code/insects_particles.material" type="Material" id=11]
+[ext_resource path="res://features/insects/models/butterfly.obj" type="ArrayMesh" id=12]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -132,4 +135,36 @@ _sections_unfolded = [ "Material", "material/0", "material_override", "mesh" ]
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="insects" type="Particles" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.138, 0 )
+layers = 1
+material_override = ExtResource( 10 )
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = true
+amount = 4096
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 1.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
+local_coords = false
+draw_order = 0
+process_material = ExtResource( 11 )
+draw_passes = 1
+draw_pass_1 = ExtResource( 12 )
+script = ExtResource( 6 )
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "process_material" ]
+rows = 64
+spacing = 11.9999
 
