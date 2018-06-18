@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/golek-tank.obj-0e98b2dc245eaaaf64c82c57794bd780.mesh"
+
+[deps]
+
+files=[ "res://.import/golek-tank.obj-0e98b2dc245eaaaf64c82c57794bd780.mesh" ]
+
+source_file="res://features/tank/model/golek-tank.obj"
+dest_files=[ "res://.import/golek-tank.obj-0e98b2dc245eaaaf64c82c57794bd780.mesh", "res://.import/golek-tank.obj-0e98b2dc245eaaaf64c82c57794bd780.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

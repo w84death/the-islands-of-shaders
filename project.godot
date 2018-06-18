@@ -17,12 +17,13 @@ config/icon="res://system/icon.png"
 
 [debug]
 
-settings/fps/force_fps=75
+settings/fps/force_fps=60
 
 [display]
 
-window/size/width=640
-window/size/height=480
+window/size/width=680
+window/size/height=384
+window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -140,13 +141,14 @@ common/physics_fps=75
 [rendering]
 
 quality/filters/use_nearest_mipmap_filter=true
-quality/filters/anisotropic_filter_level=2
-quality/shadows/filter_mode=0
+quality/directional_shadow/size=2048
+quality/shadow_atlas/size=2048
+quality/shadows/filter_mode=2
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0.27451, 0.27451, 0.27451, 1 )
 quality/reflections/atlas_size=1024
 quality/reflections/atlas_subdiv=4
-quality/depth/hdr=false
+quality/filters/msaa=1
 environment/default_environment="res://system/world_enviroment.tres"

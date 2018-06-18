@@ -13,11 +13,11 @@ dest_files=[ "res://.import/palm_tex.png-7b439f28634073c4c6ad2012428c514e.s3tc.s
 [params]
 
 compress/mode=2
-compress/lossy_quality=0.7
+compress/lossy_quality=0.8
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=true
 flags/anisotropic=true
 flags/srgb=1
