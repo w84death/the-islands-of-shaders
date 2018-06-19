@@ -131,6 +131,9 @@ _sections_unfolded = [ "Directional Shadow", "Light" ]
 
 [node name="world_map" parent="." index="3" instance=ExtResource( 4 )]
 
+[node name="water" parent="world_map" index="3"]
+_sections_unfolded = [ "Material", "material/0", "material_override" ]
+
 [node name="hamster" parent="world_map" index="5" instance=ExtResource( 5 )]
 transform = Transform( 0.633504, -0.182861, -0.751821, 0.0438879, 0.9786, -0.201038, 0.772494, 0.0943624, 0.627972, -43.8945, 8.57208, 14.2178 )
 
