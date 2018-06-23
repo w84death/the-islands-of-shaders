@@ -21,8 +21,8 @@ float get_height(vec2 pos) {
 void vertex() {
 	VERTEX.y = get_height(VERTEX.xz);
 	
-	TANGENT = normalize(vec3(1.0, get_height(VERTEX.xz + vec2(1.0, 0.0)) - VERTEX.y, 0.0));
-	BINORMAL = normalize(vec3(0.0, get_height(VERTEX.xz + vec2(0.0, 1.0)) - VERTEX.y, 1.0));
+	TANGENT = normalize(vec3(1.0, get_height(VERTEX.xz + vec2(2.0, 0.0)) - VERTEX.y, 0.0));
+	BINORMAL = normalize(vec3(0.0, get_height(VERTEX.xz + vec2(0.0, 2.0)) - VERTEX.y, 1.0));
 	NORMAL = cross(BINORMAL, TANGENT);
 }
 
@@ -45,6 +45,6 @@ void fragment() {
 	}
 	
 	ALBEDO = clamp((red_color + green_color + blue_color) * underwater_color, 0.0, 1.0);
-	METALLIC = 0.0;
+	METALLIC = 0.3;
 	ROUGHNESS = 1.0;
 }

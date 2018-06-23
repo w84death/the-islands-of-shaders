@@ -5,6 +5,7 @@
 [node name="hamster" type="Spatial" index="0"]
 
 [node name="body" type="MeshInstance" parent="." index="0"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1

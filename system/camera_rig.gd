@@ -1,44 +1,39 @@
 extends Position3D
 
-var angle_x = -30;
+export var rotate_speed = 5.0;
+export var move_speed = 5.0;
+export var terrain_height = 45;
+var angle_x = 0;
 var angle_y = 0;
 
 var _angle_x = -50;
 var _angle_y = 0;
 
+var height_map;
 var move_to;
 
 func _ready():
 	move_to = transform.origin
+	var minimap = get_node("../GUI/demo/minimap/map")
+	var tex = minimap.get_texture()
+	height_map = tex.get_data()
 
 func _input(event):
-	if event is InputEventMouseMotion:
-		if Input.is_action_pressed("ROTATE_TERRAIN"):
-			# rotate by motion
-			angle_x -= event.relative.y;
-			angle_y -= event.relative.x;
-			
-			if angle_x > -5:
-				angle_x = -5
-			elif angle_x < -90:
-				angle_x = -90
-		elif Input.is_action_pressed("MOVE_TERRAIN"):
-			var left_right = transform.basis.x
-			left_right.y = 0.0
-			left_right = left_right.normalized()
-			
-			move_to += left_right * event.relative.x * -0.1
-			
-			var front_back = transform.basis.z
-			front_back.y = 0.0
-			front_back = front_back.normalized()
-			
-			move_to += front_back * event.relative.y * -0.1
-		elif Input.is_action_pressed("ZOOM_CAMERA"):
-			var cam_origin = $Camera.transform.origin
-			cam_origin.z = clamp(cam_origin.z + (event.relative.y * 0.1), 10.0, 1000.0)
-			$Camera.transform.origin = cam_origin
-
+	if Input.is_action_pressed("ui_left"):
+		angle_y += rotate_speed
+	if Input.is_action_pressed("ui_right"):
+		angle_y -= rotate_speed
+	if Input.is_action_pressed("ui_up"):
+		var front_back = transform.basis.z
+		front_back.y = 0.0
+		front_back = front_back.normalized()
+		move_to -= front_back * move_speed;
+	if Input.is_action_pressed("ui_down"):
+		var front_back = transform.basis.z
+		front_back.y = 0.0
+		front_back = front_back.normalized()
+		move_to += front_back * move_speed;
+		
 func _process(delta):
 	if angle_x != _angle_x or angle_y != _angle_y:
 		_angle_x += (angle_x - _angle_x) * delta * 10.0;
@@ -49,4 +44,12 @@ func _process(delta):
 		transform.basis = basis
 	
 	if move_to != transform.origin:
+		var pos = Vector2(int(1024+transform.origin.x), int(1024+transform.origin.z));
+		move_to.y = get_height(pos).r * terrain_height
 		transform.origin += (move_to - transform.origin) * delta * 10.0;
+		
+func get_height(pos):
+	height_map.lock()
+	var px = height_map.get_pixel(pos.x, pos.y)
+	height_map.unlock()
+	return px

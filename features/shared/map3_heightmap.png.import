@@ -2,17 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/map3_heightmap.png-6594521d74858e0d6b11c111fad4006f.s3tc.stex"
-path.etc2="res://.import/map3_heightmap.png-6594521d74858e0d6b11c111fad4006f.etc2.stex"
+path="res://.import/map3_heightmap.png-6594521d74858e0d6b11c111fad4006f.stex"
 
 [deps]
 
 source_file="res://features/shared/map3_heightmap.png"
-dest_files=[ "res://.import/map3_heightmap.png-6594521d74858e0d6b11c111fad4006f.s3tc.stex", "res://.import/map3_heightmap.png-6594521d74858e0d6b11c111fad4006f.etc2.stex" ]
+dest_files=[ "res://.import/map3_heightmap.png-6594521d74858e0d6b11c111fad4006f.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
