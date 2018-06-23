@@ -1,5 +1,6 @@
 shader_type particles;
 
+uniform float uniq = 0.1234;
 uniform float rows = 12;
 uniform float spacing = 1.0;
 
@@ -36,7 +37,7 @@ void vertex() {
 	pos.z += EMISSION_TRANSFORM[3][2] - mod(EMISSION_TRANSFORM[3][2], spacing);
 	
 	// now add some noise based on our _world_ position
-	vec3 noise = texture(noisemap, pos.xz * 0.02).rgb;
+	vec3 noise = texture(noisemap, pos.xz * 0.02 + uniq).rgb;
 	pos.x += (noise.x * 4.0 ) * spacing;
 	pos.z += (noise.y * 4.0 ) * spacing;
 	

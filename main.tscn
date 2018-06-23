@@ -87,7 +87,6 @@ move_speed = 5.0
 terrain_height = 45
 
 [node name="hamster" parent="camera_rig" index="0" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="POV" type="Camera" parent="camera_rig/hamster" index="1"]
@@ -107,15 +106,11 @@ far = 756.0
 
 [node name="settings" type="Node" parent="." index="2"]
 
-[node name="enviroment" type="WorldEnvironment" parent="settings" index="0"]
-environment = ExtResource( 4 )
-_sections_unfolded = [ "environment" ]
-
-[node name="SUN" type="DirectionalLight" parent="settings" index="1"]
+[node name="SUN" type="DirectionalLight" parent="settings" index="0"]
 transform = Transform( -0.238369, -0.793796, 0.559525, -0.102066, 0.593418, 0.798397, -0.965796, 0.133205, -0.222472, 0, 0, 0 )
 layers = 1
-light_color = Color( 1, 0.976471, 0.843137, 1 )
-light_energy = 1.5
+light_color = Color( 1, 0.933333, 0.552941, 1 )
+light_energy = 3.0
 light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.503302
@@ -127,7 +122,7 @@ shadow_bias = 0.0
 shadow_contact = 0.0
 shadow_reverse_cull_face = true
 editor_only = false
-directional_shadow_mode = 1
+directional_shadow_mode = 0
 directional_shadow_split_1 = 0.1
 directional_shadow_split_2 = 0.2
 directional_shadow_split_3 = 0.4
@@ -136,11 +131,15 @@ directional_shadow_normal_bias = 0.0
 directional_shadow_bias_split_scale = 0.0
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 256.0
-_sections_unfolded = [ "Light", "Shadow" ]
+_sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
+
+[node name="enviroment" type="WorldEnvironment" parent="settings" index="1"]
+environment = ExtResource( 4 )
+_sections_unfolded = [ "environment" ]
 
 [node name="world_map" parent="." index="3" instance=ExtResource( 5 )]
 
-[node name="water" parent="world_map" index="3"]
+[node name="water" parent="world_map" index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
 _sections_unfolded = [ "Material", "Transform", "material/0", "material_override", "mesh" ]
 
@@ -159,6 +158,7 @@ theme = ExtResource( 6 )
 _sections_unfolded = [ "Theme", "theme" ]
 
 [node name="demo" type="Control" parent="GUI" index="0"]
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0

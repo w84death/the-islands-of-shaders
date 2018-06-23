@@ -2,7 +2,6 @@ shader_type spatial;
 render_mode cull_disabled;
 
 uniform sampler2D texture_map : hint_albedo;
-uniform sampler2D specular_map : hint_black;
 uniform sampler2D noise_map;
 uniform float amplitude = 0.2;
 uniform vec2 speed = vec2(2.0, 1.5);
@@ -23,8 +22,8 @@ void fragment() {
 	ALPHA_SCISSOR = 0.20;
 	
 	METALLIC = 0.3;
-	SPECULAR = texture(specular_map, UV).r*4.0;
-	ROUGHNESS = clamp(1.0-SPECULAR, 0.0, 1.0);
+	SPECULAR = 0.0;
+	ROUGHNESS = 0.5;
 
 }
 
