@@ -46,5 +46,5 @@ void fragment() {
 	
 	ALBEDO = clamp((red_color + green_color + blue_color) * underwater_color, 0.0, 1.0);
 	METALLIC = 0.0;
-	ROUGHNESS = 0.7;
+	ROUGHNESS = 1.0;
 }

@@ -3,7 +3,7 @@
 [resource]
 
 radiance_size = 2
-sky_top_color = Color( 0, 1, 0.976471, 1 )
+sky_top_color = Color( 1, 1, 1, 1 )
 sky_horizon_color = Color( 0.85098, 0.937255, 0.717647, 1 )
 sky_curve = 0.105112
 sky_energy = 0.0

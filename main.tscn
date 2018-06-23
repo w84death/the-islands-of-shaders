@@ -2,9 +2,9 @@
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
 [ext_resource path="res://system/camera_rig.gd" type="Script" id=2]
-[ext_resource path="res://system/world_enviroment.tres" type="Environment" id=3]
-[ext_resource path="res://maps/world_map.tscn" type="PackedScene" id=4]
-[ext_resource path="res://features/hamsters/scene/hamster.tscn" type="PackedScene" id=5]
+[ext_resource path="res://features/hamsters/scene/hamster.tscn" type="PackedScene" id=3]
+[ext_resource path="res://system/world_enviroment.tres" type="Environment" id=4]
+[ext_resource path="res://maps/world_map.tscn" type="PackedScene" id=5]
 [ext_resource path="res://features/gui/theme.tres" type="Theme" id=6]
 [ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=7]
 [ext_resource path="res://features/gui/fps.gd" type="Script" id=8]
@@ -83,6 +83,7 @@ script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Camera" type="Camera" parent="camera_rig" index="0"]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 53, 33.6573 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -96,17 +97,21 @@ size = 1.0
 near = 0.1
 far = 756.0
 
+[node name="hamster" parent="camera_rig" index="1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
 [node name="settings" type="Node" parent="." index="2"]
 
 [node name="enviroment" type="WorldEnvironment" parent="settings" index="0"]
-environment = ExtResource( 3 )
+environment = ExtResource( 4 )
 _sections_unfolded = [ "environment" ]
 
 [node name="SUN" type="DirectionalLight" parent="settings" index="1"]
 transform = Transform( -0.238369, -0.793796, 0.559525, -0.102066, 0.593418, 0.798397, -0.965796, 0.133205, -0.222472, 0, 0, 0 )
 layers = 1
 light_color = Color( 1, 0.976471, 0.843137, 1 )
-light_energy = 2.0
+light_energy = 1.0
 light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.503302
@@ -127,22 +132,13 @@ directional_shadow_normal_bias = 0.0
 directional_shadow_bias_split_scale = 0.0
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 256.0
-_sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
+_sections_unfolded = [ "Light", "Shadow" ]
 
-[node name="world_map" parent="." index="3" instance=ExtResource( 4 )]
+[node name="world_map" parent="." index="3" instance=ExtResource( 5 )]
 
 [node name="water" parent="world_map" index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
 _sections_unfolded = [ "Material", "Transform", "material/0", "material_override", "mesh" ]
-
-[node name="hamster" parent="world_map" index="5" instance=ExtResource( 5 )]
-transform = Transform( 0.633504, -0.182861, -0.751821, 0.0438879, 0.9786, -0.201038, 0.772494, 0.0943624, 0.627972, -43.8945, 8.57208, 14.2178 )
-
-[node name="hamster2" parent="world_map" index="6" instance=ExtResource( 5 )]
-transform = Transform( 0.968565, -0.00990526, 0.248563, 0.0015166, 0.999423, 0.0339175, -0.248756, -0.0324743, 0.968022, -5.42946, 0.0780513, 171.744 )
-
-[node name="hamster3" parent="world_map" index="7" instance=ExtResource( 5 )]
-transform = Transform( 0.981305, 0, -0.192461, 0, 1, 0, 0.192461, 0, 0.981305, 50.4997, 16.6246, -438.751 )
 
 [node name="GUI" type="Control" parent="." index="4"]
 editor/display_folded = true
