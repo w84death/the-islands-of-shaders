@@ -1,0 +1,23 @@
+[gd_resource type="ProceduralSky" format=2]
+
+[resource]
+
+radiance_size = 2
+sky_top_color = Color( 0, 1, 0.976471, 1 )
+sky_horizon_color = Color( 0.85098, 0.937255, 0.717647, 1 )
+sky_curve = 0.105112
+sky_energy = 0.0
+ground_bottom_color = Color( 0.85098, 0.937255, 0.717647, 1 )
+ground_horizon_color = Color( 0.85098, 0.937255, 0.717647, 1 )
+ground_curve = 1.0
+ground_energy = 0.0
+sun_color = Color( 1, 0.92549, 0.309804, 1 )
+sun_latitude = 90.0
+sun_longitude = 0.0
+sun_angle_min = 1.0
+sun_angle_max = 100.0
+sun_curve = 0.5
+sun_energy = 0.0
+texture_size = 2
+_sections_unfolded = [ "Ground", "Sky", "Sun" ]
+

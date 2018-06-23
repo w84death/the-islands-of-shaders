@@ -21,5 +21,5 @@ material/1 = null
 material/2 = null
 material/3 = null
 material/4 = null
-_sections_unfolded = [ "Transform", "mesh" ]
+_sections_unfolded = [ "Geometry", "Transform", "mesh" ]
 

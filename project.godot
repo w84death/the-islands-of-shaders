@@ -23,7 +23,6 @@ settings/fps/force_fps=60
 
 window/size/width=680
 window/size/height=384
-window/size/fullscreen=true
 window/allow_per_pixel_transparency=true
 window/per_pixel_transparency=true
 window/stretch/mode="viewport"
@@ -133,6 +132,7 @@ fullscreen={
 ZOOM_CAMERA={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":3,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"unicode":0,"echo":false,"script":null)
  ]
 }
 
@@ -142,15 +142,17 @@ common/physics_fps=75
 
 [rendering]
 
-quality/filters/use_nearest_mipmap_filter=true
+quality/filters/anisotropic_filter_level=1
 quality/directional_shadow/size=2048
 quality/shadow_atlas/size=2048
-quality/shadows/filter_mode=2
+quality/shadows/filter_mode=0
+quality/shadows/filter_mode.mobile=2
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
+quality/subsurface_scattering/quality=0
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0.27451, 0.27451, 0.27451, 1 )
 quality/reflections/atlas_size=1024
 quality/reflections/atlas_subdiv=4
-quality/filters/msaa=1
+quality/filters/msaa=3
 environment/default_environment="res://system/world_enviroment.tres"

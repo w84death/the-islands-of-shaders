@@ -29,6 +29,6 @@ void fragment() {
 	METALLIC = 0.90;
 	SPECULAR = texture(specular_map, UV).r;
 	ROUGHNESS = clamp(1.0-SPECULAR, 0.4, 1.0);
-	TRANSMISSION = vec3(0.2, 0.2, 0.2);
+	//TRANSMISSION = vec3(0.2, 0.2, 0.2);
 }
 

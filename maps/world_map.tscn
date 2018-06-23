@@ -26,8 +26,8 @@ subdivide_depth = 512
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 2048, 2048 )
-subdivide_width = 64
-subdivide_depth = 64
+subdivide_width = 256
+subdivide_depth = 256
 
 [node name="world_map" type="Spatial" index="0"]
 
@@ -83,7 +83,7 @@ draw_pass_1 = ExtResource( 5 )
 script = ExtResource( 6 )
 _sections_unfolded = [ "Geometry", "Process Material", "material_override", "process_material", "script" ]
 rows = 192
-spacing = 6.0
+spacing = 8.0
 
 [node name="palms" type="Particles" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7398, 1.84899, 7.00503 )
@@ -115,7 +115,7 @@ draw_pass_1 = ExtResource( 8 )
 script = ExtResource( 6 )
 _sections_unfolded = [ "Draw Passes", "Process Material", "Transform", "draw_pass_1", "material_override", "process_material" ]
 rows = 64
-spacing = 20.0
+spacing = 24.0
 
 [node name="water" type="MeshInstance" parent="." index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75734, 0 )
