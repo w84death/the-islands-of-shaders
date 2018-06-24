@@ -4,7 +4,7 @@ export var rotate_speed = 1.0;
 export var move_speed = 1.0;
 export var move_speed_lr = 0.5;
 export var move_speed_fb = 1.5;
-export var terrain_height = 45;
+export var terrain_height = 256;
 export var map_size = Vector2(2048, 2048);
 const DEADZONE = 0.15;
 
@@ -52,8 +52,8 @@ func _process(delta):
 
 	if move_to != transform.origin:
 		var pos = Vector2(int(1024+transform.origin.x), int(1024+transform.origin.z));
-		move_to.y = get_height(pos).r * terrain_height
-		transform.origin += (move_to - transform.origin) * delta * 10.0;
+		move_to.y = terrain_height * get_height(pos).r
+		transform.origin += (move_to - transform.origin) * delta * 10.0
 
 func _physics_process(delta):
 	for axis in range(JOY_AXIS_0, JOY_AXIS_MAX):
@@ -66,6 +66,11 @@ func _physics_process(delta):
 					angle_y -= rotate_speed * axis_abs
 				else:
 					angle_y += rotate_speed * axis_abs
+			if axis == JOY_ANALOG_LY:
+				if axis_value > 0:
+					angle_x += rotate_speed * axis_abs
+				else:
+					angle_x -= rotate_speed * axis_abs
 
 			# MOVE LEFT - RIGHT
 			if axis == JOY_ANALOG_RX:

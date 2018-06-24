@@ -2,15 +2,15 @@ shader_type spatial;
 /* WATER SHADER 3.0 "Back to the roots" */
 
 uniform vec2 amplitude = vec2(1.0, 1.0);
-uniform vec2 frequency = vec2(1.1, 1.1);
+uniform vec2 frequency = vec2(.2, .2);
 uniform vec2 time_factor = vec2(2.0, 2.0);
 
 uniform vec3 water_color = vec3(0.25, 0.27, 0.15);
 uniform float water_height = 2.5;
-uniform float water_clearnes = 0.6;
+uniform float water_clearnes = 0.4;
 uniform float water_refraction = 0.014;
-uniform float water_alpha = 0.5;
-uniform float water_shore = 0.45;
+uniform float water_alpha = 0.7;
+uniform float water_shore = 0.35;
 uniform float water_color_contrast = 1.5;
 
 uniform sampler2D noise_map;
@@ -21,7 +21,7 @@ float height(vec2 pos, float time, float noise){
 }
 
 void vertex(){
-	float noise = texture(noise_map, VERTEX.xz).r * 0.06;
+	float noise = smoothstep(0.0,0.5,texture(noise_map, VERTEX.xz * 0.1).r);
 	VERTEX.y = water_height + height(VERTEX.xz, TIME, noise);
 	TANGENT = normalize( vec3(0.0, height(VERTEX.xz + vec2(0.0, 0.2), TIME, noise) - height(VERTEX.xz + vec2(0.0, -0.2), TIME, noise), 0.4));
 	BINORMAL = normalize( vec3(0.4, height(VERTEX.xz + vec2(0.2, 0.0), TIME, noise) - height(VERTEX.xz + vec2(-0.2, 0.0), TIME, noise), 0.0));
@@ -38,7 +38,7 @@ void fragment(){
 	
 	ALBEDO = w_color;
 	ROUGHNESS = gfx;
-	METALLIC = 0.4;
+	METALLIC = 0.8;
 	SPECULAR = gfx;
 	
 	// REFRACTION

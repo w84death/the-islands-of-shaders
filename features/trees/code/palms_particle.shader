@@ -49,7 +49,7 @@ void vertex() {
 	vec2 feat_pos = pos.xz;
 	feat_pos -= 0.5 * heightmap_size;
 	feat_pos /= heightmap_size;
-	float terrain_mask = texture(features_map, feat_pos).b;
+	float terrain_mask = texture(features_map, feat_pos).g;
 	
 	float y2 = get_height(pos.xz + vec2(1.0, 0.0));
 	float y3 = get_height(pos.xz + vec2(0.0, 1.0));

@@ -23,7 +23,7 @@ void fragment() {
 	
 	METALLIC = 0.8;
 	SPECULAR = 0.0;
-	ROUGHNESS = 0.4;
+	ROUGHNESS = 1.0;
 
 }
 

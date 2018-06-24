@@ -1,44 +1,110 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=27 format=2]
 
-[ext_resource path="res://features/terrain/code/terrain.material" type="Material" id=1]
-[ext_resource path="res://features/terrain/code/terrain.gd" type="Script" id=2]
-[ext_resource path="res://features/grass/code/grass_shader.material" type="Material" id=3]
-[ext_resource path="res://features/grass/code/grass_particle.material" type="Material" id=4]
-[ext_resource path="res://features/grass/models/grass.obj" type="ArrayMesh" id=5]
-[ext_resource path="res://system/particle_follow_camera_rig.gd" type="Script" id=6]
-[ext_resource path="res://features/grass/code/grass2_shader.material" type="Material" id=7]
-[ext_resource path="res://features/grass/code/grass_particle.shader" type="Shader" id=8]
-[ext_resource path="res://features/shared/map3_featuresmap.png" type="Texture" id=9]
-[ext_resource path="res://features/shared/map3_heightmap.png" type="Texture" id=10]
-[ext_resource path="res://features/shared/noise.png" type="Texture" id=11]
-[ext_resource path="res://features/grass/models/grass2.obj" type="ArrayMesh" id=12]
-[ext_resource path="res://features/trees/code/palms_particle.material" type="Material" id=13]
-[ext_resource path="res://features/trees/models/palm.mesh" type="ArrayMesh" id=14]
-[ext_resource path="res://features/water/code/water.material" type="Material" id=15]
-[ext_resource path="res://features/insects/code/insects.material" type="Material" id=16]
-[ext_resource path="res://features/insects/code/insects_particles.material" type="Material" id=17]
-[ext_resource path="res://features/insects/models/butterfly.obj" type="ArrayMesh" id=18]
+[ext_resource path="res://features/terrain/tex/terrain_sand_tex.jpg" type="Texture" id=1]
+[ext_resource path="res://features/terrain/code/terrain.material" type="Material" id=2]
+[ext_resource path="res://features/terrain/code/terrain.gd" type="Script" id=3]
+[ext_resource path="res://features/grass/code/grass_shader.material" type="Material" id=4]
+[ext_resource path="res://features/grass/code/grass_particle.material" type="Material" id=5]
+[ext_resource path="res://features/grass/models/grass.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://system/particle_follow_camera_rig.gd" type="Script" id=7]
+[ext_resource path="res://features/grass/code/grass2_shader.material" type="Material" id=8]
+[ext_resource path="res://features/grass/code/grass_particle.shader" type="Shader" id=9]
+[ext_resource path="res://features/shared/island_0x0_featuresmap.png" type="Texture" id=10]
+[ext_resource path="res://features/shared/island_0x0_heightmap.png" type="Texture" id=11]
+[ext_resource path="res://features/shared/noise.png" type="Texture" id=12]
+[ext_resource path="res://features/grass/models/grass2.obj" type="ArrayMesh" id=13]
+[ext_resource path="res://features/trees/code/palms_particle.material" type="Material" id=14]
+[ext_resource path="res://features/trees/models/palm.mesh" type="ArrayMesh" id=15]
+[ext_resource path="res://features/water/code/water.material" type="Material" id=16]
+[ext_resource path="res://features/insects/code/insects.material" type="Material" id=17]
+[ext_resource path="res://features/insects/code/insects_particles.material" type="Material" id=18]
+[ext_resource path="res://features/insects/models/butterfly.obj" type="ArrayMesh" id=19]
+[ext_resource path="res://features/structures/code/bridge.material" type="Material" id=20]
+
+[sub_resource type="SpatialMaterial" id=6]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+flags_do_not_receive_shadows = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 4
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0.788235, 0.670588, 0.670588, 1 )
+albedo_texture = ExtResource( 1 )
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture_channel = 0
+roughness = 1.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 32, 32, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Metallic", "Roughness", "UV1" ]
+
+[sub_resource type="PlaneMesh" id=5]
+
+material = SubResource( 6 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+size = Vector2( 4096, 4096 )
+subdivide_width = 0
+subdivide_depth = 0
+_sections_unfolded = [ "material" ]
 
 [sub_resource type="PlaneMesh" id=1]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 2048, 2048 )
-subdivide_width = 1024
-subdivide_depth = 1024
+subdivide_width = 512
+subdivide_depth = 512
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=4]
 
 render_priority = 0
-shader = ExtResource( 8 )
+shader = ExtResource( 9 )
 shader_param/uniq = 0.0012423
 shader_param/rows = 96.0
 shader_param/spacing = 16.0
-shader_param/max_height = 45.0
+shader_param/max_height = 256.0
 shader_param/heightmap_size = Vector2( 2048, 2048 )
-shader_param/height_map = ExtResource( 10 )
-shader_param/features_map = ExtResource( 9 )
-shader_param/noisemap = ExtResource( 11 )
+shader_param/height_map = ExtResource( 11 )
+shader_param/features_map = ExtResource( 10 )
+shader_param/noisemap = ExtResource( 12 )
 _sections_unfolded = [ "Shader Param", "shader", "shader_param" ]
 
 [sub_resource type="PlaneMesh" id=3]
@@ -49,12 +115,39 @@ size = Vector2( 2048, 2048 )
 subdivide_width = 256
 subdivide_depth = 256
 
+[sub_resource type="CubeMesh" id=7]
+
+material = ExtResource( 20 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+size = Vector3( 60, 4, 200 )
+subdivide_width = 30
+subdivide_height = 4
+subdivide_depth = 100
+_sections_unfolded = [ "material" ]
+
 [node name="world_map" type="Spatial" index="0"]
 
-[node name="terrain" type="MeshInstance" parent="." index="0"]
+[node name="extended_terrain" type="MeshInstance" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform", "mesh" ]
+
+[node name="terrain" type="MeshInstance" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90735e-06, 0 )
 layers = 1
-material_override = ExtResource( 1 )
+material_override = ExtResource( 2 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -65,7 +158,7 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
 material/0 = null
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 _sections_unfolded = [ "Geometry", "Material", "material_override", "mesh" ]
 __meta__ = {
 "_edit_lock_": true
@@ -73,10 +166,10 @@ __meta__ = {
 map_width = 2048.0
 map_height = 2048.0
 
-[node name="grass" type="Particles" parent="." index="1"]
+[node name="grass" type="Particles" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0918102, -0.19283, -2.77525 )
 layers = 1
-material_override = ExtResource( 3 )
+material_override = ExtResource( 4 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -97,18 +190,18 @@ fract_delta = true
 visibility_aabb = AABB( -9.63663, -2.37216, -8.1309, 21.0731, 10.0266, 16.2618 )
 local_coords = false
 draw_order = 0
-process_material = ExtResource( 4 )
+process_material = ExtResource( 5 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 5 )
-script = ExtResource( 6 )
+draw_pass_1 = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Geometry", "Process Material", "material_override", "process_material", "script" ]
 rows = 192
 spacing = 8.0
 
-[node name="grass2" type="Particles" parent="." index="2"]
+[node name="grass2" type="Particles" parent="." index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0918102, -0.19283, -2.77525 )
 layers = 1
-material_override = ExtResource( 7 )
+material_override = ExtResource( 8 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -129,15 +222,15 @@ fract_delta = true
 visibility_aabb = AABB( -9.63663, -2.37216, -8.1309, 21.0731, 10.0266, 16.2618 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 2 )
+process_material = SubResource( 4 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 12 )
-script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "material_override", "process_material", "script" ]
+draw_pass_1 = ExtResource( 13 )
+script = ExtResource( 7 )
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "process_material", "script" ]
 rows = 96
 spacing = 16.0
 
-[node name="palms" type="Particles" parent="." index="3"]
+[node name="palms" type="Particles" parent="." index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7398, 1.84899, 7.00503 )
 layers = 1
 material_override = null
@@ -161,15 +254,15 @@ fract_delta = true
 visibility_aabb = AABB( -9.63663, -2.37216, -8.1309, 21.0731, 10.0266, 16.2618 )
 local_coords = false
 draw_order = 0
-process_material = ExtResource( 13 )
+process_material = ExtResource( 14 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 14 )
-script = ExtResource( 6 )
+draw_pass_1 = ExtResource( 15 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Draw Passes", "Process Material", "Transform", "draw_pass_1", "material_override", "process_material" ]
 rows = 64
 spacing = 24.0
 
-[node name="water" type="MeshInstance" parent="." index="4"]
+[node name="water" type="MeshInstance" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75734, 0 )
 layers = 1
 material_override = null
@@ -182,16 +275,16 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 3 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 15 )
-_sections_unfolded = [ "Material", "material_override", "mesh" ]
+material/0 = ExtResource( 16 )
+_sections_unfolded = [ "Material", "material/0", "material_override", "mesh" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="insects" type="Particles" parent="." index="5"]
+[node name="insects" type="Particles" parent="." index="6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.138, 0 )
 layers = 1
-material_override = ExtResource( 16 )
+material_override = ExtResource( 17 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -212,11 +305,27 @@ fract_delta = true
 visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
 local_coords = false
 draw_order = 0
-process_material = ExtResource( 17 )
+process_material = ExtResource( 18 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 18 )
-script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Transform", "material_override" ]
+draw_pass_1 = ExtResource( 19 )
+script = ExtResource( 7 )
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Transform", "material_override", "process_material" ]
 rows = 32
 spacing = 24.0
+
+[node name="bridge" type="MeshInstance" parent="." index="7"]
+transform = Transform( 0.830289, 0, 0.557333, 0, 1, 0, -0.557333, 0, 0.830289, -387.815, 77.0851, 97.0426 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 7 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "mesh" ]
 

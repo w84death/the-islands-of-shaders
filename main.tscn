@@ -8,7 +8,7 @@
 [ext_resource path="res://features/gui/theme.tres" type="Theme" id=6]
 [ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=7]
 [ext_resource path="res://features/gui/fps.gd" type="Script" id=8]
-[ext_resource path="res://features/shared/map3_heightmap.png" type="Texture" id=9]
+[ext_resource path="res://features/shared/island_0x0_entities_heightmap.png" type="Texture" id=9]
 [ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=10]
 [ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=11]
 
@@ -28,7 +28,19 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( -72.1302, 32.8634, 21.2152 ), Vector3( 78.4306, 32.8634, 21.2152 ) ]
+"values": [ Vector3( -64, 225, 25 ), Vector3( 78.4306, 225, -20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -30, -50, 0 ), Vector3( -30, -128, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -53,7 +65,7 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 
 [node name="camera_menu" type="Camera" parent="." index="0"]
-transform = Transform( 0.951968, 0.108628, -0.286282, 0.0533565, 0.861802, 0.50443, 0.301513, -0.495477, 0.814612, -72.6787, 69.1999, 175.593 )
+transform = Transform( 0.642788, 0.383022, -0.663414, 0, 0.866025, 0.5, 0.766044, -0.321394, 0.55667, -64, 225, 25 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -65,7 +77,7 @@ current = true
 fov = 80.0
 size = 1.0
 near = 0.1
-far = 512.0
+far = 1024.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="menu_anim" type="AnimationPlayer" parent="camera_menu" index="0"]
@@ -86,7 +98,7 @@ rotate_speed = 1.0
 move_speed = 1.0
 move_speed_lr = 0.5
 move_speed_fb = 1.5
-terrain_height = 45
+terrain_height = 256
 map_size = Vector2( 2048, 2048 )
 
 [node name="hamster" parent="camera_rig" index="0" instance=ExtResource( 3 )]
@@ -105,7 +117,7 @@ current = false
 fov = 75.0
 size = 1.0
 near = 0.1
-far = 756.0
+far = 1024.0
 
 [node name="settings" type="Node" parent="." index="2"]
 
@@ -113,7 +125,7 @@ far = 756.0
 transform = Transform( -0.238369, -0.793796, 0.559525, -0.102066, 0.593418, 0.798397, -0.965796, 0.133205, -0.222472, 0, 0, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
-light_energy = 2.0
+light_energy = 3.0
 light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.503302
@@ -141,16 +153,6 @@ environment = ExtResource( 4 )
 _sections_unfolded = [ "environment" ]
 
 [node name="world_map" parent="." index="3" instance=ExtResource( 5 )]
-
-[node name="terrain" parent="world_map" index="0"]
-_sections_unfolded = [ "Geometry", "Material", "material_override", "mesh", "script" ]
-
-[node name="grass2" parent="world_map" index="2"]
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "process_material", "script" ]
-
-[node name="water" parent="world_map" index="4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
-_sections_unfolded = [ "Material", "Transform", "material/0", "material_override", "mesh" ]
 
 [node name="GUI" type="Control" parent="." index="4"]
 anchor_left = 0.0

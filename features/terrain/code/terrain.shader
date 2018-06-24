@@ -6,9 +6,10 @@ uniform float max_height = 18.0;
 uniform sampler2D height_map;
 uniform sampler2D features_map;
 uniform float water_height = 0.6;
-uniform sampler2D albedo_red : hint_albedo;
-uniform sampler2D albedo_green : hint_albedo;
-uniform sampler2D albedo_blue : hint_albedo;
+uniform sampler2D tex_black: hint_albedo;
+uniform sampler2D tex_red : hint_albedo;
+uniform sampler2D tex_green : hint_albedo;
+uniform sampler2D tex_blue : hint_albedo;
 
 uniform float uv_scale = 32.0;
 
@@ -30,21 +31,25 @@ void fragment() {
 	vec2 uv2 = UV;
 	uv2 *= vec2(-1.0,-1.0); // mirrored
 	
-	float red_vis = texture(features_map, uv2).r;
-	float green_vis = texture(features_map, uv2).g;
-	float blue_vis = texture(features_map, uv2).b;
+	float uv_0 = clamp(1.0 - texture(features_map, uv2).r - texture(features_map, uv2).g - texture(features_map, uv2).b,0.0,1.0);
+	float uv_r = texture(features_map, uv2).r;
+	float uv_g = texture(features_map, uv2).g;
+	float uv_b = texture(features_map, uv2).b;
 	
-	vec3 red_color = texture(albedo_red, uv2 * uv_scale).rgb * red_vis;
-	vec3 green_color = texture(albedo_green, uv2 * uv_scale).rgb * green_vis;
-	vec3 blue_color = texture(albedo_blue, uv2 * uv_scale).rgb * blue_vis;
+	vec3 color_0 = texture(tex_black, uv2 * uv_scale).rgb * uv_0;
+	vec3 color_r = texture(tex_red, uv2 * uv_scale).rgb * uv_r;
+	vec3 color_g = texture(tex_green, uv2 * uv_scale).rgb * uv_g;
+	vec3 color_b = texture(tex_blue, uv2 * uv_scale).rgb * uv_b;
 
-	float underwater_color = 1.0;
+	vec3 underwater_color = vec3(1.0);
 	float height = texture(height_map, uv2).r;
 	if (height < water_height){
-		underwater_color = clamp(0.1 + height * 3.0, 0.0, 1.0);
+		float h = clamp((water_height-height)*6.0, 0.0, 1.0);
+		underwater_color.r -= h;
+		underwater_color.g -= h*.5;
 	}
 	
-	ALBEDO = clamp((red_color + green_color + blue_color) * underwater_color, 0.0, 1.0);
-	METALLIC = 0.3;
+	ALBEDO = clamp((color_0 + color_r + color_g + color_b) * underwater_color, 0.0, 1.0);
+	METALLIC = 0.7;
 	ROUGHNESS = 1.0;
 }

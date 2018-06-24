@@ -59,7 +59,7 @@ void vertex() {
 	vec2 feat_pos = pos.xz;
 	feat_pos -= 0.5 * heightmap_size;
 	feat_pos /= heightmap_size;
-	float terrain_mask = texture(features_map, feat_pos).g + texture(features_map, feat_pos).b;
+	float terrain_mask = texture(features_map, feat_pos).r + texture(features_map, feat_pos).g;
 	
 	if (terrain_mask < 0.85) {
 		pos.y = -10000.0;

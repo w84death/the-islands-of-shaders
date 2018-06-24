@@ -24,7 +24,7 @@ void fragment() {
 	ALPHA = color.a;
 	ALPHA_SCISSOR = 0.45;
 	
-	METALLIC = 0.4;
-	SPECULAR = texture(spec, UV).r;
-	ROUGHNESS = clamp(1.0-SPECULAR, 0.6, 1.0);
+	METALLIC = 0.7;
+	SPECULAR = 0.0;//texture(spec, UV).r;
+	ROUGHNESS = 1.0;//clamp(1.0-SPECULAR, 0.6, 1.0);
 }
