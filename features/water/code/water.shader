@@ -7,7 +7,7 @@ uniform vec2 time_factor = vec2(2.0, 2.0);
 
 uniform vec3 water_color = vec3(0.25, 0.27, 0.15);
 uniform float water_height = 2.5;
-uniform float water_clearnes = 0.6;
+uniform float water_clearnes = 0.7;
 uniform float water_refraction = 0.01;
 uniform float water_alpha = 0.7;
 
@@ -33,11 +33,11 @@ void fragment(){
 	float gfx = clamp(height * 3.0, 0.0, 1.0);
 	ALPHA = clamp(water_alpha * gfx, 0.0, 1.0);
 	vec3 w_color = clamp(vec3(gfx, gfx, gfx)*4.0, vec3(0.0, 0.0, 0.0), vec3(1.0, 1.0, 1.0));
-	ALBEDO = w_color;
 	
+	ALBEDO = w_color;
 	ROUGHNESS = gfx;
 	METALLIC = 1.0;
-	//SPECULAR = 1.0;
+	SPECULAR = 1.0;
 	
 	// REFRACTION
 	vec3 ref_normal = normalize( mix(VERTEX,TANGENT * NORMALMAP.x + BINORMAL * NORMALMAP.y + VERTEX * NORMALMAP.z, NORMALMAP_DEPTH) );

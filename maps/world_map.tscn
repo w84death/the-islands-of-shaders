@@ -24,14 +24,14 @@
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 2048, 2048 )
-subdivide_width = 512
-subdivide_depth = 512
+subdivide_width = 1024
+subdivide_depth = 1024
 
 [sub_resource type="ShaderMaterial" id=3]
 
 render_priority = 0
 shader = ExtResource( 8 )
-shader_param/uniq = 0.1111
+shader_param/uniq = 0.0012423
 shader_param/rows = 96.0
 shader_param/spacing = 16.0
 shader_param/max_height = 45.0
