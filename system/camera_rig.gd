@@ -5,6 +5,7 @@ export var move_speed = 1.0;
 export var move_speed_lr = 0.5;
 export var move_speed_fb = 1.5;
 export var terrain_height = 45;
+export var map_size = Vector2(2048, 2048);
 const DEADZONE = 0.15;
 
 var angle_x = 0;
@@ -93,7 +94,9 @@ func _physics_process(delta):
 					move_to += front_back * move_speed_fb * abs(axis_value);
 
 func get_height(pos):
-	height_map.lock()
-	var px = height_map.get_pixel(pos.x, pos.y)
-	height_map.unlock()
+	var px = Color(0,0,0);
+	if pos.x >= 0 && pos.y >= 0 && pos.x < map_size.x && pos.y < map_size.y:
+		height_map.lock()
+		px = height_map.get_pixel(pos.x, pos.y)
+		height_map.unlock()
 	return px

@@ -15,7 +15,7 @@
 [ext_resource path="res://features/trees/code/palms_particle.material" type="Material" id=13]
 [ext_resource path="res://features/trees/models/palm.mesh" type="ArrayMesh" id=14]
 [ext_resource path="res://features/water/code/water.material" type="Material" id=15]
-[ext_resource path="res://maps/insects.material" type="Material" id=16]
+[ext_resource path="res://features/insects/code/insects.material" type="Material" id=16]
 [ext_resource path="res://features/insects/code/insects_particles.material" type="Material" id=17]
 [ext_resource path="res://features/insects/models/butterfly.obj" type="ArrayMesh" id=18]
 

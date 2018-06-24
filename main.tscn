@@ -87,6 +87,7 @@ move_speed = 1.0
 move_speed_lr = 0.5
 move_speed_fb = 1.5
 terrain_height = 45
+map_size = Vector2( 2048, 2048 )
 
 [node name="hamster" parent="camera_rig" index="0" instance=ExtResource( 3 )]
 _sections_unfolded = [ "Transform" ]
@@ -111,7 +112,7 @@ far = 756.0
 [node name="SUN" type="DirectionalLight" parent="settings" index="0"]
 transform = Transform( -0.238369, -0.793796, 0.559525, -0.102066, 0.593418, 0.798397, -0.965796, 0.133205, -0.222472, 0, 0, 0 )
 layers = 1
-light_color = Color( 1, 0.933333, 0.552941, 1 )
+light_color = Color( 1, 1, 1, 1 )
 light_energy = 2.0
 light_indirect_energy = 1.0
 light_negative = false

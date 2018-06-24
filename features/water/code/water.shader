@@ -7,9 +7,11 @@ uniform vec2 time_factor = vec2(2.0, 2.0);
 
 uniform vec3 water_color = vec3(0.25, 0.27, 0.15);
 uniform float water_height = 2.5;
-uniform float water_clearnes = 0.7;
-uniform float water_refraction = 0.01;
-uniform float water_alpha = 0.7;
+uniform float water_clearnes = 0.6;
+uniform float water_refraction = 0.014;
+uniform float water_alpha = 0.5;
+uniform float water_shore = 0.45;
+uniform float water_color_contrast = 1.5;
 
 uniform sampler2D noise_map;
 uniform sampler2D height_map;
@@ -30,14 +32,14 @@ void fragment(){
 	vec2 uv2 = UV * -1.0;
 	float height = texture(height_map, uv2.xy).r;
 	
-	float gfx = clamp(height * 3.0, 0.0, 1.0);
-	ALPHA = clamp(water_alpha * gfx, 0.0, 1.0);
-	vec3 w_color = clamp(vec3(gfx, gfx, gfx)*4.0, vec3(0.0, 0.0, 0.0), vec3(1.0, 1.0, 1.0));
+	float gfx = smoothstep(.0, water_shore, height);
+	ALPHA = 1.0 - clamp(gfx, water_alpha, 1.0);
+	vec3 w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
 	
 	ALBEDO = w_color;
 	ROUGHNESS = gfx;
-	METALLIC = 1.0;
-	SPECULAR = 1.0;
+	METALLIC = 0.4;
+	SPECULAR = gfx;
 	
 	// REFRACTION
 	vec3 ref_normal = normalize( mix(VERTEX,TANGENT * NORMALMAP.x + BINORMAL * NORMALMAP.y + VERTEX * NORMALMAP.z, NORMALMAP_DEPTH) );
