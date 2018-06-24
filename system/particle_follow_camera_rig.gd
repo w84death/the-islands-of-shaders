@@ -34,7 +34,7 @@ func _process(delta):
 	# Center our particles on our cameras position
 	var viewport = get_viewport()
 	var camera = viewport.get_camera()
-	
+
 	var pos = camera.global_transform.origin
 	pos.y = 0.0
 	global_transform.origin = pos

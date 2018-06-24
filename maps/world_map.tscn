@@ -5,7 +5,7 @@
 [ext_resource path="res://features/grass/code/grass_shader.material" type="Material" id=3]
 [ext_resource path="res://features/grass/code/grass_particle.material" type="Material" id=4]
 [ext_resource path="res://features/grass/models/grass.obj" type="ArrayMesh" id=5]
-[ext_resource path="res://features/grass/code/grass.gd" type="Script" id=6]
+[ext_resource path="res://system/particle_follow_camera_rig.gd" type="Script" id=6]
 [ext_resource path="res://features/grass/code/grass2_shader.material" type="Material" id=7]
 [ext_resource path="res://features/grass/code/grass_particle.shader" type="Shader" id=8]
 [ext_resource path="res://features/shared/map3_featuresmap.png" type="Texture" id=9]
@@ -27,7 +27,7 @@ size = Vector2( 2048, 2048 )
 subdivide_width = 1024
 subdivide_depth = 1024
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
 shader = ExtResource( 8 )
@@ -41,7 +41,7 @@ shader_param/features_map = ExtResource( 9 )
 shader_param/noisemap = ExtResource( 11 )
 _sections_unfolded = [ "Shader Param", "shader", "shader_param" ]
 
-[sub_resource type="PlaneMesh" id=2]
+[sub_resource type="PlaneMesh" id=3]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
@@ -129,7 +129,7 @@ fract_delta = true
 visibility_aabb = AABB( -9.63663, -2.37216, -8.1309, 21.0731, 10.0266, 16.2618 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 2 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 12 )
 script = ExtResource( 6 )
@@ -180,7 +180,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = ExtResource( 15 )
 _sections_unfolded = [ "Material", "material_override", "mesh" ]

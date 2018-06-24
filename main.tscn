@@ -82,8 +82,10 @@ _sections_unfolded = [ "Playback Options" ]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
-rotate_speed = 5.0
-move_speed = 5.0
+rotate_speed = 1.0
+move_speed = 1.0
+move_speed_lr = 0.5
+move_speed_fb = 1.5
 terrain_height = 45
 
 [node name="hamster" parent="camera_rig" index="0" instance=ExtResource( 3 )]
@@ -138,6 +140,9 @@ environment = ExtResource( 4 )
 _sections_unfolded = [ "environment" ]
 
 [node name="world_map" parent="." index="3" instance=ExtResource( 5 )]
+
+[node name="terrain" parent="world_map" index="0"]
+_sections_unfolded = [ "Geometry", "Material", "material_override", "mesh", "script" ]
 
 [node name="grass2" parent="world_map" index="2"]
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "process_material", "script" ]

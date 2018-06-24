@@ -14,8 +14,13 @@ uniform sampler2D noisemap;
 float get_height(vec2 pos) {
 	pos -= 0.5 * heightmap_size;
 	pos /= heightmap_size;
-	
 	return max_height * texture(height_map, pos).r;
+}
+
+float gen_noise(vec2 p) {
+	p = fract(p*vec2(233.34, 851.72));
+	p += dot(p, p+23.34);
+	return fract(p.x*p.y);
 }
 
 void vertex() {
@@ -36,8 +41,11 @@ void vertex() {
 	pos.x += EMISSION_TRANSFORM[3][0] - mod(EMISSION_TRANSFORM[3][0], spacing);
 	pos.z += EMISSION_TRANSFORM[3][2] - mod(EMISSION_TRANSFORM[3][2], spacing);
 	
+
+
 	// now add some noise based on our _world_ position
 	vec3 noise = texture(noisemap, pos.xz * 0.02 + uniq).rgb;
+
 	pos.x += (noise.x * 4.0 ) * spacing;
 	pos.z += (noise.y * 4.0 ) * spacing;
 	
@@ -47,6 +55,7 @@ void vertex() {
 	
 	float y2 = get_height(pos.xz + vec2(1.0, 0.0));
 	float y3 = get_height(pos.xz + vec2(0.0, 1.0));
+	//float n = gen_noise(pos);
 	vec2 feat_pos = pos.xz;
 	feat_pos -= 0.5 * heightmap_size;
 	feat_pos /= heightmap_size;
