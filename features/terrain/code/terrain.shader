@@ -21,10 +21,6 @@ float get_height(vec2 pos) {
 
 void vertex() {
 	VERTEX.y = get_height(VERTEX.xz);
-	
-	TANGENT = normalize(vec3(1.0, get_height(VERTEX.xz + vec2(2.0, 0.0)) - VERTEX.y, 0.0));
-	BINORMAL = normalize(vec3(0.0, get_height(VERTEX.xz + vec2(0.0, 2.0)) - VERTEX.y, 1.0));
-	NORMAL = cross(BINORMAL, TANGENT);
 }
 
 void fragment() {

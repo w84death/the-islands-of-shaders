@@ -1,6 +1,6 @@
 shader_type spatial;
 
-uniform sampler2D tex;
+uniform sampler2D tex : hint_albedo;
 
 
 float fake_random(vec2 p){
@@ -17,8 +17,8 @@ void vertex(){
 }
 
 void fragment(){
-	vec3 color = texture(tex, UV.xy).rgb;
+	vec3 color = texture(tex, UV.xy*4.0).rgb;
 	ALBEDO = color;
-	METALLIC = .85;
-	ROUGHNESS = .7;
+	METALLIC = .8;
+	ROUGHNESS = 1.0;
 }

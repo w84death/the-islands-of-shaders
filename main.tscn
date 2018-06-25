@@ -155,9 +155,6 @@ _sections_unfolded = [ "environment" ]
 
 [node name="world_map" parent="." index="3" instance=ExtResource( 5 )]
 
-[node name="terrain" parent="world_map" index="0"]
-_sections_unfolded = [ "Geometry", "Material", "material_override" ]
-
 [node name="GUI" type="Control" parent="." index="4"]
 anchor_left = 0.0
 anchor_top = 0.0
