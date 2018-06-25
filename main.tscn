@@ -77,7 +77,7 @@ current = true
 fov = 80.0
 size = 1.0
 near = 0.1
-far = 1024.0
+far = 768.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="menu_anim" type="AnimationPlayer" parent="camera_menu" index="0"]
@@ -91,7 +91,7 @@ blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="camera_rig" type="Position3D" parent="." index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0 )
+transform = Transform( -0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -350.606, 123.123, -336.685 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 rotate_speed = 1.0
@@ -114,15 +114,15 @@ v_offset = 0.0
 doppler_tracking = 0
 projection = 0
 current = false
-fov = 75.0
+fov = 85.0
 size = 1.0
 near = 0.1
-far = 1024.0
+far = 768.0
 
 [node name="settings" type="Node" parent="." index="2"]
 
 [node name="SUN" type="DirectionalLight" parent="settings" index="0"]
-transform = Transform( -0.238369, -0.793796, 0.559525, -0.102066, 0.593418, 0.798397, -0.965796, 0.133205, -0.222472, 0, 0, 0 )
+transform = Transform( 0.609143, 0.769153, -0.193257, 0.113683, 0.156482, 0.981116, 0.78487, -0.619611, 0.0078799, 0, 0, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 3.0

@@ -10,8 +10,8 @@ uniform float water_height = 2.5;
 uniform float water_clearnes = 0.4;
 uniform float water_refraction = 0.014;
 uniform float water_alpha = 0.7;
-uniform float water_shore = 0.35;
-uniform float water_color_contrast = 1.5;
+uniform float water_shore = 0.36;
+uniform float water_color_contrast = 6.0;
 
 uniform sampler2D noise_map;
 uniform sampler2D height_map;
@@ -32,7 +32,7 @@ void fragment(){
 	vec2 uv2 = UV * -1.0;
 	float height = texture(height_map, uv2.xy).r;
 	
-	float gfx = smoothstep(.0, water_shore, height);
+	float gfx = smoothstep(0.15, water_shore, height);
 	ALPHA = 1.0 - clamp(gfx, water_alpha, 1.0);
 	vec3 w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
 	

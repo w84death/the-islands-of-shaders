@@ -6,11 +6,11 @@ uniform float uv_scale = 2.0;
 
 void vertex(){
 	float n = texture(noise_map, VERTEX.xz).r;
-	VERTEX.y *= clamp(n, 0.0, 20.0);
+	VERTEX.y *= clamp(n, 0.0, 10.0);
 }
 void fragment(){
 	vec3 color = texture(tex, UV.xy * uv_scale).rgb;
 	ALBEDO = color;
-	METALLIC = 0.8;
+	METALLIC = 0.9;
 	ROUGHNESS = 1.0;
 }
