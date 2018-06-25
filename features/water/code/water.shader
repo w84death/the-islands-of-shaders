@@ -38,15 +38,14 @@ void vertex(){
 void fragment(){
 	vec2 uv2 = UV * -1.0;
 	float height = texture(height_map, uv2.xy).r;
-	
 	float gfx = smoothstep(0.15, water_shore, height);
-	ALPHA = 1.0 - clamp(gfx, water_alpha, 1.0);
 	vec3 w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
-	
+
 	ALBEDO = w_color;
 	ROUGHNESS = gfx;
 	METALLIC = 0.8;
 	SPECULAR = gfx;
+	ALPHA = 1.0 - clamp(gfx, water_alpha, 1.0);
 	
 	// REFRACTION
 	vec3 ref_normal = normalize( mix(VERTEX,TANGENT * NORMALMAP.x + BINORMAL * NORMALMAP.y + VERTEX * NORMALMAP.z, NORMALMAP_DEPTH) );

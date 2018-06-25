@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/paprota.obj-1a28c6696ddd4d14ba91ca1fa077d729.mesh"
+
+[deps]
+
+files=[ "res://.import/paprota.obj-1a28c6696ddd4d14ba91ca1fa077d729.mesh" ]
+
+source_file="res://features/grass/models/paprota.obj"
+dest_files=[ "res://.import/paprota.obj-1a28c6696ddd4d14ba91ca1fa077d729.mesh", "res://.import/paprota.obj-1a28c6696ddd4d14ba91ca1fa077d729.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

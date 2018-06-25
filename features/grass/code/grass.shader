@@ -19,11 +19,11 @@ void fragment() {
 	vec4 color = texture(texture_map, UV);
 	ALBEDO = color.rgb;
 	ALPHA = color.a;
-	ALPHA_SCISSOR = 0.20;
+	ALPHA_SCISSOR = 0.4;
 	
-	METALLIC = 0.8;
+	METALLIC = 0.9;
 	SPECULAR = 0.0;
-	ROUGHNESS = 1.0;
+	ROUGHNESS = 0.8;
 
 }
 

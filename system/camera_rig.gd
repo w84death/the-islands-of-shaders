@@ -5,6 +5,7 @@ export var move_speed = 1.0;
 export var move_speed_lr = 0.5;
 export var move_speed_fb = 1.5;
 export var terrain_height = 256;
+export var water_height = 52;
 export var map_size = Vector2(2048, 2048);
 const DEADZONE = 0.15;
 
@@ -16,7 +17,7 @@ var _angle_y = 0;
 
 var height_map;
 var move_to;
-
+var w = 0
 var axis_value;
 
 func _ready():
@@ -49,12 +50,14 @@ func _process(delta):
 		var basis = Basis(Vector3(0.0, 1.0, 0.0), deg2rad(_angle_y))
 		basis *= Basis(Vector3(1.0, 0.0, 0.0), deg2rad(_angle_x))
 		transform.basis = basis
-
+		
 	if move_to != transform.origin:
 		var pos = Vector2(int(1024+transform.origin.x), int(1024+transform.origin.z));
 		move_to.y = terrain_height * get_height(pos).r
+		if move_to.y < water_height:
+			move_to.y = water_height
 		transform.origin += (move_to - transform.origin) * delta * 10.0
-
+	
 func _physics_process(delta):
 	for axis in range(JOY_AXIS_0, JOY_AXIS_MAX):
 		axis_value = Input.get_joy_axis(0, axis)

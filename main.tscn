@@ -99,6 +99,7 @@ move_speed = 1.0
 move_speed_lr = 0.5
 move_speed_fb = 1.5
 terrain_height = 256
+water_height = 52
 map_size = Vector2( 2048, 2048 )
 
 [node name="hamster" parent="camera_rig" index="0" instance=ExtResource( 3 )]
@@ -124,11 +125,11 @@ far = 768.0
 [node name="SUN" type="DirectionalLight" parent="settings" index="0"]
 transform = Transform( 0.609143, 0.769153, -0.193257, 0.113683, 0.156482, 0.981116, 0.78487, -0.619611, 0.0078799, 0, 0, 0 )
 layers = 1
-light_color = Color( 1, 1, 1, 1 )
-light_energy = 3.0
-light_indirect_energy = 1.0
+light_color = Color( 0.933333, 0.933333, 1, 1 )
+light_energy = 5.0
+light_indirect_energy = 0.0
 light_negative = false
-light_specular = 0.503302
+light_specular = 0.5
 light_bake_mode = 1
 light_cull_mask = -1
 shadow_enabled = true
@@ -146,13 +147,16 @@ directional_shadow_normal_bias = 0.0
 directional_shadow_bias_split_scale = 0.0
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 256.0
-_sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
+_sections_unfolded = [ "Light", "Shadow" ]
 
 [node name="enviroment" type="WorldEnvironment" parent="settings" index="1"]
 environment = ExtResource( 4 )
 _sections_unfolded = [ "environment" ]
 
 [node name="world_map" parent="." index="3" instance=ExtResource( 5 )]
+
+[node name="terrain" parent="world_map" index="0"]
+_sections_unfolded = [ "Geometry", "Material", "material_override" ]
 
 [node name="GUI" type="Control" parent="." index="4"]
 anchor_left = 0.0
@@ -246,6 +250,8 @@ script = ExtResource( 8 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
 [node name="minimap" type="Control" parent="GUI/demo" index="2"]
+editor/display_folded = true
+visible = false
 anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
