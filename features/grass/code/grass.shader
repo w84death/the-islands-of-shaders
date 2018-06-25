@@ -1,11 +1,11 @@
 shader_type spatial;
 render_mode cull_disabled;
-
-uniform sampler2D texture_map : hint_albedo;
-uniform sampler2D noise_map;
 uniform float amplitude = 0.2;
 uniform vec2 speed = vec2(2.0, 1.5);
 uniform vec2 scale = vec2(0.1, 0.2);
+
+uniform sampler2D texture_map : hint_albedo;
+
 
 void vertex() {
 	if (VERTEX.y > 0.0) {

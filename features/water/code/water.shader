@@ -13,15 +13,22 @@ uniform float water_alpha = 0.7;
 uniform float water_shore = 0.36;
 uniform float water_color_contrast = 6.0;
 
-uniform sampler2D noise_map;
 uniform sampler2D height_map;
 
 float height(vec2 pos, float time, float noise){
 	return (amplitude.x * sin(pos.x * frequency.x * noise + time * time_factor.x)) + (amplitude.y * sin(pos.y * frequency.y * noise + time * time_factor.y));
 }
 
+float fake_random(vec2 p){
+	return fract(sin(dot(p.xy, vec2(12.9898,78.233))) * 43758.5453);
+}
+
+vec2 faker(vec2 p){
+	return vec2(fake_random(p), fake_random(p*124.32));
+}
+	
 void vertex(){
-	float noise = smoothstep(0.0,0.5,texture(noise_map, VERTEX.xz * 0.1).r);
+	float noise = faker(VERTEX.xz).x;
 	VERTEX.y = water_height + height(VERTEX.xz, TIME, noise);
 	TANGENT = normalize( vec3(0.0, height(VERTEX.xz + vec2(0.0, 0.2), TIME, noise) - height(VERTEX.xz + vec2(0.0, -0.2), TIME, noise), 0.4));
 	BINORMAL = normalize( vec3(0.4, height(VERTEX.xz + vec2(0.2, 0.0), TIME, noise) - height(VERTEX.xz + vec2(-0.2, 0.0), TIME, noise), 0.0));

@@ -8,14 +8,19 @@ uniform sampler2D features_map;
 uniform float max_height = 18.0;
 uniform vec2 heightmap_size = vec2(512.0, 512.0);
 
-uniform sampler2D noisemap;
+float fake_random(vec2 p){
+	return fract(sin(dot(p.xy, vec2(12.9898,78.233))) * 43758.5453);
+}
+vec2 faker(vec2 p){
+	return vec2(fake_random(p),fake_random(p*434.23));
+}
 
 float get_height(vec2 pos) {
 	pos -= 0.5 * heightmap_size;
 	pos /= heightmap_size;
-	vec3 noise = texture(noisemap, pos).rgb;
+	vec2 noise = faker(pos);
 	
-	return max_height * texture(height_map, pos).r - (noise.r * 6.0);
+	return max_height * texture(height_map, pos).r - (noise.x);
 }
 
 void vertex() {
@@ -39,7 +44,7 @@ void vertex() {
 
 	
 	// now add some noise based on our _world_ position
-	vec3 noise = texture(noisemap, pos.xz * 0.01).rgb;
+	vec2 noise = faker(pos.xz);
 	pos.x += (noise.x) * spacing;
 	pos.z += (noise.y) * spacing;
 	
@@ -63,15 +68,14 @@ void vertex() {
 	}
 
 	// rotate our transform
-	TRANSFORM[0][0] = cos(noise.z * 3.0);
-	TRANSFORM[0][2] = -sin(noise.z * 3.0);
+	TRANSFORM[0][0] = cos(noise.x * 3.0);
+	TRANSFORM[0][2] = -sin(noise.x * 3.0);
 	
-	TRANSFORM[2][0] = sin(noise.z * 3.0);
-	TRANSFORM[2][2] = cos(noise.z * 3.0);
+	TRANSFORM[2][0] = sin(noise.y * 3.0);
+	TRANSFORM[2][2] = cos(noise.y * 3.0);
 	
-	noise = texture(noisemap, pos.xz).rgb;
-	float height_noise = noise.r * 16.0;
-	float rot_noise = clamp(-0.5 + noise.r*2.0,-0.2,0.2);
+	float height_noise = noise.x * 16.0;
+	float rot_noise = clamp(-0.5 + noise.y*2.0,-0.2,0.2);
 	TRANSFORM[0][1] = rot_noise;
 	TRANSFORM[2][1] = rot_noise;
 	
