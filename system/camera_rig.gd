@@ -68,9 +68,11 @@ func _physics_process(delta):
 					angle_y += rotate_speed * axis_abs
 			if axis == JOY_ANALOG_LY:
 				if axis_value > 0:
-					angle_x += rotate_speed * axis_abs
+					if angle_x > -25:
+						angle_x -= rotate_speed * axis_abs
 				else:
-					angle_x -= rotate_speed * axis_abs
+					if angle_x < 25:
+						angle_x += rotate_speed * axis_abs
 
 			# MOVE LEFT - RIGHT
 			if axis == JOY_ANALOG_RX:
