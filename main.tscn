@@ -1,16 +1,17 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
 [ext_resource path="res://system/camera_rig.gd" type="Script" id=2]
 [ext_resource path="res://features/hamsters/scene/hamster.tscn" type="PackedScene" id=3]
 [ext_resource path="res://system/world_enviroment_fantasy.tres" type="Environment" id=4]
 [ext_resource path="res://maps/world_map.tscn" type="PackedScene" id=5]
-[ext_resource path="res://features/gui/theme.tres" type="Theme" id=6]
-[ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=7]
-[ext_resource path="res://features/gui/fps.gd" type="Script" id=8]
-[ext_resource path="res://features/shared/island_0x0_entities_heightmap.png" type="Texture" id=9]
-[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=10]
-[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=11]
+[ext_resource path="res://features/zeppelin/model/zeppelin.mesh" type="ArrayMesh" id=6]
+[ext_resource path="res://features/gui/theme.tres" type="Theme" id=7]
+[ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=8]
+[ext_resource path="res://features/gui/fps.gd" type="Script" id=9]
+[ext_resource path="res://features/shared/island_0x0_entities_heightmap.png" type="Texture" id=10]
+[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=11]
+[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 
@@ -74,10 +75,10 @@ v_offset = 0.0
 doppler_tracking = 0
 projection = 0
 current = true
-fov = 80.0
+fov = 110.0
 size = 1.0
 near = 0.1
-far = 768.0
+far = 1024.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="menu_anim" type="AnimationPlayer" parent="camera_menu" index="0"]
@@ -91,7 +92,7 @@ blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="camera_rig" type="Position3D" parent="." index="1"]
-transform = Transform( -0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -350.606, 123.123, -336.685 )
+transform = Transform( -0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -654.737, 81.3413, -65.2511 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 rotate_speed = 1.0
@@ -118,7 +119,7 @@ current = false
 fov = 85.0
 size = 1.0
 near = 0.1
-far = 768.0
+far = 1024.0
 
 [node name="settings" type="Node" parent="." index="2"]
 
@@ -155,6 +156,25 @@ _sections_unfolded = [ "environment" ]
 
 [node name="world_map" parent="." index="3" instance=ExtResource( 5 )]
 
+[node name="zeppelin" type="MeshInstance" parent="world_map" index="8"]
+transform = Transform( 7.89165, -8.04626e-07, -1.31221, -6.99382e-07, -8, 6.99382e-07, -1.31221, -5.75193e-07, -7.89165, 405.763, 479.583, 671.494 )
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+material/2 = null
+_sections_unfolded = [ "Transform" ]
+
 [node name="GUI" type="Control" parent="." index="4"]
 anchor_left = 0.0
 anchor_top = 0.0
@@ -166,7 +186,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 _sections_unfolded = [ "Theme", "theme" ]
 
 [node name="demo" type="Control" parent="GUI" index="0"]
@@ -201,7 +221,7 @@ _sections_unfolded = [ "Margin" ]
 
 [node name="logo" type="Sprite" parent="GUI/demo/top-left" index="0"]
 modulate = Color( 1, 1, 1, 0.25098 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 centered = false
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -243,7 +263,7 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
 [node name="minimap" type="Control" parent="GUI/demo" index="2"]
@@ -279,7 +299,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Rect" ]
@@ -321,7 +341,7 @@ editor/display_folded = true
 modulate = Color( 0.857723, 0.350902, 1, 1 )
 position = Vector2( 0, -30 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/intro/center/tios" index="0"]
@@ -377,10 +397,10 @@ _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 [node name="p1x" type="Sprite" parent="GUI/intro/bottom-middle" index="1"]
 position = Vector2( -250, -64 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
-[node name="corners" parent="GUI" index="2" instance=ExtResource( 11 )]
+[node name="corners" parent="GUI" index="2" instance=ExtResource( 12 )]
 
 
 [editable path="world_map"]

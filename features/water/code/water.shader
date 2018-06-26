@@ -36,6 +36,7 @@ void vertex(){
 }
 
 void fragment(){
+
 	vec2 uv2 = UV * -1.0;
 	float height = texture(height_map, uv2.xy).r;
 	float gfx = smoothstep(0.15, water_shore, height);
@@ -46,11 +47,12 @@ void fragment(){
 	METALLIC = 0.8;
 	SPECULAR = gfx;
 	ALPHA = 1.0 - clamp(gfx, water_alpha, 1.0);
-	
+
 	// REFRACTION
 	vec3 ref_normal = normalize( mix(VERTEX,TANGENT * NORMALMAP.x + BINORMAL * NORMALMAP.y + VERTEX * NORMALMAP.z, NORMALMAP_DEPTH) );
 	vec2 ref_ofs = SCREEN_UV + ref_normal.xy * water_refraction;
 	EMISSION += textureLod(SCREEN_TEXTURE, ref_ofs, ROUGHNESS * water_clearnes).rgb * (1.0 - ALPHA);
 	ALBEDO *= ALPHA;
 	ALPHA = 1.0;
+	
 }

@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/zeppelin.obj-75358ca9ae02f0500a82f9eca16da401.mesh"
+
+[deps]
+
+files=[ "res://.import/zeppelin.obj-75358ca9ae02f0500a82f9eca16da401.mesh" ]
+
+source_file="res://features/zeppelin/model/zeppelin.obj"
+dest_files=[ "res://.import/zeppelin.obj-75358ca9ae02f0500a82f9eca16da401.mesh", "res://.import/zeppelin.obj-75358ca9ae02f0500a82f9eca16da401.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
