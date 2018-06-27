@@ -43,6 +43,8 @@ void fragment(){
 	if (water_shore > 0.0) {
 		gfx = smoothstep(0.15, water_shore, height);
 		w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
+	}else{
+		EMISSION = vec3(.2);
 	}
 
 	ALBEDO = w_color;

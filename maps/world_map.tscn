@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://features/terrain/code/terrain.material" type="Material" id=1]
 [ext_resource path="res://features/terrain/code/terrain.gd" type="Script" id=2]
@@ -132,10 +132,20 @@ subdivide_depth = 32
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
-radius = 66.714
+radius = 73.857
 height = 0.001
 radial_segments = 8
-rings = 37
+rings = 32
+is_hemisphere = false
+
+[sub_resource type="SphereMesh" id=10]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 23.858
+height = 0.001
+radial_segments = 8
+rings = 32
 is_hemisphere = false
 
 [node name="world_map" type="Spatial" index="0"]
@@ -357,7 +367,23 @@ skeleton = NodePath("..")
 material/0 = ExtResource( 21 )
 _sections_unfolded = [ "Material", "material/0", "material_override", "mesh" ]
 
-[node name="insects" type="Particles" parent="." index="9"]
+[node name="waterfall_bottom2" type="MeshInstance" parent="." index="9"]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 491.662, 61.664, 466.088 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 10 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 20 )
+_sections_unfolded = [ "Material", "material/0", "material_override", "mesh" ]
+
+[node name="insects" type="Particles" parent="." index="10"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.138, 0 )
 layers = 1
 material_override = ExtResource( 22 )
@@ -389,7 +415,7 @@ _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Transform
 rows = 32
 spacing = 24.0
 
-[node name="bridge" type="MeshInstance" parent="." index="10"]
+[node name="bridge" type="MeshInstance" parent="." index="11"]
 transform = Transform( 0.830289, 0, 0.557333, 0, 1, 0, -0.557333, 0, 0.830289, -387.815, 65.0037, 97.0426 )
 layers = 1
 material_override = ExtResource( 25 )
