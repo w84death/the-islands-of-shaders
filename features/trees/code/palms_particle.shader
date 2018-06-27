@@ -6,6 +6,7 @@ uniform float spacing = 1.0;
 uniform sampler2D height_map;
 uniform sampler2D features_map;
 uniform float max_height = 18.0;
+uniform float heigh_noise_scale = 64.0;
 uniform vec2 heightmap_size = vec2(512.0, 512.0);
 
 float fake_random(vec2 p){
@@ -20,7 +21,7 @@ float get_height(vec2 pos) {
 	pos /= heightmap_size;
 	vec2 noise = faker(pos);
 	
-	return max_height * texture(height_map, pos).r - (noise.x);
+	return max_height * texture(height_map, pos).r;
 }
 
 void vertex() {
@@ -49,7 +50,7 @@ void vertex() {
 	pos.z += (noise.y) * spacing;
 	
 	// apply our height
-	pos.y = get_height(pos.xz);	
+	pos.y = get_height(pos.xz);
 	
 	vec2 feat_pos = pos.xz;
 	feat_pos -= 0.5 * heightmap_size;
@@ -59,7 +60,7 @@ void vertex() {
 	float y2 = get_height(pos.xz + vec2(1.0, 0.0));
 	float y3 = get_height(pos.xz + vec2(0.0, 1.0));
 	
-	if (terrain_mask < 0.7) {
+	if (terrain_mask < 0.6) {
 		pos.y = -10000.0;
 	} else if (abs(y2 - pos.y) > 0.5) {
 		pos.y = -10000.0;
@@ -74,8 +75,8 @@ void vertex() {
 	TRANSFORM[2][0] = sin(noise.y * 3.0);
 	TRANSFORM[2][2] = cos(noise.y * 3.0);
 	
-	float height_noise = noise.x * 16.0;
-	float rot_noise = clamp(-0.5 + noise.y*2.0,-0.2,0.2);
+	float height_noise = clamp(noise.y * heigh_noise_scale, 0.2, heigh_noise_scale);
+	float rot_noise = clamp(-0.5 + noise.y,-0.1,0.1);
 	TRANSFORM[0][1] = rot_noise;
 	TRANSFORM[2][1] = rot_noise;
 	

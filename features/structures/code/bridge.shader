@@ -19,6 +19,6 @@ void vertex(){
 void fragment(){
 	vec3 color = texture(tex, UV.xy*uv_scale).rgb;
 	ALBEDO = color;
-	METALLIC = .8;
+	METALLIC = .5;
 	ROUGHNESS = 1.0;
 }
