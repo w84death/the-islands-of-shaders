@@ -40,18 +40,24 @@ void fragment(){
 	float gfx = 0.5;
 	vec3 w_color = vec3(1.0, 1.0, 1.0);
 	/* ability to remove this functionality, usefull for waterfalls */
+	
 	if (water_shore > 0.0) {
 		gfx = smoothstep(0.15, water_shore, height);
 		w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
+		ROUGHNESS = gfx;
+		METALLIC = 0.8;
+		SPECULAR = 1.0-gfx;
+		ALPHA = 1.0 - clamp(gfx, water_alpha, 1.0);
 	}else{
-		EMISSION = vec3(.2);
+		EMISSION = vec3(.3);
+		ROUGHNESS = 0.0;
+		METALLIC = 1.0;
+		SPECULAR = 0.9;
+		ALPHA = 0.7;
 	}
 
 	ALBEDO = w_color;
-	ROUGHNESS = gfx;
-	METALLIC = 0.8;
-	SPECULAR = gfx;
-	ALPHA = 1.0 - clamp(gfx, water_alpha, 1.0);
+	
 	
 	// REFRACTION
 	vec3 ref_normal = normalize( mix(VERTEX,TANGENT * NORMALMAP.x + BINORMAL * NORMALMAP.y + VERTEX * NORMALMAP.z, NORMALMAP_DEPTH) );

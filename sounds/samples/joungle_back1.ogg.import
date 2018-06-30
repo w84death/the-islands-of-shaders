@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/joungle_back1.ogg-6af8a894014eca2f140f9edc41aaa923.oggstr"
+
+[deps]
+
+source_file="res://sounds/samples/joungle_back1.ogg"
+dest_files=[ "res://.import/joungle_back1.ogg-6af8a894014eca2f140f9edc41aaa923.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

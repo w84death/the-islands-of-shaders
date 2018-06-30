@@ -3,7 +3,9 @@ shader_type particles;
 uniform float uniq = 0.1234;
 uniform float rows = 12;
 uniform float spacing = 1.0;
-
+uniform bool red_zone = false;
+uniform bool green_zone = false;
+uniform bool blue_zone = false;
 uniform sampler2D height_map;
 uniform sampler2D features_map;
 uniform float max_height = 18.0;
@@ -52,11 +54,21 @@ void vertex() {
 	
 	float y2 = get_height(pos.xz + vec2(1.0, 0.0));
 	float y3 = get_height(pos.xz + vec2(0.0, 1.0));
-	//float n = gen_noise(pos);
+
 	vec2 feat_pos = pos.xz;
 	feat_pos -= 0.5 * heightmap_size;
 	feat_pos /= heightmap_size;
-	float terrain_mask = texture(features_map, feat_pos).r + texture(features_map, feat_pos).g;
+	
+	float terrain_mask = 0.0;
+	if (red_zone) {
+		terrain_mask += texture(features_map, feat_pos).r;
+	}
+	if (green_zone) {
+		terrain_mask += texture(features_map, feat_pos).g;
+	}
+	if (blue_zone) {
+		terrain_mask += texture(features_map, feat_pos).b;
+	}
 	
 	if (terrain_mask < 0.85) {
 		pos.y = -10000.0;
@@ -67,15 +79,17 @@ void vertex() {
 	}
 	
 	// rotate our transform
-	TRANSFORM[0][0] = cos(noise.x * 3.0);
+	/*TRANSFORM[0][0] = cos(noise.x * 3.0);
 	TRANSFORM[0][2] = -sin(noise.x * 3.0);
 	TRANSFORM[2][0] = sin(noise.y * 3.0);
 	TRANSFORM[2][2] = cos(noise.y * 3.0);
+	*/
 	
 	float height_noise = noise.x * 6.0;
-	float rot_noise = clamp(-0.5 + noise.x * 2.0, -0.4, 0.4);
+	/*float rot_noise = clamp(-0.5 + noise.x * 2.0, -0.4, 0.4);
 	TRANSFORM[0][1] = rot_noise;
 	TRANSFORM[2][1] = rot_noise;
+	*/
 	
 	// update our transform to place
 	TRANSFORM[3][0] = pos.x;

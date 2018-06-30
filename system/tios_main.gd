@@ -29,3 +29,7 @@ func show_menu():
 
 func toggle_fullscreen():
 	OS.set_window_fullscreen(not OS.is_window_fullscreen())
+
+
+func _on_sound_finished():
+	pass # Replace with function body.

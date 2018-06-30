@@ -1,17 +1,20 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
 [ext_resource path="res://system/camera_rig.gd" type="Script" id=2]
 [ext_resource path="res://features/hamsters/scene/hamster.tscn" type="PackedScene" id=3]
 [ext_resource path="res://system/world_enviroment_fantasy.tres" type="Environment" id=4]
-[ext_resource path="res://maps/world_map.tscn" type="PackedScene" id=5]
-[ext_resource path="res://features/zeppelin/model/zeppelin.mesh" type="ArrayMesh" id=6]
-[ext_resource path="res://features/gui/theme.tres" type="Theme" id=7]
-[ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=8]
-[ext_resource path="res://features/gui/fps.gd" type="Script" id=9]
-[ext_resource path="res://features/shared/island_0x0_entities_heightmap.png" type="Texture" id=10]
-[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=11]
-[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sounds/river_close.wav" type="AudioStream" id=5]
+[ext_resource path="res://sounds/loop_sample.gd" type="Script" id=6]
+[ext_resource path="res://sounds/soundscape1.wav" type="AudioStream" id=7]
+[ext_resource path="res://sounds/joungle_back2.wav" type="AudioStream" id=8]
+[ext_resource path="res://maps/world_map.tscn" type="PackedScene" id=9]
+[ext_resource path="res://features/gui/theme.tres" type="Theme" id=10]
+[ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=11]
+[ext_resource path="res://features/gui/fps.gd" type="Script" id=12]
+[ext_resource path="res://features/shared/island_0x0_entities_heightmap.png" type="Texture" id=13]
+[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=14]
+[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Animation" id=1]
 
@@ -92,7 +95,7 @@ blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="camera_rig" type="Position3D" parent="." index="1"]
-transform = Transform( -0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -497.134, 85, -65.2511 )
+transform = Transform( -0.866082, 0, -0.499902, 0, 1, 0, 0.499902, 0, -0.866082, -589.77, 85, -131.384 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 rotate_speed = 1.0
@@ -107,7 +110,7 @@ map_size = Vector2( 2048, 2048 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="POV" type="Camera" parent="camera_rig/hamster" index="1"]
-transform = Transform( 1, 0, -1.78814e-07, 0, 0.866025, 0.5, 0, -0.5, 0.866027, -0.587036, 33.2005, 19.1053 )
+transform = Transform( 1, 0, 0, 0, 0.970295, 0.241922, 0, -0.241922, 0.970297, 0, 22, 24 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -116,64 +119,81 @@ v_offset = 0.0
 doppler_tracking = 0
 projection = 0
 current = false
-fov = 85.0
+fov = 70.0
 size = 1.0
-near = 0.1
-far = 512.0
+near = 4.0
+far = 768.0
 
-[node name="settings" type="Node" parent="." index="2"]
+[node name="system" type="Node" parent="." index="2"]
 
-[node name="SUN" type="DirectionalLight" parent="settings" index="0"]
-transform = Transform( 0.371976, 0.758799, -0.534657, -0.686445, 0.612591, 0.391824, 0.624841, 0.221263, 0.748742, 0, 0, 0 )
+[node name="SUN" type="DirectionalLight" parent="system" index="0"]
+transform = Transform( 0.146447, -0.853553, 0.5, 0.5, 0.5, 0.707106, -0.853553, 0.146447, 0.5, -0.893688, 301.399, -0.614712 )
 layers = 1
-light_color = Color( 0.933333, 0.933333, 1, 1 )
-light_energy = 8.32
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 5.0
 light_indirect_energy = 0.0
 light_negative = false
 light_specular = 0.5
-light_bake_mode = 1
+light_bake_mode = 0
 light_cull_mask = -1
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.0
-shadow_contact = 0.0
+shadow_bias = 1.23
+shadow_contact = 16.0
 shadow_reverse_cull_face = true
 editor_only = false
-directional_shadow_mode = 0
+directional_shadow_mode = 1
 directional_shadow_split_1 = 0.1
 directional_shadow_split_2 = 0.2
 directional_shadow_split_3 = 0.4
 directional_shadow_blend_splits = false
 directional_shadow_normal_bias = 0.0
 directional_shadow_bias_split_scale = 0.0
-directional_shadow_depth_range = 0
-directional_shadow_max_distance = 256.0
-_sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
+directional_shadow_depth_range = 1
+directional_shadow_max_distance = 512.0
+_sections_unfolded = [ "Directional Shadow", "Light", "Shadow", "Transform" ]
 
-[node name="enviroment" type="WorldEnvironment" parent="settings" index="1"]
+[node name="enviroment" type="WorldEnvironment" parent="system" index="1"]
 environment = ExtResource( 4 )
 _sections_unfolded = [ "environment" ]
 
-[node name="world_map" parent="." index="3" instance=ExtResource( 5 )]
+[node name="sound_sea" type="AudioStreamPlayer" parent="system" index="2"]
+stream = ExtResource( 5 )
+volume_db = -5.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 1
+bus = "Master"
+script = ExtResource( 6 )
+_sections_unfolded = [ "script" ]
 
-[node name="zeppelin" type="MeshInstance" parent="world_map" index="8"]
-transform = Transform( 7.89165, -8.04626e-07, -1.31221, -6.99382e-07, -8, 6.99382e-07, -1.31221, -5.75193e-07, -7.89165, 405.763, 479.583, 671.494 )
-visible = false
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = ExtResource( 6 )
-skeleton = NodePath("..")
-material/0 = null
-material/1 = null
-material/2 = null
-_sections_unfolded = [ "Transform" ]
+[node name="sound_soundscape" type="AudioStreamPlayer" parent="system" index="3"]
+stream = ExtResource( 7 )
+volume_db = -8.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 1
+bus = "Master"
+script = ExtResource( 6 )
+
+[node name="sound_crickets" type="AudioStreamPlayer" parent="system" index="4"]
+stream = ExtResource( 8 )
+volume_db = -14.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 1
+bus = "Master"
+script = ExtResource( 6 )
+
+[node name="world_map" parent="." index="3" instance=ExtResource( 9 )]
+editor/display_folded = true
+
+[node name="grass" parent="world_map" index="1"]
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "process_material", "script" ]
+spacing = 14.0
+
+[node name="paprotes" parent="world_map" index="3"]
+cast_shadow = 0
 
 [node name="GUI" type="Control" parent="." index="4"]
 anchor_left = 0.0
@@ -186,7 +206,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 7 )
+theme = ExtResource( 10 )
 _sections_unfolded = [ "Theme", "theme" ]
 
 [node name="demo" type="Control" parent="GUI" index="0"]
@@ -217,16 +237,14 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Margin" ]
 
 [node name="logo" type="Sprite" parent="GUI/demo/top-left" index="0"]
 modulate = Color( 1, 1, 1, 0.25098 )
-texture = ExtResource( 8 )
+texture = ExtResource( 11 )
 centered = false
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="bottom-middle" type="Control" parent="GUI/demo" index="1"]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -243,9 +261,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -19.0
+margin_left = -50.5
 margin_top = -39.5
-margin_right = 19.0
+margin_right = 50.5
 margin_bottom = 39.5
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -256,14 +274,14 @@ size_flags_vertical = 4
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 1
-text = "123fps
+text = "TECH DEMO [60FPS]
 "
 align = 2
 uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 9 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
 [node name="minimap" type="Control" parent="GUI/demo" index="2"]
@@ -299,7 +317,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 10 )
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Rect" ]
@@ -308,7 +326,6 @@ __meta__ = {
 }
 
 [node name="intro" type="Control" parent="GUI" index="1"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -324,6 +341,7 @@ __meta__ = {
 }
 
 [node name="center" type="Control" parent="GUI/intro" index="0"]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -341,7 +359,7 @@ editor/display_folded = true
 modulate = Color( 0.857723, 0.350902, 1, 1 )
 position = Vector2( 0, -30 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 8 )
+texture = ExtResource( 11 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/intro/center/tios" index="0"]
@@ -354,6 +372,7 @@ anims/gay = SubResource( 2 )
 blend_times = [  ]
 
 [node name="bottom-middle" type="Control" parent="GUI/intro" index="1"]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -397,10 +416,13 @@ _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 [node name="p1x" type="Sprite" parent="GUI/intro/bottom-middle" index="1"]
 position = Vector2( -250, -64 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 11 )
+texture = ExtResource( 14 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
-[node name="corners" parent="GUI" index="2" instance=ExtResource( 12 )]
+[node name="corners" parent="GUI" index="2" instance=ExtResource( 15 )]
 
+[connection signal="finished" from="system/sound_sea" to="system/sound_sea" method="_on_sound_finished"]
+[connection signal="finished" from="system/sound_soundscape" to="system/sound_soundscape" method="_on_sound_finished"]
+[connection signal="finished" from="system/sound_crickets" to="system/sound_crickets" method="_on_sound_finished"]
 
 [editable path="world_map"]

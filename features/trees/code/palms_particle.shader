@@ -42,8 +42,6 @@ void vertex() {
 	pos.x += EMISSION_TRANSFORM[3][0] - mod(EMISSION_TRANSFORM[3][0], spacing);
 	pos.z += EMISSION_TRANSFORM[3][2] - mod(EMISSION_TRANSFORM[3][2], spacing);
 	
-
-	
 	// now add some noise based on our _world_ position
 	vec2 noise = faker(pos.xz);
 	pos.x += (noise.x) * spacing;
@@ -67,18 +65,8 @@ void vertex() {
 	} else if (abs(y3 - pos.y) > 0.5) {
 		pos.y = -10000.0;
 	}
-
-	// rotate our transform
-	TRANSFORM[0][0] = cos(noise.x * 3.0);
-	TRANSFORM[0][2] = -sin(noise.x * 3.0);
-	
-	TRANSFORM[2][0] = sin(noise.y * 3.0);
-	TRANSFORM[2][2] = cos(noise.y * 3.0);
 	
 	float height_noise = clamp(noise.y * heigh_noise_scale, 0.2, heigh_noise_scale);
-	float rot_noise = clamp(-0.5 + noise.y,-0.1,0.1);
-	TRANSFORM[0][1] = rot_noise;
-	TRANSFORM[2][1] = rot_noise;
 	
 	// update our transform to place
 	TRANSFORM[3][0] = pos.x;

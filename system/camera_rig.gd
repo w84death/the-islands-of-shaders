@@ -64,12 +64,14 @@ func _physics_process(delta):
 		var axis_abs = abs(axis_value)
 		if axis_abs > DEADZONE:
 			# ROTATE LEFT - RIGHT
-			if axis == JOY_ANALOG_LX:
+			if axis == JOY_ANALOG_RX:
 				if axis_value > 0:
 					angle_y -= rotate_speed * axis_abs
 				else:
 					angle_y += rotate_speed * axis_abs
-			if axis == JOY_ANALOG_LY:
+					
+			# ROTATE ..THE OTEHR WAY :P
+			if axis == JOY_ANALOG_RY:
 				if axis_value > 0:
 					if angle_x > -25:
 						angle_x -= rotate_speed * axis_abs
@@ -78,7 +80,7 @@ func _physics_process(delta):
 						angle_x += rotate_speed * axis_abs
 
 			# MOVE LEFT - RIGHT
-			if axis == JOY_ANALOG_RX:
+			if axis == JOY_ANALOG_LX:
 				if axis_value < 0:
 					var left_right = transform.basis.x
 					left_right.y = 0.0
@@ -90,8 +92,8 @@ func _physics_process(delta):
 					left_right = left_right.normalized()
 					move_to += left_right * move_speed_lr * axis_abs;
 
-			# FRONT BACK
-			if axis == JOY_ANALOG_RY:
+			# MOVE FRONT - BACK
+			if axis == JOY_ANALOG_LY:
 				if axis_value < 0:
 					var front_back = transform.basis.z
 					front_back.y = 0.0

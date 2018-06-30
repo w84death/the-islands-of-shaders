@@ -1,5 +1,9 @@
 shader_type spatial;
 render_mode cull_disabled;
+render_mode vertex_lighting;
+render_mode depth_draw_alpha_prepass;
+
+
 uniform float amplitude = 0.2;
 uniform vec2 speed = vec2(2.0, 1.5);
 uniform vec2 scale = vec2(0.1, 0.2);
