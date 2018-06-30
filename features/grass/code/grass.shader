@@ -25,9 +25,9 @@ void fragment() {
 	ALPHA = color.a;
 	ALPHA_SCISSOR = 0.4;
 	
-	METALLIC = 0.8;
+	METALLIC = 0.5;
 	SPECULAR = 0.0;
-	ROUGHNESS = 0.3;
+	ROUGHNESS = 0.9;
 
 }
 

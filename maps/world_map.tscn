@@ -155,7 +155,7 @@ radial_segments = 8
 rings = 32
 is_hemisphere = false
 
-[node name="world_map" type="Spatial"]
+[node name="world_map" type="Spatial" index="0"]
 
 [node name="terrain" type="MeshInstance" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90735e-06, 0 )

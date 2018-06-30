@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode vertex_lighting;
+//render_mode vertex_lighting;
 
 uniform vec2 map_size = vec2(512.0, 512.0);
 uniform float max_height = 18.0;
