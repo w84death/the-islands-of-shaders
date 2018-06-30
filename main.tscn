@@ -4,10 +4,10 @@
 [ext_resource path="res://system/camera_rig.gd" type="Script" id=2]
 [ext_resource path="res://features/hamsters/scene/hamster.tscn" type="PackedScene" id=3]
 [ext_resource path="res://system/world_enviroment_fantasy.tres" type="Environment" id=4]
-[ext_resource path="res://sounds/river_close.wav" type="AudioStream" id=5]
-[ext_resource path="res://sounds/loop_sample.gd" type="Script" id=6]
-[ext_resource path="res://sounds/soundscape1.wav" type="AudioStream" id=7]
-[ext_resource path="res://sounds/joungle_back2.wav" type="AudioStream" id=8]
+[ext_resource path="res://sounds/samples/joungle_back1.ogg" type="AudioStream" id=5]
+[ext_resource path="res://sounds/code/loop_sample.gd" type="Script" id=6]
+[ext_resource path="res://sounds/samples/joungle_back2.ogg" type="AudioStream" id=7]
+[ext_resource path="res://sounds/samples/soundscape1.ogg" type="AudioStream" id=8]
 [ext_resource path="res://maps/world_map.tscn" type="PackedScene" id=9]
 [ext_resource path="res://features/gui/theme.tres" type="Theme" id=10]
 [ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=11]
@@ -159,29 +159,29 @@ _sections_unfolded = [ "environment" ]
 
 [node name="sound_sea" type="AudioStreamPlayer" parent="system" index="2"]
 stream = ExtResource( 5 )
-volume_db = -5.0
+volume_db = -6.0
 pitch_scale = 1.0
 autoplay = true
-mix_target = 1
+mix_target = 0
 bus = "Master"
 script = ExtResource( 6 )
-_sections_unfolded = [ "script" ]
+_sections_unfolded = [ "script", "stream" ]
 
-[node name="sound_soundscape" type="AudioStreamPlayer" parent="system" index="3"]
+[node name="sound_crickets" type="AudioStreamPlayer" parent="system" index="3"]
 stream = ExtResource( 7 )
-volume_db = -8.0
-pitch_scale = 1.0
+volume_db = 3.0
+pitch_scale = 1.001
 autoplay = true
-mix_target = 1
+mix_target = 0
 bus = "Master"
 script = ExtResource( 6 )
 
-[node name="sound_crickets" type="AudioStreamPlayer" parent="system" index="4"]
+[node name="sound_soundscape" type="AudioStreamPlayer" parent="system" index="4"]
 stream = ExtResource( 8 )
-volume_db = -14.0
+volume_db = -10.0
 pitch_scale = 1.0
 autoplay = true
-mix_target = 1
+mix_target = 0
 bus = "Master"
 script = ExtResource( 6 )
 
@@ -422,7 +422,7 @@ _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 [node name="corners" parent="GUI" index="2" instance=ExtResource( 15 )]
 
 [connection signal="finished" from="system/sound_sea" to="system/sound_sea" method="_on_sound_finished"]
-[connection signal="finished" from="system/sound_soundscape" to="system/sound_soundscape" method="_on_sound_finished"]
 [connection signal="finished" from="system/sound_crickets" to="system/sound_crickets" method="_on_sound_finished"]
+[connection signal="finished" from="system/sound_soundscape" to="system/sound_soundscape" method="_on_sound_finished"]
 
 [editable path="world_map"]
