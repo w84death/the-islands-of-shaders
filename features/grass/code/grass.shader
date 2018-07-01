@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode cull_disabled;
 render_mode vertex_lighting;
-render_mode depth_draw_alpha_prepass;
+//render_mode depth_draw_alpha_prepass;
 
 
 uniform float amplitude = 0.2;
@@ -23,11 +23,11 @@ void fragment() {
 	vec4 color = texture(texture_map, UV);
 	ALBEDO = color.rgb;
 	ALPHA = color.a;
-	ALPHA_SCISSOR = 0.4;
+	ALPHA_SCISSOR = 0.1;
 	
-	METALLIC = 0.5;
-	SPECULAR = 0.0;
-	ROUGHNESS = 0.9;
+	METALLIC = 0.2;
+	SPECULAR = 0.5;
+	ROUGHNESS = 0.6;
 
 }
 

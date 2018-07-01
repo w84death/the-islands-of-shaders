@@ -12,7 +12,7 @@
 [ext_resource path="res://features/gui/theme.tres" type="Theme" id=10]
 [ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=11]
 [ext_resource path="res://features/gui/fps.gd" type="Script" id=12]
-[ext_resource path="res://features/shared/island_0x0_entities_heightmap.png" type="Texture" id=13]
+[ext_resource path="res://features/shared/island_0_entities_map.png" type="Texture" id=13]
 [ext_resource path="res://system/gimp-logo.png" type="Texture" id=14]
 [ext_resource path="res://system/godot.png" type="Texture" id=15]
 [ext_resource path="res://system/Wings3d.png" type="Texture" id=16]
@@ -68,7 +68,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 0.34902, 0.34902, 1 ), Color( 1, 0.941176, 0.34902, 1 ), Color( 0.384314, 1, 0.34902, 1 ), Color( 0.34902, 0.968627, 1, 1 ), Color( 0.34902, 0.372549, 1, 1 ), Color( 0.901961, 0.34902, 1, 1 ), Color( 1, 0.34902, 0.576471, 1 ), Color( 1, 0.34902, 0.34902, 1 ) ]
 }
 
-[node name="TIOS" type="Spatial" index="0"]
+[node name="TIOS" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="camera_menu" type="Camera" parent="." index="0"]
@@ -84,7 +84,7 @@ current = true
 fov = 70.0
 size = 1.0
 near = 0.1
-far = 1024.0
+far = 512.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="menu_anim" type="AnimationPlayer" parent="camera_menu" index="0"]
@@ -98,15 +98,15 @@ blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="camera_rig" type="Position3D" parent="." index="1"]
-transform = Transform( -0.866082, 0, -0.499902, 0, 1, 0, 0.499902, 0, -0.866082, -589.77, 85, -131.384 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -255.377, 32.7355, 97.4009 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "script" ]
 rotate_speed = 1.0
-move_speed = 1.0
-move_speed_lr = 0.5
-move_speed_fb = 1.5
-terrain_height = 256
-water_height = 52
+move_speed = 0.5
+move_speed_lr = 0.25
+move_speed_fb = 1.0
+terrain_height = 128
+water_height = 26
 map_size = Vector2( 2048, 2048 )
 
 [node name="hamster" parent="camera_rig" index="0" instance=ExtResource( 3 )]
@@ -125,7 +125,7 @@ current = false
 fov = 70.0
 size = 1.0
 near = 4.0
-far = 768.0
+far = 512.0
 
 [node name="system" type="Node" parent="." index="2"]
 
@@ -140,21 +140,21 @@ light_specular = 0.5
 light_bake_mode = 0
 light_cull_mask = -1
 shadow_enabled = true
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 1.23
-shadow_contact = 16.0
+shadow_color = Color( 0.152941, 0.356863, 0.74902, 1 )
+shadow_bias = 0.0
+shadow_contact = 1.0
 shadow_reverse_cull_face = true
 editor_only = false
-directional_shadow_mode = 1
+directional_shadow_mode = 2
 directional_shadow_split_1 = 0.1
 directional_shadow_split_2 = 0.2
-directional_shadow_split_3 = 0.4
-directional_shadow_blend_splits = false
+directional_shadow_split_3 = 0.3999
+directional_shadow_blend_splits = true
 directional_shadow_normal_bias = 0.0
 directional_shadow_bias_split_scale = 0.0
 directional_shadow_depth_range = 1
-directional_shadow_max_distance = 512.0
-_sections_unfolded = [ "Directional Shadow", "Light", "Shadow", "Transform" ]
+directional_shadow_max_distance = 386.0
+_sections_unfolded = [ "Directional Shadow", "Shadow", "Transform" ]
 
 [node name="enviroment" type="WorldEnvironment" parent="system" index="1"]
 environment = ExtResource( 4 )
@@ -189,16 +189,19 @@ bus = "Master"
 script = ExtResource( 6 )
 
 [node name="world_map" parent="." index="3" instance=ExtResource( 9 )]
-
-[node name="terrain" parent="world_map" index="0"]
-_sections_unfolded = [ "Geometry", "Material", "material_override" ]
+editor/display_folded = true
 
 [node name="grass" parent="world_map" index="1"]
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "script" ]
 spacing = 14.0
+
+[node name="grass2" parent="world_map" index="2"]
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "draw_pass_1", "material_override", "process_material", "script" ]
 
 [node name="paprotes" parent="world_map" index="3"]
 cast_shadow = 0
+
+[node name="water" parent="world_map" index="5"]
+_sections_unfolded = [ "Material", "material/0", "material_override", "mesh" ]
 
 [node name="GUI" type="Control" parent="." index="4"]
 anchor_left = 0.0
@@ -293,7 +296,6 @@ script = ExtResource( 12 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
 [node name="minimap" type="Control" parent="GUI/demo" index="2"]
-editor/display_folded = true
 visible = false
 anchor_left = 1.0
 anchor_top = 0.0

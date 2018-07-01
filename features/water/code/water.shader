@@ -37,25 +37,13 @@ void vertex(){
 void fragment(){
 	vec2 uv2 = UV * -1.0;
 	float height = texture(height_map, uv2.xy).r;
-	float gfx = 0.5;
+	float gfx = smoothstep(0.15, water_shore, height);
 	vec3 w_color = vec3(1.0, 1.0, 1.0);
-	/* ability to remove this functionality, usefull for waterfalls */
-	
-	if (water_shore > 0.0) {
-		gfx = smoothstep(0.15, water_shore, height);
-		w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
-		ROUGHNESS = gfx;
-		METALLIC = 0.8;
-		SPECULAR = 1.0-gfx;
-		ALPHA = 1.0 - clamp(gfx, water_alpha, 1.0);
-	}else{
-		EMISSION = vec3(.3);
-		ROUGHNESS = 0.0;
-		METALLIC = 1.0;
-		SPECULAR = 0.9;
-		ALPHA = 0.7;
-	}
-
+	w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
+	ROUGHNESS = gfx;
+	METALLIC = 0.6;
+	SPECULAR = 1.0-gfx;
+	ALPHA = 1.0 - clamp(gfx, water_alpha, 1.0);
 	ALBEDO = w_color;
 	
 	

@@ -1,143 +1,78 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://features/terrain/code/terrain.material" type="Material" id=1]
 [ext_resource path="res://features/grass/code/grass_shader.material" type="Material" id=2]
 [ext_resource path="res://features/grass/code/grass_particle.material" type="Material" id=3]
 [ext_resource path="res://features/grass/models/grass.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://system/particle_follow_camera_rig.gd" type="Script" id=5]
-[ext_resource path="res://features/grass/code/grass2_shader.material" type="Material" id=6]
-[ext_resource path="res://features/grass/code/grass_particle.shader" type="Shader" id=7]
-[ext_resource path="res://features/shared/island_0x0_featuresmap.png" type="Texture" id=8]
-[ext_resource path="res://features/shared/island_0x0_heightmap.png" type="Texture" id=9]
-[ext_resource path="res://features/grass/models/grass2.obj" type="ArrayMesh" id=10]
-[ext_resource path="res://features/grass/code/poprotas.material" type="Material" id=11]
-[ext_resource path="res://features/grass/models/paprota.obj" type="ArrayMesh" id=12]
-[ext_resource path="res://features/trees/code/palms_particle.material" type="Material" id=13]
-[ext_resource path="res://features/trees/code/palm.material" type="Material" id=14]
-[ext_resource path="res://features/trees/code/palms.shader" type="Shader" id=15]
-[ext_resource path="res://features/trees/tex/palm_bark_spec.png" type="Texture" id=16]
-[ext_resource path="res://features/trees/tex/palm_bark_tex.png" type="Texture" id=17]
-[ext_resource path="res://features/water/code/water.material" type="Material" id=18]
-[ext_resource path="res://features/water/code/waterfall.material" type="Material" id=19]
-[ext_resource path="res://features/water/code/waterfall_bottom.material" type="Material" id=20]
-[ext_resource path="res://features/insects/code/insects.material" type="Material" id=21]
-[ext_resource path="res://features/insects/code/insects_particles.material" type="Material" id=22]
-[ext_resource path="res://features/insects/models/butterfly.obj" type="ArrayMesh" id=23]
-[ext_resource path="res://features/structures/code/bridge.material" type="Material" id=24]
-[ext_resource path="res://features/structures/models/bridge.obj" type="ArrayMesh" id=25]
+[ext_resource path="res://features/grass/code/grass_particle.shader" type="Shader" id=6]
+[ext_resource path="res://features/shared/island_0_features_map.png" type="Texture" id=7]
+[ext_resource path="res://features/shared/island_0_height_map.png" type="Texture" id=8]
+[ext_resource path="res://features/grass/models/grass_1.mesh" type="ArrayMesh" id=9]
+[ext_resource path="res://features/grass/code/poprotas.material" type="Material" id=10]
+[ext_resource path="res://features/grass/models/paprota.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://features/trees/code/palms_particle.material" type="Material" id=12]
+[ext_resource path="res://features/trees/models/palm.mesh" type="ArrayMesh" id=13]
+[ext_resource path="res://features/water/code/water.material" type="Material" id=14]
+[ext_resource path="res://features/water/code/waterfall.material" type="Material" id=15]
+[ext_resource path="res://features/water/code/waterfall_bottom.material" type="Material" id=16]
+[ext_resource path="res://features/insects/code/insects.material" type="Material" id=17]
+[ext_resource path="res://features/insects/code/insects_particles.material" type="Material" id=18]
+[ext_resource path="res://features/insects/models/butterfly.obj" type="ArrayMesh" id=19]
+[ext_resource path="res://features/structures/code/bridge.material" type="Material" id=20]
+[ext_resource path="res://features/structures/models/bridge.obj" type="ArrayMesh" id=21]
 
 [sub_resource type="PlaneMesh" id=1]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 2048, 2048 )
-subdivide_width = 512
-subdivide_depth = 512
+subdivide_width = 1024
+subdivide_depth = 1024
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="ShaderMaterial" id=2]
 
-script/source = "extends MeshInstance
-
-export var map_width = 2048.0;
-export var map_height = 2048.0;
-func _ready():
-	# upscale, we can't subdivide by more then 100 in the property inspector
-	mesh.size = Vector2(map_width, map_height);
-	mesh.subdivide_width = map_width * 0.25;
-	mesh.subdivide_depth = map_height * 0.25;"
+render_priority = 0
+shader = ExtResource( 6 )
+shader_param/uniq = 89867.0
+shader_param/rows = 96.0
+shader_param/spacing = 5.0
+shader_param/red_zone = true
+shader_param/green_zone = true
+shader_param/blue_zone = false
+shader_param/max_height = 128.0
+shader_param/water_level = 24.0
+shader_param/heightmap_size = Vector2( 2048, 2048 )
+shader_param/height_map = ExtResource( 8 )
+shader_param/features_map = ExtResource( 7 )
+_sections_unfolded = [ "Shader Param", "shader", "shader_param" ]
 
 [sub_resource type="ShaderMaterial" id=3]
 
 render_priority = 0
-shader = ExtResource( 7 )
-shader_param/uniq = 89867.0
-shader_param/rows = 96.0
-shader_param/spacing = 14.0
-shader_param/red_zone = true
-shader_param/green_zone = true
-shader_param/blue_zone = false
-shader_param/max_height = 256.0
-shader_param/heightmap_size = Vector2( 2048, 2048 )
-shader_param/height_map = ExtResource( 9 )
-shader_param/features_map = ExtResource( 8 )
-_sections_unfolded = [ "Shader Param", "shader", "shader_param" ]
-
-[sub_resource type="ShaderMaterial" id=4]
-
-render_priority = 0
-shader = ExtResource( 7 )
+shader = ExtResource( 6 )
 shader_param/uniq = 76576.0
 shader_param/rows = 48.0
-shader_param/spacing = 24.0
+shader_param/spacing = 10.0
 shader_param/red_zone = true
 shader_param/green_zone = true
 shader_param/blue_zone = false
-shader_param/max_height = 256.0
+shader_param/max_height = 128.0
+shader_param/water_level = 24.0
 shader_param/heightmap_size = Vector2( 2048, 2048 )
-shader_param/height_map = ExtResource( 9 )
-shader_param/features_map = ExtResource( 8 )
+shader_param/height_map = ExtResource( 8 )
+shader_param/features_map = ExtResource( 7 )
 _sections_unfolded = [ "Shader Param", "shader", "shader_param" ]
 
-[sub_resource type="ShaderMaterial" id=5]
-
-render_priority = 0
-shader = ExtResource( 15 )
-shader_param/amplitude = 0.4
-shader_param/speed = null
-shader_param/scale = null
-shader_param/tex = ExtResource( 17 )
-shader_param/spec = ExtResource( 16 )
-_sections_unfolded = [ "Shader Param", "shader", "shader_param", "shader_param/spec", "shader_param/tex" ]
-
-[sub_resource type="ArrayMesh" id=6]
-
-blend_shape_mode = 1
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-surfaces/0 = {
-"aabb": AABB( -20.9232, 79.0355, -18.12, 41.8464, 10.7081, 36.24 ),
-"array_data": PoolByteArray( 59, 77, 45, 85, 0, 0, 0, 60, 119, 212, 0, 0, 243, 221, 121, 129, 101, 59, 16, 52, 70, 74, 124, 85, 0, 0, 0, 60, 22, 124, 0, 0, 108, 237, 62, 129, 11, 58, 166, 53, 59, 73, 45, 85, 135, 204, 0, 60, 59, 212, 153, 0, 110, 0, 63, 129, 248, 55, 33, 34, 70, 70, 124, 85, 111, 201, 0, 60, 11, 124, 237, 0, 109, 0, 64, 129, 254, 55, 168, 50, 0, 0, 92, 85, 0, 0, 0, 60, 0, 127, 0, 0, 109, 0, 64, 129, 3, 56, 4, 56, 70, 70, 124, 85, 111, 73, 0, 60, 11, 124, 19, 0, 107, 236, 64, 129, 15, 58, 45, 57, 59, 73, 45, 85, 135, 76, 0, 60, 59, 212, 103, 0, 97, 220, 184, 129, 108, 59, 243, 57, 70, 198, 124, 85, 111, 73, 0, 60, 245, 124, 19, 0, 109, 0, 64, 129, 8, 56, 94, 58, 59, 201, 45, 85, 135, 76, 0, 60, 197, 212, 103, 0, 110, 0, 63, 129, 11, 56, 240, 59, 70, 202, 124, 85, 0, 0, 0, 60, 234, 124, 0, 0, 108, 19, 62, 129, 241, 51, 53, 57, 59, 205, 45, 85, 0, 0, 0, 60, 137, 212, 0, 0, 243, 35, 121, 129, 16, 45, 0, 58, 70, 198, 124, 85, 111, 201, 0, 60, 245, 124, 237, 0, 107, 20, 64, 129, 223, 51, 181, 53, 59, 201, 45, 85, 135, 204, 0, 60, 197, 212, 153, 0, 97, 36, 184, 129, 213, 44, 41, 52, 0, 0, 53, 85, 0, 0, 0, 60, 0, 129, 0, 0, 110, 0, 62, 129, 41, 44, 97, 43, 59, 77, 45, 85, 0, 0, 0, 60, 119, 212, 0, 0, 21, 59, 110, 129, 125, 46, 4, 45, 59, 73, 45, 85, 135, 204, 0, 60, 59, 212, 153, 0, 110, 0, 63, 129, 45, 44, 94, 46, 59, 73, 45, 85, 135, 76, 0, 60, 59, 212, 103, 0, 106, 57, 220, 129, 122, 46, 173, 40, 59, 201, 45, 85, 135, 76, 0, 60, 197, 212, 103, 0, 110, 0, 63, 129, 38, 44, 10, 36, 59, 205, 45, 85, 0, 0, 0, 60, 137, 212, 0, 0, 21, 197, 110, 129, 87, 39, 185, 40, 59, 201, 45, 85, 135, 204, 0, 60, 197, 212, 153, 0, 106, 199, 220, 129, 102, 39, 10, 45, 123, 75, 240, 84, 190, 69, 0, 60, 103, 194, 39, 0, 188, 204, 93, 129, 94, 59, 241, 51, 125, 72, 89, 85, 228, 66, 0, 60, 23, 124, 9, 0, 78, 234, 96, 129, 6, 58, 152, 53, 58, 74, 240, 84, 11, 201, 0, 60, 85, 194, 187, 0, 80, 0, 98, 129, 221, 55, 45, 34, 121, 71, 89, 85, 13, 198, 0, 60, 19, 124, 240, 0, 77, 0, 100, 129, 238, 55, 168, 50, 0, 0, 32, 85, 0, 0, 0, 60, 0, 127, 0, 0, 77, 0, 100, 129, 3, 56, 4, 56, 4, 62, 89, 85, 191, 72, 0, 60, 4, 124, 25, 0, 74, 234, 100, 129, 19, 58, 38, 57, 3, 65, 240, 84, 234, 75, 0, 60, 17, 194, 109, 0, 102, 199, 207, 129, 115, 59, 231, 57, 121, 199, 89, 85, 13, 70, 0, 60, 237, 124, 16, 0, 77, 0, 100, 129, 16, 56, 94, 58, 58, 202, 240, 84, 11, 73, 0, 60, 171, 194, 69, 0, 80, 0, 98, 129, 24, 56, 239, 59, 125, 200, 89, 85, 228, 194, 0, 60, 233, 124, 247, 0, 78, 22, 96, 129, 0, 52, 60, 57, 123, 203, 240, 84, 190, 197, 0, 60, 153, 194, 217, 0, 188, 52, 93, 129, 72, 45, 12, 58, 4, 190, 89, 85, 191, 200, 0, 60, 252, 124, 231, 0, 74, 22, 100, 129, 207, 51, 196, 53, 3, 193, 240, 84, 234, 203, 0, 60, 239, 194, 147, 0, 102, 57, 207, 129, 160, 44, 65, 52, 0, 0, 251, 84, 0, 0, 0, 60, 0, 129, 0, 0, 80, 0, 97, 129, 60, 44, 158, 43, 123, 75, 240, 84, 190, 69, 0, 60, 103, 194, 39, 0, 1, 69, 106, 129, 112, 46, 13, 45, 58, 74, 240, 84, 11, 201, 0, 60, 85, 194, 187, 0, 80, 0, 98, 129, 66, 44, 86, 46, 3, 65, 240, 84, 234, 75, 0, 60, 17, 194, 109, 0, 105, 67, 22, 129, 106, 46, 13, 41, 58, 202, 240, 84, 11, 73, 0, 60, 171, 194, 69, 0, 80, 0, 98, 129, 54, 44, 32, 37, 123, 203, 240, 84, 190, 197, 0, 60, 153, 194, 217, 0, 1, 187, 106, 129, 18, 40, 34, 41, 3, 193, 240, 84, 234, 203, 0, 60, 239, 194, 147, 0, 105, 189, 22, 129, 30, 40, 24, 45, 31, 73, 114, 85, 174, 69, 0, 60, 106, 221, 59, 0, 44, 209, 147, 129, 81, 59, 224, 57, 38, 70, 155, 85, 209, 66, 0, 60, 8, 126, 4, 0, 126, 248, 0, 129, 252, 57, 35, 57, 5, 73, 114, 85, 8, 198, 0, 60, 104, 221, 194, 0, 50, 213, 108, 129, 64, 59, 38, 52, 6, 70, 155, 85, 61, 195, 0, 60, 8, 126, 252, 0, 126, 248, 0, 129, 242, 57, 183, 53, 0, 0, 115, 85, 0, 0, 0, 60, 0, 127, 0, 0, 127, 0, 0, 129, 251, 55, 8, 56, 218, 47, 155, 85, 7, 71, 0, 60, 0, 126, 9, 0, 126, 0, 0, 129, 7, 56, 80, 58, 139, 50, 114, 85, 219, 73, 0, 60, 2, 221, 122, 0, 126, 0, 254, 129, 14, 56, 214, 59, 6, 198, 155, 85, 61, 67, 0, 60, 248, 126, 4, 0, 126, 8, 0, 129, 17, 52, 53, 57, 5, 201, 114, 85, 8, 70, 0, 60, 152, 221, 62, 0, 50, 43, 108, 129, 215, 45, 254, 57, 38, 198, 155, 85, 209, 194, 0, 60, 248, 126, 252, 0, 126, 8, 0, 129, 250, 51, 218, 53, 31, 201, 114, 85, 174, 197, 0, 60, 150, 221, 197, 0, 44, 47, 147, 129, 79, 45, 97, 52, 218, 175, 155, 85, 7, 199, 0, 60, 0, 126, 247, 0, 126, 0, 0, 129, 230, 55, 1, 51, 139, 178, 114, 85, 219, 201, 0, 60, 254, 221, 134, 0, 126, 0, 254, 129, 217, 55, 96, 39, 0, 0, 102, 85, 0, 0, 0, 60, 0, 129, 0, 0, 127, 0, 0, 129, 62, 44, 215, 42, 31, 73, 114, 85, 174, 69, 0, 60, 106, 221, 59, 0, 68, 63, 171, 129, 87, 46, 131, 40, 5, 73, 114, 85, 8, 198, 0, 60, 104, 221, 194, 0, 71, 60, 85, 129, 76, 46, 168, 44, 139, 50, 114, 85, 219, 73, 0, 60, 2, 221, 122, 0, 126, 0, 254, 129, 72, 44, 21, 36, 5, 201, 114, 85, 8, 70, 0, 60, 152, 221, 62, 0, 71, 196, 85, 129, 94, 40, 94, 40, 31, 201, 114, 85, 174, 197, 0, 60, 150, 221, 197, 0, 68, 193, 171, 129, 73, 40, 149, 44, 139, 178, 114, 85, 219, 201, 0, 60, 254, 221, 134, 0, 126, 0, 254, 129, 51, 44, 209, 45 ),
-"array_index_data": PoolByteArray( 0, 0, 1, 0, 2, 0, 2, 0, 1, 0, 3, 0, 4, 0, 1, 0, 5, 0, 6, 0, 5, 0, 0, 0, 0, 0, 5, 0, 1, 0, 4, 0, 5, 0, 7, 0, 8, 0, 7, 0, 6, 0, 6, 0, 7, 0, 5, 0, 4, 0, 7, 0, 9, 0, 10, 0, 9, 0, 8, 0, 8, 0, 9, 0, 7, 0, 4, 0, 9, 0, 11, 0, 12, 0, 11, 0, 10, 0, 10, 0, 11, 0, 9, 0, 4, 0, 11, 0, 3, 0, 2, 0, 3, 0, 12, 0, 12, 0, 3, 0, 11, 0, 4, 0, 3, 0, 1, 0, 13, 0, 14, 0, 15, 0, 13, 0, 16, 0, 14, 0, 13, 0, 17, 0, 16, 0, 13, 0, 18, 0, 17, 0, 13, 0, 19, 0, 18, 0, 13, 0, 15, 0, 19, 0, 20, 0, 21, 0, 22, 0, 22, 0, 21, 0, 23, 0, 24, 0, 21, 0, 25, 0, 26, 0, 25, 0, 20, 0, 20, 0, 25, 0, 21, 0, 24, 0, 25, 0, 27, 0, 28, 0, 27, 0, 26, 0, 26, 0, 27, 0, 25, 0, 24, 0, 27, 0, 29, 0, 30, 0, 29, 0, 28, 0, 28, 0, 29, 0, 27, 0, 24, 0, 29, 0, 31, 0, 32, 0, 31, 0, 30, 0, 30, 0, 31, 0, 29, 0, 24, 0, 31, 0, 23, 0, 22, 0, 23, 0, 32, 0, 32, 0, 23, 0, 31, 0, 24, 0, 23, 0, 21, 0, 33, 0, 34, 0, 35, 0, 33, 0, 36, 0, 34, 0, 33, 0, 37, 0, 36, 0, 33, 0, 38, 0, 37, 0, 33, 0, 39, 0, 38, 0, 33, 0, 35, 0, 39, 0, 40, 0, 41, 0, 42, 0, 42, 0, 41, 0, 43, 0, 44, 0, 41, 0, 45, 0, 46, 0, 45, 0, 40, 0, 40, 0, 45, 0, 41, 0, 44, 0, 45, 0, 47, 0, 48, 0, 47, 0, 46, 0, 46, 0, 47, 0, 45, 0, 44, 0, 47, 0, 49, 0, 50, 0, 49, 0, 48, 0, 48, 0, 49, 0, 47, 0, 44, 0, 49, 0, 51, 0, 52, 0, 51, 0, 50, 0, 50, 0, 51, 0, 49, 0, 44, 0, 51, 0, 43, 0, 42, 0, 43, 0, 52, 0, 52, 0, 43, 0, 51, 0, 44, 0, 43, 0, 41, 0, 53, 0, 54, 0, 55, 0, 53, 0, 56, 0, 54, 0, 53, 0, 57, 0, 56, 0, 53, 0, 58, 0, 57, 0, 53, 0, 59, 0, 58, 0, 53, 0, 55, 0, 59, 0 ),
-"blend_shape_data": [  ],
-"format": 98071,
-"index_count": 216,
-"material": ExtResource( 14 ),
-"name": "leafs_auv",
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 60
-}
-surfaces/1 = {
-"aabb": AABB( -2.234, -4.84206, -2.234, 4.46801, 93.6859, 4.6412 ),
-"array_data": PoolByteArray( 119, 64, 215, 196, 119, 192, 0, 60, 55, 188, 165, 0, 142, 223, 212, 129, 39, 53, 52, 59, 119, 192, 215, 196, 119, 192, 0, 60, 165, 188, 201, 0, 168, 70, 57, 129, 242, 53, 52, 59, 119, 64, 215, 196, 119, 64, 0, 60, 91, 188, 55, 0, 168, 186, 57, 129, 39, 53, 154, 59, 119, 192, 215, 196, 119, 64, 0, 60, 201, 188, 91, 0, 142, 33, 212, 129, 242, 53, 154, 59, 0, 0, 14, 78, 168, 61, 0, 60, 199, 6, 113, 0, 113, 0, 57, 129, 39, 53, 167, 57, 119, 192, 215, 196, 119, 64, 0, 60, 201, 188, 91, 0, 58, 69, 88, 129, 240, 52, 0, 60, 168, 189, 14, 78, 0, 0, 0, 60, 143, 2, 199, 0, 200, 14, 112, 129, 107, 52, 166, 57, 119, 192, 215, 196, 119, 192, 0, 60, 165, 188, 201, 0, 211, 224, 114, 129, 56, 52, 254, 59, 119, 64, 215, 196, 119, 64, 0, 60, 91, 188, 55, 0, 88, 69, 198, 129, 109, 48, 254, 59, 119, 192, 215, 196, 119, 64, 0, 60, 201, 188, 91, 0, 114, 220, 42, 129, 253, 45, 0, 60, 168, 61, 14, 78, 0, 0, 0, 60, 113, 5, 57, 0, 57, 251, 144, 129, 254, 48, 168, 57, 0, 0, 14, 78, 168, 61, 0, 60, 199, 6, 113, 0, 113, 9, 57, 129, 16, 47, 169, 57, 0, 0, 14, 78, 168, 189, 0, 60, 57, 1, 143, 0, 143, 251, 199, 129, 36, 40, 169, 57, 168, 189, 14, 78, 0, 0, 0, 60, 143, 2, 199, 0, 199, 252, 113, 129, 254, 44, 168, 57, 119, 64, 215, 196, 119, 192, 0, 60, 55, 188, 165, 0, 142, 220, 214, 129, 248, 35, 0, 60, 119, 192, 215, 196, 119, 192, 0, 60, 165, 188, 201, 0, 168, 69, 58, 129, 187, 43, 254, 59, 210, 188, 210, 81, 0, 192, 0, 60, 167, 3, 167, 0, 167, 0, 89, 129, 14, 43, 150, 55, 90, 58, 210, 81, 0, 192, 0, 60, 89, 0, 167, 0, 167, 3, 167, 129, 96, 31, 149, 55, 210, 188, 210, 81, 0, 0, 0, 60, 167, 0, 89, 0, 89, 0, 89, 129, 7, 53, 140, 55, 210, 188, 210, 81, 0, 192, 0, 60, 167, 3, 167, 0, 167, 2, 89, 129, 67, 52, 141, 55, 0, 0, 14, 78, 168, 189, 0, 60, 57, 1, 143, 0, 143, 1, 199, 129, 166, 51, 167, 57, 119, 64, 215, 196, 119, 192, 0, 60, 55, 188, 165, 0, 198, 69, 168, 129, 56, 51, 0, 60, 168, 61, 14, 78, 0, 0, 0, 60, 113, 5, 57, 0, 55, 23, 145, 129, 47, 50, 166, 57, 119, 64, 215, 196, 119, 64, 0, 60, 91, 188, 55, 0, 45, 224, 142, 129, 200, 49, 254, 59, 90, 58, 210, 81, 0, 192, 0, 60, 89, 0, 167, 0, 167, 255, 167, 129, 102, 51, 140, 55, 90, 58, 210, 81, 0, 0, 0, 60, 89, 253, 89, 0, 89, 252, 167, 129, 222, 49, 141, 55, 90, 58, 210, 81, 0, 0, 0, 60, 89, 253, 89, 0, 89, 6, 167, 129, 66, 48, 150, 55, 210, 188, 210, 81, 0, 0, 0, 60, 167, 0, 89, 0, 89, 1, 89, 129, 116, 45, 149, 55, 155, 184, 79, 84, 189, 182, 0, 60, 221, 5, 135, 0, 135, 2, 35, 129, 96, 42, 73, 51, 180, 58, 79, 84, 241, 59, 0, 60, 121, 4, 221, 0, 221, 9, 135, 129, 0, 0, 65, 51, 245, 191, 79, 84, 241, 59, 0, 60, 135, 2, 35, 0, 34, 245, 121, 129, 159, 52, 63, 51, 155, 184, 79, 84, 189, 182, 0, 60, 221, 5, 135, 0, 135, 0, 35, 129, 166, 51, 68, 51, 155, 184, 79, 84, 208, 64, 0, 60, 35, 1, 121, 0, 121, 10, 221, 129, 23, 48, 73, 51, 245, 191, 79, 84, 241, 59, 0, 60, 135, 2, 35, 0, 35, 8, 121, 129, 254, 44, 65, 51, 180, 58, 79, 84, 241, 59, 0, 60, 121, 4, 221, 0, 222, 242, 135, 129, 149, 50, 63, 51, 155, 184, 79, 84, 208, 64, 0, 60, 35, 1, 121, 0, 121, 254, 221, 129, 254, 48, 68, 51, 212, 180, 141, 85, 212, 180, 0, 60, 239, 73, 155, 0, 133, 7, 27, 129, 72, 44, 8, 22, 212, 52, 141, 85, 212, 180, 0, 60, 101, 74, 239, 0, 180, 99, 238, 129, 44, 36, 0, 0, 212, 180, 141, 85, 212, 52, 0, 60, 159, 79, 17, 0, 6, 237, 125, 129, 249, 52, 148, 17, 212, 180, 141, 85, 212, 180, 0, 60, 239, 73, 155, 0, 221, 95, 75, 129, 42, 52, 176, 21, 212, 52, 141, 85, 212, 52, 0, 60, 17, 79, 97, 0, 123, 6, 229, 129, 163, 48, 8, 22, 212, 180, 141, 85, 212, 52, 0, 60, 159, 79, 17, 0, 80, 96, 13, 129, 9, 46, 0, 0, 212, 52, 141, 85, 212, 180, 0, 60, 101, 74, 239, 0, 249, 237, 131, 129, 75, 51, 148, 17, 212, 52, 141, 85, 212, 52, 0, 60, 17, 79, 97, 0, 29, 93, 175, 129, 172, 49, 176, 21, 212, 52, 141, 85, 212, 52, 0, 60, 17, 79, 97, 0, 125, 246, 243, 129, 242, 53, 0, 60, 212, 180, 141, 85, 212, 52, 0, 60, 159, 79, 17, 0, 81, 95, 20, 129, 39, 53, 0, 60, 212, 52, 141, 85, 212, 180, 0, 60, 101, 74, 239, 0, 76, 158, 23, 129, 242, 53, 154, 59, 212, 180, 141, 85, 212, 180, 0, 60, 239, 73, 155, 0, 125, 10, 242, 129, 39, 53, 154, 59 ),
-"array_index_data": PoolByteArray( 0, 0, 1, 0, 2, 0, 2, 0, 1, 0, 3, 0, 4, 0, 5, 0, 6, 0, 6, 0, 5, 0, 7, 0, 8, 0, 9, 0, 10, 0, 10, 0, 9, 0, 11, 0, 12, 0, 13, 0, 14, 0, 14, 0, 13, 0, 15, 0, 16, 0, 13, 0, 17, 0, 17, 0, 13, 0, 12, 0, 18, 0, 4, 0, 19, 0, 19, 0, 4, 0, 6, 0, 20, 0, 21, 0, 22, 0, 22, 0, 21, 0, 23, 0, 24, 0, 20, 0, 25, 0, 25, 0, 20, 0, 22, 0, 26, 0, 10, 0, 27, 0, 27, 0, 10, 0, 11, 0, 28, 0, 16, 0, 29, 0, 29, 0, 16, 0, 17, 0, 30, 0, 18, 0, 31, 0, 31, 0, 18, 0, 19, 0, 32, 0, 26, 0, 33, 0, 33, 0, 26, 0, 27, 0, 34, 0, 24, 0, 35, 0, 35, 0, 24, 0, 25, 0, 36, 0, 28, 0, 37, 0, 37, 0, 28, 0, 29, 0, 38, 0, 30, 0, 39, 0, 39, 0, 30, 0, 31, 0, 40, 0, 32, 0, 41, 0, 41, 0, 32, 0, 33, 0, 42, 0, 34, 0, 43, 0, 43, 0, 34, 0, 35, 0, 44, 0, 45, 0, 46, 0, 46, 0, 45, 0, 47, 0 ),
-"blend_shape_data": [  ],
-"format": 98071,
-"index_count": 108,
-"material": SubResource( 5 ),
-"name": "Cube3_auv",
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 48
-}
-_sections_unfolded = [ "Surface 1", "Surface 2", "surface_1", "surface_1/material", "surface_2", "surface_2/material" ]
-
-[sub_resource type="PlaneMesh" id=7]
+[sub_resource type="PlaneMesh" id=4]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 2048, 2048 )
-subdivide_width = 128
-subdivide_depth = 128
+subdivide_width = 256
+subdivide_depth = 256
 
-[sub_resource type="PlaneMesh" id=8]
-
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-flip_faces = false
-size = Vector2( 48, 64 )
-subdivide_width = 8
-subdivide_depth = 32
-
-[sub_resource type="PlaneMesh" id=9]
+[sub_resource type="PlaneMesh" id=5]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
@@ -145,11 +80,11 @@ size = Vector2( 48, 128 )
 subdivide_width = 8
 subdivide_depth = 32
 
-[sub_resource type="SphereMesh" id=10]
+[sub_resource type="SphereMesh" id=6]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
-radius = 73.857
+radius = 35.0
 height = 0.001
 radial_segments = 8
 rings = 32
@@ -171,13 +106,10 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
 material/0 = null
-script = SubResource( 2 )
 _sections_unfolded = [ "Geometry", "Material", "material_override", "mesh" ]
 __meta__ = {
 "_edit_lock_": true
 }
-map_width = 2048.0
-map_height = 2048.0
 
 [node name="grass" type="Particles" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0918102, -0.19283, -2.77525 )
@@ -207,14 +139,14 @@ process_material = ExtResource( 3 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 4 )
 script = ExtResource( 5 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "material_override", "process_material", "script" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "process_material", "script" ]
 rows = 96
-spacing = 12.0
+spacing = 5.0
 
 [node name="grass2" type="Particles" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0918102, -0.19283, -2.77525 )
 layers = 1
-material_override = ExtResource( 6 )
+material_override = null
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -235,18 +167,18 @@ fract_delta = true
 visibility_aabb = AABB( -9.63663, -2.37216, -8.1309, 21.0731, 10.0266, 16.2618 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 2 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 10 )
+draw_pass_1 = ExtResource( 9 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "process_material", "script" ]
 rows = 96
-spacing = 14.0
+spacing = 5.0
 
 [node name="paprotes" type="Particles" parent="." index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.178728, 0.808505, -2.6553 )
 layers = 1
-material_override = ExtResource( 11 )
+material_override = ExtResource( 10 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -267,13 +199,13 @@ fract_delta = true
 visibility_aabb = AABB( -9.63663, -2.37216, -8.1309, 21.0731, 10.0266, 16.2618 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 4 )
+process_material = SubResource( 3 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 12 )
+draw_pass_1 = ExtResource( 11 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "process_material", "script" ]
 rows = 48
-spacing = 24.0
+spacing = 10.0
 
 [node name="palms" type="Particles" parent="." index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7398, 1.84899, 7.00503 )
@@ -287,7 +219,7 @@ lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 emitting = true
-amount = 4096
+amount = 2304
 lifetime = 1.0
 one_shot = false
 preprocess = 0.0
@@ -299,13 +231,13 @@ fract_delta = true
 visibility_aabb = AABB( -9.63663, -2.37216, -8.1309, 21.0731, 10.0266, 16.2618 )
 local_coords = false
 draw_order = 0
-process_material = ExtResource( 13 )
+process_material = ExtResource( 12 )
 draw_passes = 1
-draw_pass_1 = SubResource( 6 )
+draw_pass_1 = ExtResource( 13 )
 script = ExtResource( 5 )
-_sections_unfolded = [ "Draw Passes", "Process Material", "Transform", "draw_pass_1", "material_override" ]
-rows = 64
-spacing = 16.0
+_sections_unfolded = [ "Draw Passes", "Process Material", "Transform", "draw_pass_1", "material_override", "process_material" ]
+rows = 48
+spacing = 10.0
 
 [node name="water" type="MeshInstance" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75734, 0 )
@@ -318,16 +250,16 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 7 )
+mesh = SubResource( 4 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 18 )
+material/0 = ExtResource( 14 )
 _sections_unfolded = [ "Material", "material/0", "material_override" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="water2" type="MeshInstance" parent="." index="6"]
-transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 439.246, 129.009, 405.602 )
+[node name="waterfall" type="MeshInstance" parent="." index="6"]
+transform = Transform( 0.480333, 0.825065, 0.297569, -0.0521472, 0.365535, -0.929336, -0.875535, 0.430873, 0.218603, 254.434, 14.1536, 226.676 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -337,29 +269,13 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 8 )
+mesh = SubResource( 5 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 19 )
-_sections_unfolded = [ "Material", "material/0", "material_override", "mesh" ]
-
-[node name="waterfall" type="MeshInstance" parent="." index="7"]
-transform = Transform( 0.480333, 0.825065, 0.297569, -0.0521472, 0.365535, -0.929336, -0.875535, 0.430873, 0.218603, 479.352, 69.776, 445.805 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 9 )
-skeleton = NodePath("..")
-material/0 = ExtResource( 19 )
+material/0 = ExtResource( 15 )
 _sections_unfolded = [ "Material", "Transform", "material/0", "material_override", "mesh" ]
 
-[node name="waterfall_bottom" type="MeshInstance" parent="." index="8"]
-transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 494.795, 60.1951, 459.714 )
+[node name="waterfall_bottom" type="MeshInstance" parent="." index="7"]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 258.683, 22.1745, 232.65 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -369,15 +285,15 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 10 )
+mesh = SubResource( 6 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 20 )
+material/0 = ExtResource( 16 )
 _sections_unfolded = [ "Material", "material/0", "material_override", "mesh" ]
 
-[node name="insects" type="Particles" parent="." index="9"]
+[node name="insects" type="Particles" parent="." index="8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.138, 0 )
 layers = 1
-material_override = ExtResource( 21 )
+material_override = ExtResource( 17 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -386,7 +302,7 @@ lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 emitting = true
-amount = 2048
+amount = 256
 lifetime = 1.0
 one_shot = false
 preprocess = 0.0
@@ -398,18 +314,18 @@ fract_delta = true
 visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
 local_coords = false
 draw_order = 0
-process_material = ExtResource( 22 )
+process_material = ExtResource( 18 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 23 )
+draw_pass_1 = ExtResource( 19 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Transform", "material_override", "process_material" ]
-rows = 32
-spacing = 24.0
+rows = 16
+spacing = 12.0
 
-[node name="bridge" type="MeshInstance" parent="." index="10"]
-transform = Transform( 0.830289, 0, 0.557333, 0, 1, 0, -0.557333, 0, 0.830289, -387.815, 65.0037, 97.0426 )
+[node name="bridge" type="MeshInstance" parent="." index="9"]
+transform = Transform( 0.424896, 0, 0.263559, 0, 0.5, 0, -0.263559, 0, 0.424896, -198.016, 34.7771, 39.0622 )
 layers = 1
-material_override = ExtResource( 24 )
+material_override = ExtResource( 20 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -417,8 +333,8 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 25 )
+mesh = ExtResource( 21 )
 skeleton = NodePath("..")
 material/0 = null
-_sections_unfolded = [ "Geometry", "material/0", "material_override" ]
+_sections_unfolded = [ "Geometry", "Transform", "material/0", "material_override" ]
 

@@ -15,3 +15,4 @@ dest_files=[ "res://.import/paprota.obj-1a28c6696ddd4d14ba91ca1fa077d729.mesh", 
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

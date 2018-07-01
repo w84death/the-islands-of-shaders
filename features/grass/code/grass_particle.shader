@@ -9,6 +9,7 @@ uniform bool blue_zone = false;
 uniform sampler2D height_map;
 uniform sampler2D features_map;
 uniform float max_height = 18.0;
+uniform float water_level = 54.0;
 uniform vec2 heightmap_size = vec2(512.0, 512.0);
 
 float get_height(vec2 pos) {
@@ -70,7 +71,7 @@ void vertex() {
 		terrain_mask += texture(features_map, feat_pos).b;
 	}
 	
-	if (terrain_mask < 0.85) {
+	if (terrain_mask < 0.85 || pos.y < water_level) {
 		pos.y = -10000.0;
 	} else if (abs(y2 - pos.y) > 0.5) {
 		pos.y = -10000.0;

@@ -8,6 +8,7 @@ uniform sampler2D features_map;
 uniform float max_height = 18.0;
 uniform float heigh_noise_scale = 64.0;
 uniform vec2 heightmap_size = vec2(512.0, 512.0);
+uniform float water_level = 54.0;
 
 float fake_random(vec2 p){
 	return fract(sin(dot(p.xy, vec2(12.9898,78.233))) * 43758.5453);
@@ -58,7 +59,7 @@ void vertex() {
 	float y2 = get_height(pos.xz + vec2(1.0, 0.0));
 	float y3 = get_height(pos.xz + vec2(0.0, 1.0));
 	
-	if (terrain_mask < 0.6) {
+	if (terrain_mask < 0.6 || pos.y < water_level) {
 		pos.y = -10000.0;
 	} else if (abs(y2 - pos.y) > 0.5) {
 		pos.y = -10000.0;

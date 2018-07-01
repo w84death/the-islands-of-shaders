@@ -15,3 +15,4 @@ dest_files=[ "res://.import/grass2.obj-f9d72339a7eb61e0feacdc4b0af53d4b.mesh", "
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

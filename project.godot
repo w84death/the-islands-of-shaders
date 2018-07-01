@@ -23,6 +23,7 @@ settings/fps/force_fps=60
 
 window/size/width=566
 window/size/height=320
+window/size/fullscreen=true
 window/per_pixel_transparency=true
 window/per_pixel_transparency_splash=true
 window/stretch/mode="viewport"
@@ -145,16 +146,14 @@ common/physics_fps=75
 [rendering]
 
 quality/intended_usage/framebuffer_allocation.mobile=2
-quality/filters/use_nearest_mipmap_filter=true
-quality/filters/anisotropic_filter_level=8
-quality/shadows/filter_mode=0
-quality/reflections/texture_array_reflections=false
+quality/filters/anisotropic_filter_level=2
+quality/directional_shadow/size=1024
+quality/shadow_atlas/size=1024
 quality/reflections/high_quality_ggx=false
-quality/subsurface_scattering/quality=2
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0.27451, 0.27451, 0.27451, 1 )
 quality/reflections/atlas_size=1024
 quality/reflections/atlas_subdiv=4
-quality/filters/msaa=3
+quality/filters/msaa=1
 quality/depth/hdr=false
 environment/default_environment="res://system/world_enviroment_fantasy.tres"
