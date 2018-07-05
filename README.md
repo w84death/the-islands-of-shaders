@@ -1,6 +1,8 @@
 # The Island of Shaders
 Project to learn and test Godot Engine 3.x Shaders
 
+Read [blog post about water shader](http://krzysztofjankowski.com/blog/water-shader-in-godotengine-3.html).
+
 ## Technology
 Custom made shaders for:
 - terrain (heightmap, 3x textures)
