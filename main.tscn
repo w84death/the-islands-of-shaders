@@ -1,51 +1,75 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
-[ext_resource path="res://system/camera_rig.gd" type="Script" id=2]
-[ext_resource path="res://features/shared/amiga.material" type="Material" id=3]
-[ext_resource path="res://system/world_enviroment_fantasy.tres" type="Environment" id=4]
-[ext_resource path="res://sounds/samples/joungle_back1.ogg" type="AudioStream" id=5]
-[ext_resource path="res://sounds/code/loop_sample.gd" type="Script" id=6]
-[ext_resource path="res://sounds/samples/joungle_back2.ogg" type="AudioStream" id=7]
-[ext_resource path="res://sounds/samples/soundscape1.ogg" type="AudioStream" id=8]
-[ext_resource path="res://maps/world_map.tscn" type="PackedScene" id=9]
-[ext_resource path="res://features/grass/code/new_grass_1.material" type="Material" id=10]
-[ext_resource path="res://features/grass/code/grass.shader" type="Shader" id=11]
-[ext_resource path="res://features/grass/tex/new_grass-1a.png" type="Texture" id=12]
-[ext_resource path="res://features/grass/tex/new_grass-1c.png" type="Texture" id=13]
-[ext_resource path="res://features/gui/theme.tres" type="Theme" id=14]
-[ext_resource path="res://features/gui/tios-logo.png" type="Texture" id=15]
-[ext_resource path="res://features/gui/fps.gd" type="Script" id=16]
-[ext_resource path="res://features/shared/island_0_entities_map.png" type="Texture" id=17]
-[ext_resource path="res://system/gimp-logo.png" type="Texture" id=18]
-[ext_resource path="res://system/godot.png" type="Texture" id=19]
-[ext_resource path="res://system/Wings3d.png" type="Texture" id=20]
-[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=21]
-[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=22]
-[ext_resource path="res://features/shared/voronoid.material" type="Material" id=23]
+[ext_resource path="res://features/shared/voronoid.material" type="Material" id=2]
+[ext_resource path="res://features/gui/code/tios_logo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://system/camera_rig.gd" type="Script" id=4]
+[ext_resource path="res://features/shared/amiga.material" type="Material" id=5]
+[ext_resource path="res://system/world_enviroment_fantasy.tres" type="Environment" id=6]
+[ext_resource path="res://sounds/samples/joungle_back1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://sounds/code/loop_sample.gd" type="Script" id=8]
+[ext_resource path="res://sounds/samples/joungle_back2.ogg" type="AudioStream" id=9]
+[ext_resource path="res://sounds/samples/soundscape1.ogg" type="AudioStream" id=10]
+[ext_resource path="res://maps/world_map.tscn" type="PackedScene" id=11]
+[ext_resource path="res://features/grass/code/new_grass_1.material" type="Material" id=12]
+[ext_resource path="res://features/grass/code/grass.shader" type="Shader" id=13]
+[ext_resource path="res://features/grass/tex/new_grass-1a.png" type="Texture" id=14]
+[ext_resource path="res://features/grass/tex/new_grass-1c.png" type="Texture" id=15]
+[ext_resource path="res://features/gui/theme.tres" type="Theme" id=16]
+[ext_resource path="res://features/gui/fps.gd" type="Script" id=17]
+[ext_resource path="res://features/shared/island_0_entities_map.png" type="Texture" id=18]
+[ext_resource path="res://system/gimp-logo.png" type="Texture" id=19]
+[ext_resource path="res://system/godot.png" type="Texture" id=20]
+[ext_resource path="res://system/Wings3d.png" type="Texture" id=21]
+[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=22]
+[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=23]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="SphereMesh" id=6]
 
-resource_name = "menu"
-length = 8.0
+material = ExtResource( 2 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 12.0
+height = 24.0
+radial_segments = 32
+rings = 36
+is_hemisphere = false
+_sections_unfolded = [ "material" ]
+
+[sub_resource type="Animation" id=8]
+
+resource_name = "idle"
+length = 6.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/path = NodePath(".:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4 ),
+"times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( -30, -50, 0 ), Vector3( -30, -128, 0 ) ]
+"values": [ Vector3( -200, 150, 500 ), Vector3( 120, 150, 500 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -30, -60, 0 ), Vector3( -30, -10, 0 ) ]
 }
 
 [sub_resource type="SphereMesh" id=2]
 
-material = ExtResource( 3 )
+material = ExtResource( 5 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 radius = 4.0
@@ -58,21 +82,21 @@ _sections_unfolded = [ "material" ]
 [sub_resource type="ShaderMaterial" id=3]
 
 render_priority = 0
-shader = ExtResource( 11 )
+shader = ExtResource( 13 )
 shader_param/amplitude = 0.6
 shader_param/speed = Vector2( 1.4, 1.5 )
 shader_param/scale = Vector2( 0.1, 0.2 )
-shader_param/texture_map = ExtResource( 12 )
+shader_param/texture_map = ExtResource( 14 )
 _sections_unfolded = [ "Shader Param", "shader", "shader_param", "shader_param/texture_map" ]
 
 [sub_resource type="ShaderMaterial" id=4]
 
 render_priority = 0
-shader = ExtResource( 11 )
+shader = ExtResource( 13 )
 shader_param/amplitude = 0.6
 shader_param/speed = Vector2( 1.4, 1.5 )
 shader_param/scale = Vector2( 0.1, 0.2 )
-shader_param/texture_map = ExtResource( 13 )
+shader_param/texture_map = ExtResource( 15 )
 _sections_unfolded = [ "Shader Param", "shader", "shader_param", "shader_param/texture_map" ]
 
 [sub_resource type="ArrayMesh" id=5]
@@ -98,7 +122,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 12,
-"material": ExtResource( 10 ),
+"material": ExtResource( 12 ),
 "name": "image",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -156,39 +180,9 @@ surfaces/5 = {
 }
 _sections_unfolded = [ "surface_2", "surface_4", "surface_4/material", "surface_6", "surface_6/material" ]
 
-[sub_resource type="Animation" id=6]
-
-length = 3.5
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 0.9, 1.4, 1.9, 2.4, 2.9, 3.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 0.34902, 0.34902, 1 ), Color( 1, 0.941176, 0.34902, 1 ), Color( 0.384314, 1, 0.34902, 1 ), Color( 0.34902, 0.968627, 1, 1 ), Color( 0.34902, 0.372549, 1, 1 ), Color( 0.901961, 0.34902, 1, 1 ), Color( 1, 0.34902, 0.576471, 1 ), Color( 1, 0.34902, 0.34902, 1 ) ]
-}
-
 [sub_resource type="SphereMesh" id=7]
 
-material = ExtResource( 23 )
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-flip_faces = false
-radius = 12.0
-height = 24.0
-radial_segments = 32
-rings = 36
-is_hemisphere = false
-_sections_unfolded = [ "material" ]
-
-[sub_resource type="SphereMesh" id=8]
-
-material = ExtResource( 3 )
+material = ExtResource( 5 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 radius = 6.0
@@ -202,7 +196,7 @@ _sections_unfolded = [ "material" ]
 script = ExtResource( 1 )
 
 [node name="camera_menu" type="Camera" parent="." index="0"]
-transform = Transform( 0.642788, 0.383022, -0.663414, 0, 0.866025, 0.5, 0.766044, -0.321394, 0.55667, -64, 159.848, 25 )
+transform = Transform( 0.534423, 0.422609, -0.731979, 0, 0.866025, 0.5, 0.845217, -0.267211, 0.462824, -185.249, 150, 500 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -217,19 +211,40 @@ near = 0.1
 far = 512.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="menu_anim" type="AnimationPlayer" parent="camera_menu" index="0"]
+[node name="plasma" type="MeshInstance" parent="camera_menu" index="0"]
+transform = Transform( 0.736446, 0.476682, -0.480022, 0.341519, -0.874484, -0.344444, -0.583962, 0.0897276, -0.806807, 0, 0.893153, -65.4406 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform", "mesh" ]
+
+[node name="tios_logo" parent="camera_menu" index="1" instance=ExtResource( 3 )]
+editor/display_folded = true
+transform = Transform( 1, -1.3411e-07, 2.98023e-08, -2.98023e-08, 1, -1.49012e-08, -2.98023e-08, 1.3411e-07, 1, 0, -0.45, -10.73 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="camera_menu" index="2"]
 root_node = NodePath("..")
-autoplay = "menu"
+autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 0.1
-anims/menu = SubResource( 1 )
+anims/idle = SubResource( 8 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="camera_rig" type="Position3D" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 0.913546, -0.406737, 0, 0.406737, 0.913545, -8.23593, 29.161, 950.318 )
-script = ExtResource( 2 )
+script = ExtResource( 4 )
 _sections_unfolded = [ "Transform", "script" ]
 rotate_speed = 1.0
 move_speed = 1.0
@@ -301,41 +316,41 @@ directional_shadow_max_distance = 386.0
 _sections_unfolded = [ "Directional Shadow", "Editor", "Light", "Shadow", "Transform" ]
 
 [node name="enviroment" type="WorldEnvironment" parent="system" index="1"]
-environment = ExtResource( 4 )
+environment = ExtResource( 6 )
 _sections_unfolded = [ "environment" ]
 
 [node name="sound_sea" type="AudioStreamPlayer" parent="system" index="2"]
-stream = ExtResource( 5 )
+stream = ExtResource( 7 )
 volume_db = -6.0
 pitch_scale = 1.0
 autoplay = true
 stream_paused = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "script", "stream" ]
 
 [node name="sound_crickets" type="AudioStreamPlayer" parent="system" index="3"]
-stream = ExtResource( 7 )
+stream = ExtResource( 9 )
 volume_db = 3.0
 pitch_scale = 1.001
 autoplay = true
 stream_paused = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 
 [node name="sound_soundscape" type="AudioStreamPlayer" parent="system" index="4"]
-stream = ExtResource( 8 )
+stream = ExtResource( 10 )
 volume_db = -10.0
 pitch_scale = 1.0
 autoplay = true
 stream_paused = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 
-[node name="world_map" parent="." index="3" instance=ExtResource( 9 )]
+[node name="world_map" parent="." index="3" instance=ExtResource( 11 )]
 
 [node name="grass" parent="world_map" index="1"]
 visible = false
@@ -351,7 +366,6 @@ cast_shadow = 0
 spacing = 16.0
 
 [node name="GUI" type="Control" parent="." index="4"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -362,7 +376,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 14 )
+theme = ExtResource( 16 )
 _sections_unfolded = [ "Theme", "theme" ]
 __meta__ = {
 "_edit_lock_": true
@@ -381,29 +395,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="top-left" type="Control" parent="GUI/demo" index="0"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 12.0
-margin_bottom = 12.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
-[node name="logo" type="Sprite" parent="GUI/demo/top-left" index="0"]
-modulate = Color( 1, 1, 1, 0.25098 )
-texture = ExtResource( 15 )
-centered = false
-_sections_unfolded = [ "Transform", "Visibility" ]
-
-[node name="bottom-middle" type="Control" parent="GUI/demo" index="1"]
+[node name="bottom-middle" type="Control" parent="GUI/demo" index="0"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -440,10 +432,10 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 16 )
+script = ExtResource( 17 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
-[node name="minimap" type="Control" parent="GUI/demo" index="2"]
+[node name="minimap" type="Control" parent="GUI/demo" index="1"]
 visible = false
 anchor_left = 1.0
 anchor_top = 0.0
@@ -475,7 +467,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Rect" ]
@@ -484,7 +476,6 @@ __meta__ = {
 }
 
 [node name="intro" type="Control" parent="GUI" index="1"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -546,8 +537,8 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="logo" type="Sprite" parent="GUI/intro/top/applications/gimp" index="0"]
 modulate = Color( 1, 1, 1, 0.25098 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 18 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 19 )
 offset = Vector2( 0, 32 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
@@ -569,8 +560,8 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="logo" type="Sprite" parent="GUI/intro/top/applications/godot" index="0"]
 modulate = Color( 1, 1, 1, 0.25098 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 19 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 20 )
 offset = Vector2( 0, 32 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
@@ -592,8 +583,8 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="logo" type="Sprite" parent="GUI/intro/top/applications/wings3d" index="0"]
 modulate = Color( 1, 1, 1, 0.25098 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 20 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 21 )
 offset = Vector2( 0, 32 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
@@ -615,8 +606,8 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="logo" type="Sprite" parent="GUI/intro/top/applications/p1x" index="0"]
 modulate = Color( 1, 1, 1, 0.25098 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 21 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 22 )
 offset = Vector2( 0, 6 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
@@ -632,22 +623,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Margin" ]
-
-[node name="tios" type="Sprite" parent="GUI/intro/center" index="0"]
-editor/display_folded = true
-modulate = Color( 0.857723, 0.350902, 1, 1 )
-position = Vector2( 0, -30 )
-texture = ExtResource( 15 )
-_sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/intro/center/tios" index="0"]
-root_node = NodePath("..")
-autoplay = "gay"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/gay = SubResource( 6 )
-blend_times = [  ]
 
 [node name="bottom-middle" type="Control" parent="GUI/intro" index="2"]
 anchor_left = 0.5
@@ -680,9 +655,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/line_spacing = -12
 custom_constants/shadow_offset_y = 1
-text = "press A to START
-left THUMB to MOVE / right THUMB to LOOK
-F for FULLSCREEN / ESC for QUIT"
+text = "press A to START"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -690,10 +663,10 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
-[node name="corners" parent="GUI" index="2" instance=ExtResource( 22 )]
+[node name="corners" parent="GUI" index="2" instance=ExtResource( 23 )]
 
-[node name="plasma" type="MeshInstance" parent="." index="5"]
-transform = Transform( 0.135395, -0.989964, -0.0404933, -0.0726404, -0.0506779, 0.99607, -0.988125, -0.131922, -0.0787729, 52.802, 46.3345, 218.222 )
+[node name="amiga" type="MeshInstance" parent="." index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.56197, 44.327, 197.355 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -706,26 +679,12 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 7 )
 skeleton = NodePath("..")
 material/0 = null
-_sections_unfolded = [ "Transform", "mesh" ]
-
-[node name="amiga" type="MeshInstance" parent="." index="6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.56197, 44.327, 197.355 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 8 )
-skeleton = NodePath("..")
-material/0 = null
 _sections_unfolded = [ "mesh" ]
 
 [connection signal="finished" from="system/sound_sea" to="system/sound_sea" method="_on_sound_finished"]
 [connection signal="finished" from="system/sound_crickets" to="system/sound_crickets" method="_on_sound_finished"]
 [connection signal="finished" from="system/sound_soundscape" to="system/sound_soundscape" method="_on_sound_finished"]
+
+[editable path="camera_menu/tios_logo"]
 
 [editable path="world_map"]

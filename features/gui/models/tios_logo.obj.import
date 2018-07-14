@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/tios_logo.obj-edfa6e97c4a93f5a3f75db0f99b76f9d.mesh"
+
+[deps]
+
+files=[ "res://.import/tios_logo.obj-edfa6e97c4a93f5a3f75db0f99b76f9d.mesh" ]
+
+source_file="res://features/gui/models/tios_logo.obj"
+dest_files=[ "res://.import/tios_logo.obj-edfa6e97c4a93f5a3f75db0f99b76f9d.mesh", "res://.import/tios_logo.obj-edfa6e97c4a93f5a3f75db0f99b76f9d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

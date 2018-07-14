@@ -17,13 +17,11 @@ func _input(event):
 
 func show_game():
 		get_node("camera_rig/POV").make_current()
-		get_node("camera_menu/menu_anim").stop()
 		get_node("GUI/intro").hide()
 		get_node("GUI/demo").show()
 		
 func show_menu():
 		get_node("camera_menu").make_current()
-		get_node("camera_menu/menu_anim").play("menu")
 		get_node("GUI/intro").show()
 		get_node("GUI/demo").hide()
 
