@@ -16,7 +16,7 @@ func _input(event):
 		get_tree().quit()
 
 func show_game():
-		get_node("camera_rig/hamster/POV").make_current()
+		get_node("camera_rig/POV").make_current()
 		get_node("camera_menu/menu_anim").stop()
 		get_node("GUI/intro").hide()
 		get_node("GUI/demo").show()

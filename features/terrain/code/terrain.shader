@@ -3,7 +3,8 @@ shader_type spatial;
 
 uniform vec2 map_size = vec2(512.0, 512.0);
 uniform float max_height = 18.0;
-
+uniform float mountains_level = 0.7;
+uniform float mountains_size = 3.0;
 uniform sampler2D height_map;
 uniform sampler2D features_map;
 uniform float water_height = 0.6;
@@ -17,11 +18,18 @@ uniform float uv_scale = 32.0;
 float get_height(vec2 pos) {
 	pos -= .5 * map_size;
 	pos /= map_size;
-	return max_height * texture(height_map, pos).r;
+	float h = texture(height_map, pos).r;
+	if (h>mountains_level) {
+		h += (h-mountains_level)*mountains_size;
+	}
+	return max_height * h;
 }
 
 void vertex() {
 	VERTEX.y = get_height(VERTEX.xz);
+	TANGENT = normalize( vec3(0.0, get_height(VERTEX.xz + vec2(0.0, 0.1)) - get_height(VERTEX.xz + vec2(0.0, -0.1)), 0.4));
+	BINORMAL = normalize( vec3(0.4, get_height(VERTEX.xz + vec2(0.1, 0.0)) - get_height(VERTEX.xz + vec2(-0.1, 0.0)), 0.0));
+	NORMAL = cross(TANGENT, BINORMAL);
 }
 
 void fragment() {
@@ -47,6 +55,6 @@ void fragment() {
 	}
 	
 	ALBEDO = clamp((color_0 + color_r + color_g + color_b) * underwater_color, 0.0, 1.0);
-	METALLIC = .5;
-	ROUGHNESS = 1.0;
+	METALLIC = 0.9;
+	ROUGHNESS = 0.9;
 }

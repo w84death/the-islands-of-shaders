@@ -1,21 +1,28 @@
 shader_type spatial;
 /* WATER SHADER 3.0 "Back to the roots" */
 
-uniform vec2 amplitude = vec2(1.0, 1.0);
+uniform vec2 amplitude = vec2(0.5, 0.3);
 uniform vec2 frequency = vec2(.2, .2);
 uniform vec2 time_factor = vec2(2.0, 2.0);
-
+uniform bool waves_by_height = false;
 uniform float water_height = 2.5;
 uniform float water_clearnes = 0.4;
 uniform float water_refraction = 0.014;
-uniform float water_alpha = 0.7;
-uniform float water_shore = 0.36;
+uniform float water_alpha = 0.2;
+uniform float water_shore = 0.37;
 uniform float water_color_contrast = 6.0;
+uniform float MAX_ITER = 512.0;
+uniform float SPEED = 0.1;
 
 uniform sampler2D height_map;
 
 float height(vec2 pos, float time, float noise){
-	return (amplitude.x * sin(pos.x * frequency.x * noise + time * time_factor.x)) + (amplitude.y * sin(pos.y * frequency.y * noise + time * time_factor.y));
+	float t_height = texture(height_map, pos.xy * vec2(1.0)).r;
+	float th = 1.0;
+	if (waves_by_height) {
+		th = t_height*.2;
+	}
+	return (amplitude.x * th * sin(pos.x * frequency.x * noise + time * time_factor.x)) + (amplitude.y * th * sin(pos.y * frequency.y * noise + time * time_factor.y));
 }
 
 float fake_random(vec2 p){
@@ -25,7 +32,25 @@ float fake_random(vec2 p){
 vec2 faker(vec2 p){
 	return vec2(fake_random(p), fake_random(p*124.32));
 }
+
+float voronoi (vec2 uv, float t) {
+	float md = 100.0;
+	float id = 0.0;
 	
+	for (float i=0.0; i<MAX_ITER; i++){
+		vec2 n = faker(vec2(i));
+		vec2 p = sin(n*t*SPEED);
+		
+		float d = length(uv.xy-p);
+		if (d<md) {
+			md = d;
+			id = i;
+		}
+	}
+	
+	return md;
+}
+
 void vertex(){
 	float noise = faker(VERTEX.xz).x;
 	VERTEX.y = water_height + height(VERTEX.xz, TIME, noise);
@@ -37,15 +62,16 @@ void vertex(){
 void fragment(){
 	vec2 uv2 = UV * -1.0;
 	float height = texture(height_map, uv2.xy).r;
-	float gfx = smoothstep(0.15, water_shore, height);
-	vec3 w_color = vec3(1.0, 1.0, 1.0);
-	w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
-	ROUGHNESS = gfx;
-	METALLIC = 0.6;
-	SPECULAR = 1.0-gfx;
-	ALPHA = 1.0 - clamp(gfx, water_alpha, 1.0);
-	ALBEDO = w_color;
+	float gfx = smoothstep(0.1, water_shore, height);
+	vec3 w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
+	//w_color += voronoi(UV, TIME) * 4.0;
 	
+	ROUGHNESS = 0.3 * gfx;
+	METALLIC = 0.8;
+	SPECULAR = 1.0 - gfx;
+	ALPHA = water_alpha;
+	
+	ALBEDO = clamp(w_color, .0, 1.0);
 	
 	// REFRACTION
 	vec3 ref_normal = normalize( mix(VERTEX,TANGENT * NORMALMAP.x + BINORMAL * NORMALMAP.y + VERTEX * NORMALMAP.z, NORMALMAP_DEPTH) );

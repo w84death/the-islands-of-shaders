@@ -71,7 +71,7 @@ void vertex() {
 		terrain_mask += texture(features_map, feat_pos).b;
 	}
 	
-	if (terrain_mask < 0.85 || pos.y < water_level) {
+	if (terrain_mask < 0.65 || pos.y < water_level) {
 		pos.y = -10000.0;
 	} else if (abs(y2 - pos.y) > 0.5) {
 		pos.y = -10000.0;
@@ -79,18 +79,7 @@ void vertex() {
 		pos.y = -10000.0;
 	}
 	
-	// rotate our transform
-	/*TRANSFORM[0][0] = cos(noise.x * 3.0);
-	TRANSFORM[0][2] = -sin(noise.x * 3.0);
-	TRANSFORM[2][0] = sin(noise.y * 3.0);
-	TRANSFORM[2][2] = cos(noise.y * 3.0);
-	*/
-	
 	float height_noise = noise.x * 6.0;
-	/*float rot_noise = clamp(-0.5 + noise.x * 2.0, -0.4, 0.4);
-	TRANSFORM[0][1] = rot_noise;
-	TRANSFORM[2][1] = rot_noise;
-	*/
 	
 	// update our transform to place
 	TRANSFORM[3][0] = pos.x;

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/island_0x0_featuresmap (copy).png-34c7bcf3f0090b2e7138242347a89011.stex"
+path="res://.import/islan_1_height_map.png-26f88164430e4a85edf779d33f79eb6b.stex"
 
 [deps]
 
-source_file="res://features/shared/island_0x0_featuresmap (copy).png"
-dest_files=[ "res://.import/island_0x0_featuresmap (copy).png-34c7bcf3f0090b2e7138242347a89011.stex" ]
+source_file="res://features/shared/islan_1_height_map.png"
+dest_files=[ "res://.import/islan_1_height_map.png-26f88164430e4a85edf779d33f79eb6b.stex" ]
 
 [params]
 
