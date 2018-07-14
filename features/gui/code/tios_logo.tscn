@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://features/gui/models/tios_logo.obj" type="ArrayMesh" id=1]
 
@@ -28,10 +28,10 @@ params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
 albedo_color = Color( 0.160784, 0.203922, 0.133333, 1 )
-metallic = 0.0
+metallic = 0.3
 metallic_specular = 0.5
 metallic_texture_channel = 0
-roughness = 0.52
+roughness = 0.41
 roughness_texture_channel = 0
 emission_enabled = false
 normal_enabled = false
@@ -56,6 +56,37 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Metallic", "Roughness" ]
 
+[sub_resource type="Animation" id=2]
+
+resource_name = "fly_around"
+length = 5.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("OmniLight:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.138287, 1, 2, 3.1, 4.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -2.0101, 2.33021, -0.336277 ), Vector3( -3.94453, 3.12624, -1.04362 ), Vector3( -3.38192, 0.954379, 0.661102 ), Vector3( 0.385459, 1.57507, 1.3827 ), Vector3( 3.26391, 3.23446, -0.567094 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OmniLight2:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2.1, 3.2, 4.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 2.54756, 2.33021, -0.336277 ), Vector3( 3.63897, 3.25722, -0.0107718 ), Vector3( 1.51093, 1.41245, 1.23578 ), Vector3( -0.172453, 3.46472, 0.123851 ), Vector3( -0.211002, 1.72921, -1.65663 ) ]
+}
+
 [node name="tios_logo" type="Spatial"]
 
 [node name="the_islands_of_shaders" type="MeshInstance" parent="." index="0"]
@@ -74,10 +105,10 @@ material/0 = SubResource( 1 )
 _sections_unfolded = [ "Material", "material/0" ]
 
 [node name="OmniLight" type="OmniLight" parent="." index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0101, 2.33021, -0.336277 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75374, 2.38974, -0.465533 )
 layers = 1
-light_color = Color( 1, 0.654902, 0, 1 )
-light_energy = 3.78
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 6.73
 light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.5
@@ -89,17 +120,17 @@ shadow_bias = 0.15
 shadow_contact = 0.0
 shadow_reverse_cull_face = false
 editor_only = false
-omni_range = 5.0
+omni_range = 5.47312
 omni_attenuation = 1.0
 omni_shadow_mode = 1
 omni_shadow_detail = 1
-_sections_unfolded = [ "Light", "Omni" ]
+_sections_unfolded = [ "Light", "Omni", "Transform" ]
 
 [node name="OmniLight2" type="OmniLight" parent="." index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54756, 2.33021, -0.336277 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98293, 2.68852, 0.373516 )
 layers = 1
-light_color = Color( 1, 0.654902, 0, 1 )
-light_energy = 3.78
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 11.61
 light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.5
@@ -111,9 +142,18 @@ shadow_bias = 0.15
 shadow_contact = 0.0
 shadow_reverse_cull_face = false
 editor_only = false
-omni_range = 5.0
+omni_range = 11.2811
 omni_attenuation = 1.0
 omni_shadow_mode = 1
 omni_shadow_detail = 1
-_sections_unfolded = [ "Light", "Omni" ]
+_sections_unfolded = [ "Light", "Omni", "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+root_node = NodePath("..")
+autoplay = "fly_around"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/fly_around = SubResource( 2 )
+blend_times = [  ]
 

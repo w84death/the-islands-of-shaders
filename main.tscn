@@ -228,9 +228,15 @@ material/0 = null
 _sections_unfolded = [ "Transform", "mesh" ]
 
 [node name="tios_logo" parent="camera_menu" index="1" instance=ExtResource( 3 )]
-editor/display_folded = true
 transform = Transform( 1, -1.3411e-07, 2.98023e-08, -2.98023e-08, 1, -1.49012e-08, -2.98023e-08, 1.3411e-07, 1, 0, -0.45, -10.73 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="OmniLight" parent="camera_menu/tios_logo" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.419597, 1.44243, 1.2285 )
+
+[node name="OmniLight2" parent="camera_menu/tios_logo" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340307, 2.8396, 0.462545 )
+light_color = Color( 0, 1, 0.882353, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="camera_menu" index="2"]
 root_node = NodePath("..")
