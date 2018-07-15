@@ -1,10 +1,10 @@
 [gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
-[ext_resource path="res://features/gui/code/tios_logo.tscn" type="PackedScene" id=2]
-[ext_resource path="res://features/shared/voronoid.material" type="Material" id=3]
-[ext_resource path="res://system/camera_rig.gd" type="Script" id=4]
-[ext_resource path="res://features/shared/amiga.material" type="Material" id=5]
+[ext_resource path="res://features/shared/amiga.material" type="Material" id=2]
+[ext_resource path="res://features/gui/code/tios_logo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://features/shared/voronoid.material" type="Material" id=4]
+[ext_resource path="res://system/camera_rig.gd" type="Script" id=5]
 [ext_resource path="res://system/world_enviroment_fantasy.tres" type="Environment" id=6]
 [ext_resource path="res://sounds/samples/joungle_back1.ogg" type="AudioStream" id=7]
 [ext_resource path="res://sounds/code/loop_sample.gd" type="Script" id=8]
@@ -66,22 +66,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("../../GUI/intro/top:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.1, 2.3, 3.3, 6.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
-}
+
+[sub_resource type="SphereMesh" id=7]
+
+material = ExtResource( 2 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 0.2
+height = 0.4
+radial_segments = 32
+rings = 32
+is_hemisphere = false
+_sections_unfolded = [ "material" ]
 
 [sub_resource type="SphereMesh" id=2]
 
-material = ExtResource( 3 )
+material = ExtResource( 4 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 radius = 6.0
@@ -93,7 +93,7 @@ _sections_unfolded = [ "material" ]
 
 [sub_resource type="SphereMesh" id=3]
 
-material = ExtResource( 5 )
+material = ExtResource( 2 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 radius = 4.0
@@ -204,22 +204,11 @@ surfaces/5 = {
 }
 _sections_unfolded = [ "surface_2", "surface_4", "surface_4/material", "surface_6", "surface_6/material" ]
 
-[sub_resource type="SphereMesh" id=7]
-
-material = ExtResource( 5 )
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-flip_faces = false
-radius = 6.0
-height = 12.0
-radial_segments = 32
-rings = 32
-is_hemisphere = false
-_sections_unfolded = [ "material" ]
-
 [node name="TIOS" type="Spatial" index="0"]
 script = ExtResource( 1 )
 
 [node name="logo" type="Spatial" parent="." index="0"]
+_sections_unfolded = [ "Transform" ]
 
 [node name="camera_menu" type="Camera" parent="logo" index="0"]
 transform = Transform( 0.527401, 0.4185, -0.739395, 0, 0.870269, 0.492575, 0.849617, -0.259784, 0.458981, -180.819, 151.68, 569.17 )
@@ -247,7 +236,68 @@ anims/idle = SubResource( 1 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="tios_logo" parent="logo" index="1" instance=ExtResource( 2 )]
+[node name="amiga" type="MeshInstance" parent="logo/camera_menu" index="1"]
+transform = Transform( 0.890927, -0.454146, 0, 0.389361, 0.763834, -0.514739, 0.233767, 0.458595, 0.857348, 1.7, 0.88, -3.66 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 7 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform", "mesh" ]
+
+[node name="OmniLight" type="OmniLight" parent="logo/camera_menu/amiga" index="0"]
+transform = Transform( 1, -1.54972e-06, 2.98023e-08, 0, 0.999997, 1.49012e-08, 0, 2.5332e-07, 1, -0.531647, -0.172974, 0.203522 )
+layers = 1
+light_color = Color( 0.329412, 0.937255, 1, 1 )
+light_energy = 10.39
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 0.642109
+omni_attenuation = 1.0
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni" ]
+
+[node name="OmniLight2" type="OmniLight" parent="logo/camera_menu/amiga" index="1"]
+transform = Transform( 1, -2.02656e-06, 2.98023e-08, 0, 0.999997, 1.49012e-08, 0, 3.72529e-07, 1, 0.274872, 0.289413, 0.218567 )
+layers = 1
+light_color = Color( 1, 0.866667, 0, 1 )
+light_energy = 16.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 0.642109
+omni_attenuation = 1.0
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni" ]
+
+[node name="tios_logo" parent="logo" index="1" instance=ExtResource( 3 )]
+editor/display_folded = true
 transform = Transform( 0.527401, 0.418501, -0.739395, 0, 0.870269, 0.492576, 0.849617, -0.259785, 0.45898, -173.155, 144.783, 564.413 )
 _sections_unfolded = [ "Transform" ]
 
@@ -256,9 +306,25 @@ _sections_unfolded = [ "Material", "material/0" ]
 
 [node name="OmniLight" parent="logo/tios_logo" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40156, 1.62368, -0.239699 )
+light_cull_mask = -1
+
+[node name="left_spot" parent="logo/tios_logo" index="3"]
+light_cull_mask = -1
+
+[node name="right_spot" parent="logo/tios_logo" index="4"]
+light_cull_mask = -1
+
+[node name="center_spot" parent="logo/tios_logo" index="5"]
+light_cull_mask = -1
+
+[node name="center_spot3" parent="logo/tios_logo" index="6"]
+light_cull_mask = -1
+
+[node name="center_spot2" parent="logo/tios_logo" index="7"]
+light_cull_mask = -1
 
 [node name="plasma" type="MeshInstance" parent="logo" index="2"]
-transform = Transform( 0.963107, -0.180914, 0.199235, 0.00956774, -0.716839, -0.697173, 0.268949, 0.673358, -0.688662, -137.428, 126.639, 543.536 )
+transform = Transform( 0.963107, -0.180914, 0.199235, 0.00956774, -0.716839, -0.697173, 0.268949, 0.673358, -0.688662, -137.428, 126.639, 543.546 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -275,7 +341,7 @@ _sections_unfolded = [ "Transform", "mesh" ]
 
 [node name="camera_rig" type="Position3D" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 0.913546, -0.406737, 0, 0.406737, 0.913545, -8.23593, 29.161, 950.318 )
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "script" ]
 rotate_speed = 1.0
 move_speed = 1.0
@@ -427,6 +493,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="bottom-middle" type="Control" parent="GUI/demo" index="0"]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -521,12 +588,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="top" type="Control" parent="GUI/intro" index="0"]
-editor/display_folded = true
-modulate = Color( 1, 1, 1, 0.981818 )
-anchor_left = 0.5
+[node name="corner" type="Control" parent="GUI/intro" index="0"]
+modulate = Color( 1, 1, 1, 0.909091 )
+anchor_left = 1.0
 anchor_top = 0.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -536,117 +602,32 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Visibility" ]
 
-[node name="applications" type="HBoxContainer" parent="GUI/intro/top" index="0"]
+[node name="info" type="Label" parent="GUI/intro/corner" index="0"]
 anchor_left = 0.5
-anchor_top = 0.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.0
-margin_left = -181.0
-margin_top = 30.0
-margin_right = 203.0
-margin_bottom = 50.0
+anchor_bottom = 0.5
+margin_left = -101.0
+margin_top = 38.0
+margin_right = -4.0
+margin_bottom = 76.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 1
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_constants/separation = 64
-alignment = 1
-_sections_unfolded = [ "Custom Constants" ]
-
-[node name="gimp" type="Control" parent="GUI/intro/top/applications" index="0"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 96.0
-margin_right = 96.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
-
-[node name="logo" type="Sprite" parent="GUI/intro/top/applications/gimp" index="0"]
-modulate = Color( 1, 1, 1, 0.25098 )
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 19 )
-offset = Vector2( 0, 32 )
-_sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
-
-[node name="godot" type="Control" parent="GUI/intro/top/applications" index="1"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 160.0
-margin_right = 160.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
-
-[node name="logo" type="Sprite" parent="GUI/intro/top/applications/godot" index="0"]
-modulate = Color( 1, 1, 1, 0.25098 )
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 20 )
-offset = Vector2( 0, 32 )
-_sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
-
-[node name="wings3d" type="Control" parent="GUI/intro/top/applications" index="2"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 224.0
-margin_right = 224.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
-
-[node name="logo" type="Sprite" parent="GUI/intro/top/applications/wings3d" index="0"]
-modulate = Color( 1, 1, 1, 0.25098 )
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 21 )
-offset = Vector2( 0, 32 )
-_sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
-
-[node name="p1x" type="Control" parent="GUI/intro/top/applications" index="3"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 288.0
-margin_right = 288.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
-
-[node name="logo" type="Sprite" parent="GUI/intro/top/applications/p1x" index="0"]
-modulate = Color( 1, 1, 1, 0.25098 )
-self_modulate = Color( 0, 0, 0, 1 )
-scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 22 )
-offset = Vector2( 0, 6 )
-_sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
+size_flags_vertical = 4
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = -12
+custom_constants/shadow_offset_y = 1
+text = "press A to START"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
 [node name="center" type="Control" parent="GUI/intro" index="1"]
 anchor_left = 0.5
@@ -662,7 +643,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Margin" ]
 
 [node name="bottom-middle" type="Control" parent="GUI/intro" index="2"]
-editor/display_folded = true
 modulate = Color( 1, 1, 1, 0.909091 )
 anchor_left = 0.5
 anchor_top = 1.0
@@ -676,51 +656,119 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Visibility" ]
 
-[node name="info" type="Label" parent="GUI/intro/bottom-middle" index="0"]
+[node name="applications" type="HBoxContainer" parent="GUI/intro/bottom-middle" index="0"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -207.0
-margin_top = -111.0
-margin_right = 206.0
-margin_bottom = -21.0
+margin_left = -192.0
+margin_top = -50.0
+margin_right = 192.0
+margin_bottom = -30.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 2
+mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/line_spacing = -12
-custom_constants/shadow_offset_y = 1
-text = "press A to START"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Custom Colors", "Custom Constants" ]
+size_flags_vertical = 1
+custom_constants/separation = 64
+alignment = 1
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="gimp" type="Control" parent="GUI/intro/bottom-middle/applications" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 96.0
+margin_right = 96.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="logo" type="Sprite" parent="GUI/intro/bottom-middle/applications/gimp" index="0"]
+modulate = Color( 1, 1, 1, 0.501961 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 19 )
+offset = Vector2( 0, 32 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
+
+[node name="godot" type="Control" parent="GUI/intro/bottom-middle/applications" index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 160.0
+margin_right = 160.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="logo" type="Sprite" parent="GUI/intro/bottom-middle/applications/godot" index="0"]
+modulate = Color( 1, 1, 1, 0.501961 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 20 )
+offset = Vector2( 0, 32 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
+
+[node name="wings3d" type="Control" parent="GUI/intro/bottom-middle/applications" index="2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 224.0
+margin_right = 224.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="logo" type="Sprite" parent="GUI/intro/bottom-middle/applications/wings3d" index="0"]
+modulate = Color( 1, 1, 1, 0.501961 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 21 )
+offset = Vector2( 0, 32 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
+
+[node name="p1x" type="Control" parent="GUI/intro/bottom-middle/applications" index="3"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 288.0
+margin_right = 288.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="logo" type="Sprite" parent="GUI/intro/bottom-middle/applications/p1x" index="0"]
+modulate = Color( 1, 1, 1, 0.501961 )
+self_modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 22 )
+offset = Vector2( 0, 6 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
 [node name="corners" parent="GUI" index="2" instance=ExtResource( 23 )]
-
-[node name="amiga" type="MeshInstance" parent="." index="5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.56197, 44.327, 197.355 )
-visible = false
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 7 )
-skeleton = NodePath("..")
-material/0 = null
-_sections_unfolded = [ "mesh" ]
 
 [connection signal="finished" from="system/sound_sea" to="system/sound_sea" method="_on_sound_finished"]
 [connection signal="finished" from="system/sound_crickets" to="system/sound_crickets" method="_on_sound_finished"]
