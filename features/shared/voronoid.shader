@@ -33,9 +33,12 @@ float voronoi (vec2 uv, float t) {
 void fragment() {
 	float c = voronoi(UV, TIME);
 	
-	ALBEDO = vec3(c*4.0, 1.0-c*.5, 1.0);
-	ALPHA = c*5.0;
-	METALLIC = .9;
-	SPECULAR = 1.0;
-	ROUGHNESS = .0;
+	float r = clamp(c*.5, 0.0,1.0);
+	float g = clamp(c*1.2, 0.0,1.0);
+	float b = clamp(c*1.4, 0.0,1.0);
+	ALBEDO = vec3(r, g, b) * 2.5;
+	ALPHA = clamp(c*5.0, 0.2, 1.0);
+	METALLIC = .6;
+	SPECULAR = 0.0;
+	ROUGHNESS = 0.5;
 }

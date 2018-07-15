@@ -21,7 +21,7 @@ func show_game():
 		get_node("GUI/demo").show()
 		
 func show_menu():
-		get_node("camera_menu").make_current()
+		get_node("logo/camera_menu").make_current()
 		get_node("GUI/intro").show()
 		get_node("GUI/demo").hide()
 

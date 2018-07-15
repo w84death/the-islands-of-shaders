@@ -1,8 +1,8 @@
 [gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
-[ext_resource path="res://features/shared/voronoid.material" type="Material" id=2]
-[ext_resource path="res://features/gui/code/tios_logo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://features/gui/code/tios_logo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://features/shared/voronoid.material" type="Material" id=3]
 [ext_resource path="res://system/camera_rig.gd" type="Script" id=4]
 [ext_resource path="res://features/shared/amiga.material" type="Material" id=5]
 [ext_resource path="res://system/world_enviroment_fantasy.tres" type="Environment" id=6]
@@ -24,22 +24,10 @@
 [ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=22]
 [ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=23]
 
-[sub_resource type="SphereMesh" id=1]
-
-material = ExtResource( 2 )
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-flip_faces = false
-radius = 12.0
-height = 24.0
-radial_segments = 32
-rings = 36
-is_hemisphere = false
-_sections_unfolded = [ "material" ]
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 
 resource_name = "idle"
-length = 4.0
+length = 12.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
@@ -49,10 +37,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 3, 4, 4.4, 6.6, 7.6, 10.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( -180.819, 150.67, 569.17 ), Vector3( -153.169, 150.67, 542.24 ) ]
+"values": [ Vector3( -180.819, 151.68, 569.17 ), Vector3( -180.589, 151.517, 568.94 ), Vector3( -178.589, 149.49, 567.809 ), Vector3( -178.589, 149.426, 567.809 ), Vector3( -178.459, 149.326, 567.619 ), Vector3( -173.916, 147.235, 569.929 ), Vector3( -173.536, 146.925, 569.699 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:rotation_degrees")
@@ -61,11 +49,47 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 3, 4, 4.4, 6.6, 7.6, 10.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( -29.51, -58.17, 0 ), Vector3( -25.68, -58.17, 0 ) ]
+"values": [ Vector3( -29.51, -58.17, 0 ), Vector3( -29.51, -58.17, 0 ), Vector3( -20.7699, -58.17, 0 ), Vector3( -19.5379, -58.2, 0 ), Vector3( -19.1119, -58.2, 0 ), Vector3( -12.2633, -24.101, -19.8708 ), Vector3( -10.673, -20.071, -21.901 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../GUI/intro/bottom-middle:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 2.3, 3.3, 11 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../GUI/intro/top:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 2.3, 3.3, 6.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="SphereMesh" id=2]
+
+material = ExtResource( 3 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 6.0
+height = 12.0
+radial_segments = 12
+rings = 12
+is_hemisphere = false
+_sections_unfolded = [ "material" ]
 
 [sub_resource type="SphereMesh" id=3]
 
@@ -192,11 +216,13 @@ rings = 32
 is_hemisphere = false
 _sections_unfolded = [ "material" ]
 
-[node name="TIOS" type="Spatial"]
+[node name="TIOS" type="Spatial" index="0"]
 script = ExtResource( 1 )
 
-[node name="camera_menu" type="Camera" parent="." index="0"]
-transform = Transform( 0.527401, 0.418501, -0.739395, 0, 0.870269, 0.492576, 0.849617, -0.259785, 0.45898, -180.819, 150.67, 569.17 )
+[node name="logo" type="Spatial" parent="." index="0"]
+
+[node name="camera_menu" type="Camera" parent="logo" index="0"]
+transform = Transform( 0.527401, 0.4185, -0.739395, 0, 0.870269, 0.492575, 0.849617, -0.259784, 0.458981, -180.819, 151.68, 569.17 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -205,14 +231,34 @@ v_offset = 0.0
 doppler_tracking = 0
 projection = 0
 current = true
-fov = 50.0
+fov = 35.0
 size = 1.0
 near = 0.1
 far = 512.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="plasma" type="MeshInstance" parent="camera_menu" index="0"]
-transform = Transform( 0.736446, 0.476682, -0.480022, 0.341519, -0.874484, -0.344444, -0.583962, 0.0897276, -0.806807, 0, 0.893153, -65.4406 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="logo/camera_menu" index="0"]
+root_node = NodePath("..")
+autoplay = "idle"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 0.5
+anims/idle = SubResource( 1 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="tios_logo" parent="logo" index="1" instance=ExtResource( 2 )]
+transform = Transform( 0.527401, 0.418501, -0.739395, 0, 0.870269, 0.492576, 0.849617, -0.259785, 0.45898, -173.155, 144.783, 564.413 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="the_islands_of_shaders" parent="logo/tios_logo" index="0"]
+_sections_unfolded = [ "Material", "material/0" ]
+
+[node name="OmniLight" parent="logo/tios_logo" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40156, 1.62368, -0.239699 )
+
+[node name="plasma" type="MeshInstance" parent="logo" index="2"]
+transform = Transform( 0.963107, -0.180914, 0.199235, 0.00956774, -0.716839, -0.697173, 0.268949, 0.673358, -0.688662, -137.428, 126.639, 543.536 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -222,33 +268,10 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform", "mesh" ]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="camera_menu" index="1"]
-root_node = NodePath("..")
-autoplay = "idle"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 0.1
-anims/idle = SubResource( 2 )
-blend_times = [  ]
-_sections_unfolded = [ "Playback Options" ]
-
-[node name="tios_logo" parent="camera_menu" index="2" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.68, -10.75 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="the_islands_of_shaders" parent="camera_menu/tios_logo" index="0"]
-_sections_unfolded = [ "Material", "material/0" ]
-
-[node name="OmniLight" parent="camera_menu/tios_logo" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.08978, 2.68829, 0.454763 )
-
-[node name="OmniLight2" parent="camera_menu/tios_logo" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02598, 1.99871, -1.06456 )
 
 [node name="camera_rig" type="Position3D" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 0.913546, -0.406737, 0, 0.406737, 0.913545, -8.23593, 29.161, 950.318 )
@@ -299,8 +322,8 @@ _sections_unfolded = [ "mesh" ]
 [node name="SUN" type="DirectionalLight" parent="system" index="0"]
 transform = Transform( 0.429547, -0.852165, 0.298836, 0.5, 0.5, 0.707106, -0.75199, -0.154317, 0.640856, -0.893688, 301.399, -0.614712 )
 layers = 1
-light_color = Color( 1, 0.870588, 0.486275, 1 )
-light_energy = 16.0
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 7.0
 light_indirect_energy = 0.0
 light_negative = false
 light_specular = 1.0
@@ -499,6 +522,8 @@ __meta__ = {
 }
 
 [node name="top" type="Control" parent="GUI/intro" index="0"]
+editor/display_folded = true
+modulate = Color( 1, 1, 1, 0.981818 )
 anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
@@ -509,6 +534,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+_sections_unfolded = [ "Visibility" ]
 
 [node name="applications" type="HBoxContainer" parent="GUI/intro/top" index="0"]
 anchor_left = 0.5
@@ -516,16 +542,16 @@ anchor_top = 0.0
 anchor_right = 0.5
 anchor_bottom = 0.0
 margin_left = -181.0
-margin_top = 60.0
-margin_right = 180.0
-margin_bottom = 80.0
+margin_top = 30.0
+margin_right = 203.0
+margin_bottom = 50.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_constants/separation = 128
+custom_constants/separation = 64
 alignment = 1
 _sections_unfolded = [ "Custom Constants" ]
 
@@ -534,6 +560,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_left = 96.0
+margin_right = 96.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -555,8 +583,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 128.0
-margin_right = 128.0
+margin_left = 160.0
+margin_right = 160.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -578,8 +606,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 256.0
-margin_right = 256.0
+margin_left = 224.0
+margin_right = 224.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -601,8 +629,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 384.0
-margin_right = 384.0
+margin_left = 288.0
+margin_right = 288.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -634,6 +662,8 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Margin" ]
 
 [node name="bottom-middle" type="Control" parent="GUI/intro" index="2"]
+editor/display_folded = true
+modulate = Color( 1, 1, 1, 0.909091 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -644,6 +674,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+_sections_unfolded = [ "Visibility" ]
 
 [node name="info" type="Label" parent="GUI/intro/bottom-middle" index="0"]
 anchor_left = 0.5
@@ -695,6 +726,6 @@ _sections_unfolded = [ "mesh" ]
 [connection signal="finished" from="system/sound_crickets" to="system/sound_crickets" method="_on_sound_finished"]
 [connection signal="finished" from="system/sound_soundscape" to="system/sound_soundscape" method="_on_sound_finished"]
 
-[editable path="camera_menu/tios_logo"]
+[editable path="logo/tios_logo"]
 
 [editable path="world_map"]

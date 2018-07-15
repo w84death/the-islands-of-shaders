@@ -21,10 +21,13 @@ settings/fps/force_fps=60
 
 [display]
 
-window/size/width=680
+window/size/width=675
 window/size/height=384
+window/size/fullscreen=true
 window/per_pixel_transparency=true
 window/per_pixel_transparency_splash=true
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [input]
 
