@@ -1,24 +1,31 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
-[ext_resource path="res://features/gui/code/intro_logo.tscn" type="PackedScene" id=2]
-[ext_resource path="res://features/shared/system.tscn" type="PackedScene" id=3]
-[ext_resource path="res://features/gui/theme.tres" type="Theme" id=4]
-[ext_resource path="res://features/gui/fps.gd" type="Script" id=5]
-[ext_resource path="res://features/shared/island_0_entities_map.png" type="Texture" id=6]
-[ext_resource path="res://system/gimp-logo.png" type="Texture" id=7]
-[ext_resource path="res://system/godot.png" type="Texture" id=8]
-[ext_resource path="res://system/Wings3d.png" type="Texture" id=9]
-[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=10]
-[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=11]
+[ext_resource path="res://maps/map_intro.tscn" type="PackedScene" id=2]
+[ext_resource path="res://features/gui/code/intro_logo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://features/shared/system.tscn" type="PackedScene" id=4]
+[ext_resource path="res://features/gui/theme.tres" type="Theme" id=5]
+[ext_resource path="res://features/gui/fps.gd" type="Script" id=6]
+[ext_resource path="res://features/shared/island_0_entities_map.png" type="Texture" id=7]
+[ext_resource path="res://system/gimp-logo.png" type="Texture" id=8]
+[ext_resource path="res://system/godot.png" type="Texture" id=9]
+[ext_resource path="res://system/Wings3d.png" type="Texture" id=10]
+[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=11]
+[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=12]
 
-[node name="TIOS_intro" type="Spatial" index="0"]
+[node name="TIOS_intro" type="Spatial"]
 script = ExtResource( 1 )
 _sections_unfolded = [ "script" ]
 in_game = false
 is_intro = true
 
-[node name="logo" parent="." index="0" instance=ExtResource( 2 )]
+[node name="map_intro" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="logo" parent="." index="1" instance=ExtResource( 3 )]
+transform = Transform( 0.966511, 0, 0.256626, 0, 1, 0, -0.256626, 0, 0.966511, -172.484, 16.9587, -418.935 )
+
+[node name="camera_menu" parent="logo" index="0"]
+transform = Transform( 0.527401, 0.4185, -0.739395, 0, 0.870269, 0.492575, 0.849617, -0.259784, 0.45898, -180.819, 151.68, 569.17 )
 
 [node name="amiga" parent="logo/camera_menu" index="1"]
 editor/display_folded = true
@@ -47,9 +54,10 @@ light_cull_mask = -1
 [node name="center_spot2" parent="logo/tios_logo" index="7"]
 light_cull_mask = -1
 
-[node name="system" parent="." index="1" instance=ExtResource( 3 )]
+[node name="system" parent="." index="2" instance=ExtResource( 4 )]
 
-[node name="GUI" type="Control" parent="." index="2"]
+[node name="GUI" type="Control" parent="." index="3"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -60,7 +68,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 4 )
+theme = ExtResource( 5 )
 _sections_unfolded = [ "Theme", "theme" ]
 __meta__ = {
 "_edit_lock_": true
@@ -116,7 +124,7 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
 [node name="minimap" type="Control" parent="GUI/demo" index="1"]
@@ -151,7 +159,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Rect" ]
@@ -210,7 +218,7 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
 [node name="corner" type="Control" parent="GUI/intro" index="1"]
@@ -320,7 +328,7 @@ _sections_unfolded = [ "Rect" ]
 [node name="logo" type="Sprite" parent="GUI/intro/bottom-middle/applications/gimp" index="0"]
 modulate = Color( 1, 1, 1, 0.501961 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 0, 32 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
@@ -343,7 +351,7 @@ _sections_unfolded = [ "Rect" ]
 [node name="logo" type="Sprite" parent="GUI/intro/bottom-middle/applications/godot" index="0"]
 modulate = Color( 1, 1, 1, 0.501961 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 offset = Vector2( 0, 32 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
@@ -366,7 +374,7 @@ _sections_unfolded = [ "Rect" ]
 [node name="logo" type="Sprite" parent="GUI/intro/bottom-middle/applications/wings3d" index="0"]
 modulate = Color( 1, 1, 1, 0.501961 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 offset = Vector2( 0, 32 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
@@ -390,11 +398,11 @@ _sections_unfolded = [ "Rect" ]
 modulate = Color( 1, 1, 1, 0.501961 )
 self_modulate = Color( 0, 0, 0, 1 )
 scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 offset = Vector2( 0, 6 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
-[node name="corners" parent="GUI" index="2" instance=ExtResource( 11 )]
+[node name="corners" parent="GUI" index="2" instance=ExtResource( 12 )]
 
 
 [editable path="logo"]

@@ -1,0 +1,248 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://features/gui/models/zlote_gody.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://features/gui/code/bronze.material" type="Material" id=2]
+[ext_resource path="res://features/gui/code/red_carpet.material" type="Material" id=3]
+[ext_resource path="res://features/trees/models/palm.mesh" type="ArrayMesh" id=4]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "fly_around"
+length = 5.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("OmniLight:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1, 1.4, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -4.08978, 2.68829, 0.454763 ), Vector3( -3.456, 1.05081, 0.454763 ), Vector3( -0.761128, 0.522514, 0.519355 ), Vector3( 2.51121, 1.00968, 0.597788 ), Vector3( 2.51341, 0.782276, -0.788565 ) ]
+}
+
+[sub_resource type="CubeMesh" id=2]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+size = Vector3( 8, 0.2, 1.2 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
+
+[node name="zlote-gody" type="Spatial"]
+
+[node name="the_islands_of_shaders" type="MeshInstance" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502172, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Material" ]
+
+[node name="OmniLight" type="OmniLight" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5113, 1.00023, 0.540203 )
+layers = 1
+light_color = Color( 1, 0.941176, 0.329412, 1 )
+light_energy = 13.11
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 34.1238
+omni_attenuation = 4.14106
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni", "Shadow", "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+root_node = NodePath("..")
+autoplay = "fly_around"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 2.0
+anims/fly_around = SubResource( 1 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="left_spot" type="SpotLight" parent="." index="3"]
+transform = Transform( 0.758684, 2.84762e-08, -0.651459, 0.574852, 0.470485, 0.669469, 0.306501, -0.882408, 0.356949, -6.05913, 3.54605, 0.292594 )
+layers = 1
+light_color = Color( 0, 0.764706, 1, 1 )
+light_energy = 12.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+spot_range = 15.6808
+spot_attenuation = 0.5
+spot_angle = 41.6421
+spot_angle_attenuation = 2.0
+_sections_unfolded = [ "Editor", "Light", "Shadow", "Spot" ]
+
+[node name="right_spot" type="SpotLight" parent="." index="4"]
+transform = Transform( -0.775546, 0.0178295, 0.631039, 0.549527, -0.472937, 0.688731, 0.310722, 0.880916, 0.356987, 5.89544, 3.69224, 0.1534 )
+layers = 1
+light_color = Color( 0, 0.764706, 1, 1 )
+light_energy = 12.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+spot_range = 18.4787
+spot_attenuation = 0.5
+spot_angle = 47.0975
+spot_angle_attenuation = 2.0
+_sections_unfolded = [ "Editor", "Light", "Shadow", "Spot" ]
+
+[node name="center_spot" type="SpotLight" parent="." index="5"]
+transform = Transform( 0.998994, -0.028734, 0.0344237, 0, 0.767699, 0.640811, -0.04484, -0.640166, 0.766927, 0.159895, 1.34837, 2.92657 )
+layers = 1
+light_color = Color( 1, 0.972549, 0.662745, 1 )
+light_energy = 6.86
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+spot_range = 7.00933
+spot_attenuation = 2.0
+spot_angle = 77.6
+spot_angle_attenuation = 2.0
+_sections_unfolded = [ "Editor", "Light", "Shadow", "Spot", "Transform" ]
+
+[node name="center_spot3" type="SpotLight" parent="." index="6"]
+transform = Transform( 0.998994, -0.028734, 0.0344237, 0, 0.767699, 0.640811, -0.04484, -0.640166, 0.766927, 2.15989, 1.40497, 2.92657 )
+layers = 1
+light_color = Color( 1, 0.972549, 0.662745, 1 )
+light_energy = 6.86
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+spot_range = 7.00933
+spot_attenuation = 2.0
+spot_angle = 77.6
+spot_angle_attenuation = 2.0
+_sections_unfolded = [ "Editor", "Light", "Shadow", "Spot", "Transform" ]
+
+[node name="center_spot2" type="SpotLight" parent="." index="7"]
+transform = Transform( 0.998994, -0.028734, 0.0344236, 0, 0.767699, 0.640811, -0.04484, -0.640166, 0.766927, -2.58466, 1.03781, 2.25413 )
+layers = 1
+light_color = Color( 1, 0.972549, 0.662745, 1 )
+light_energy = 6.86
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+spot_range = 7.00933
+spot_attenuation = 2.0
+spot_angle = 77.6
+spot_angle_attenuation = 2.0
+_sections_unfolded = [ "Editor", "Light", "Shadow", "Spot", "Transform" ]
+
+[node name="stand" type="MeshInstance" parent="." index="8"]
+transform = Transform( 1, 0.000515075, -0.000257318, -0.00051506, 1, 5.42108e-05, 0.000257348, -5.40691e-05, 1, 0, -0.0698596, 0 )
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 2 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+_sections_unfolded = [ "Material", "material/0", "mesh" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="9"]
+transform = Transform( -0.0120721, 0.0171796, -0.0977708, 0.0111472, 0.0981028, 0.0158615, 0.0986408, -0.00898386, -0.0137581, -1.38628, 0.0697281, -0.469958 )
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance2" type="MeshInstance" parent="." index="10"]
+transform = Transform( 0.0238256, -0.0149041, 0.0758061, 0.00682364, 0.0683853, 0.0161884, -0.0968802, 0.00115129, 0.0197831, 1.91915, 0.0697281, -0.469958 )
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+

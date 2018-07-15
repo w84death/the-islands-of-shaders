@@ -23,7 +23,7 @@ void fragment() {
 	vec4 color = texture(texture_map, UV);
 	ALBEDO = color.rgb;
 	ALPHA = color.a;
-	ALPHA_SCISSOR = 0.1;
+	ALPHA_SCISSOR = 0.4;
 	
 	METALLIC = 0.8;
 	SPECULAR = 0.0;

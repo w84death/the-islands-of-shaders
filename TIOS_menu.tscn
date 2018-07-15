@@ -7,7 +7,7 @@
 [ext_resource path="res://features/gui/fps.gd" type="Script" id=5]
 [ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=6]
 
-[node name="TIOS_menu" type="Spatial" index="0"]
+[node name="TIOS_menu" type="Spatial"]
 script = ExtResource( 1 )
 in_game = false
 is_intro = false

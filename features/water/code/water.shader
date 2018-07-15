@@ -67,7 +67,7 @@ void fragment(){
 	float height = texture(height_map, uv2.xy).r;
 	float gfx = smoothstep(0.1, water_shore, height);
 	vec3 w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
-	if (voronoid_effect) { w_color += voronoi(UV*256.0, TIME) * .25; }
+	if (voronoid_effect) { w_color += voronoi(UV*128.0, TIME) * .25; }
 
 	
 	ROUGHNESS = 0.3 * gfx;
