@@ -5,6 +5,7 @@ uniform vec2 amplitude = vec2(0.5, 0.3);
 uniform vec2 frequency = vec2(.2, .2);
 uniform vec2 time_factor = vec2(2.0, 2.0);
 uniform bool waves_by_height = false;
+uniform bool voronoid_effect = false;
 uniform float water_height = 2.5;
 uniform float water_clearnes = 0.4;
 uniform float water_refraction = 0.014;
@@ -66,7 +67,7 @@ void fragment(){
 	float height = texture(height_map, uv2.xy).r;
 	float gfx = smoothstep(0.1, water_shore, height);
 	vec3 w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
-	w_color += voronoi(UV*256.0, TIME) * .25;
+	if (voronoid_effect) { w_color += voronoi(UV*256.0, TIME) * .25; }
 
 	
 	ROUGHNESS = 0.3 * gfx;
