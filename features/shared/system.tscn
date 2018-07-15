@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://system/world_enviroment_fantasy.tres" type="Environment" id=1]
+[ext_resource path="res://sounds/samples/joungle_back1.ogg" type="AudioStream" id=2]
+[ext_resource path="res://sounds/code/loop_sample.gd" type="Script" id=3]
+[ext_resource path="res://sounds/samples/joungle_back2.ogg" type="AudioStream" id=4]
+[ext_resource path="res://sounds/samples/soundscape1.ogg" type="AudioStream" id=5]
+
+[node name="system" type="Node"]
+
+[node name="SUN" type="DirectionalLight" parent="." index="0"]
+transform = Transform( 0.429547, -0.852165, 0.298836, 0.5, 0.5, 0.707106, -0.75199, -0.154317, 0.640856, -0.893688, 301.399, -0.614712 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 7.0
+light_indirect_energy = 0.0
+light_negative = false
+light_specular = 1.0
+light_bake_mode = 0
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0.0862745, 0.2, 0.427451, 1 )
+shadow_bias = 0.0
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.4
+directional_shadow_blend_splits = true
+directional_shadow_normal_bias = 1.14
+directional_shadow_bias_split_scale = 0.04
+directional_shadow_depth_range = 1
+directional_shadow_max_distance = 386.0
+_sections_unfolded = [ "Directional Shadow", "Editor", "Light", "Shadow", "Transform" ]
+
+[node name="enviroment" type="WorldEnvironment" parent="." index="1"]
+environment = ExtResource( 1 )
+_sections_unfolded = [ "environment" ]
+
+[node name="sound_sea" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 2 )
+volume_db = -6.0
+pitch_scale = 1.0
+autoplay = true
+stream_paused = false
+mix_target = 0
+bus = "Master"
+script = ExtResource( 3 )
+_sections_unfolded = [ "script", "stream" ]
+
+[node name="sound_crickets" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 4 )
+volume_db = 3.0
+pitch_scale = 1.001
+autoplay = true
+stream_paused = false
+mix_target = 0
+bus = "Master"
+script = ExtResource( 3 )
+
+[node name="sound_soundscape" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 5 )
+volume_db = -10.0
+pitch_scale = 1.0
+autoplay = true
+stream_paused = false
+mix_target = 0
+bus = "Master"
+script = ExtResource( 3 )
+
+[connection signal="finished" from="sound_sea" to="sound_sea" method="_on_sound_finished"]
+[connection signal="finished" from="sound_crickets" to="sound_crickets" method="_on_sound_finished"]
+[connection signal="finished" from="sound_soundscape" to="sound_soundscape" method="_on_sound_finished"]

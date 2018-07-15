@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://system/camera_rig.gd" type="Script" id=1]
+[ext_resource path="res://features/shared/amiga.material" type="Material" id=2]
+
+[sub_resource type="SphereMesh" id=4]
+
+material = ExtResource( 2 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 4.0
+height = 8.0
+radial_segments = 16
+rings = 8
+is_hemisphere = false
+_sections_unfolded = [ "material" ]
+
+[node name="camera_rig" type="Position3D"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 0.913546, -0.406737, 0, 0.406737, 0.913545, -8.23593, 29.161, 950.318 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "script" ]
+rotate_speed = 1.0
+move_speed = 1.0
+move_speed_lr = 1.0
+move_speed_fb = 1.0
+terrain_height = 64
+water_height = 22
+map_size = Vector2( 2048, 2048 )
+
+[node name="POV" type="Camera" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 0.378486, 0.925608, 0, -0.925608, 0.378486, 0, 66.6025, 0 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 90.0
+size = 1.0
+near = 4.0
+far = 768.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="player" type="MeshInstance" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, -1.78814e-07, 0, 1.78814e-07, 1, 1.7081, 6.37543, -0.532959 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "mesh" ]
+

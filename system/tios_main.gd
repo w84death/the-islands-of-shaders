@@ -1,33 +1,33 @@
 extends Spatial
 
-var in_game = false
-
+export var in_game = false
+export var is_intro = false
 
 func _input(event):
-	if Input.is_action_pressed("ui_accept") or event is InputEventMouseButton:
-		show_game()
-		in_game = true
+	if Input.is_action_pressed("ui_accept"):
+		if is_intro and not in_game:
+			show_menu()
+		if not in_game and not is_intro or event is InputEventMouseButton:
+			show_game()
+		
 	if Input.is_action_pressed("fullscreen"):
 		toggle_fullscreen()
 	if in_game && Input.is_action_pressed("quit"):
 		show_menu()
-		in_game = false
 	elif Input.is_action_pressed("quit"):
-		get_tree().quit()
+		if is_intro:
+			get_tree().quit()
+		else:
+			show_intro()
 
 func show_game():
-		get_node("camera_rig/POV").make_current()
-		get_node("GUI/intro").hide()
-		get_node("GUI/demo").show()
+		get_tree().change_scene('TIOS_game.tscn');
 		
 func show_menu():
-		get_node("logo/camera_menu").make_current()
-		get_node("GUI/intro").show()
-		get_node("GUI/demo").hide()
+		get_tree().change_scene('TIOS_menu.tscn');
+		
+func show_intro():
+		get_tree().change_scene('TIOS_intro.tscn');
 
 func toggle_fullscreen():
 	OS.set_window_fullscreen(not OS.is_window_fullscreen())
-
-
-func _on_sound_finished():
-	pass # Replace with function body.

@@ -12,4 +12,4 @@ func _process(delta):
 	if current_fps < fps:
 		fps -= 1
 		 
-	set_text("TECH DEMO [" + str(fps).pad_zeros(3) + " FPS]")
+	set_text("PRE-ALPHA [" + str(fps).pad_zeros(3) + " FPS]")

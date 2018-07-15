@@ -1,0 +1,183 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://features/shared/amiga.material" type="Material" id=1]
+[ext_resource path="res://features/gui/code/tios_logo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://features/shared/voronoid.material" type="Material" id=3]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "idle"
+length = 12.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 4, 4.4, 6.6, 7.6, 10.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -180.819, 151.68, 569.17 ), Vector3( -180.589, 151.517, 568.94 ), Vector3( -178.589, 149.49, 567.809 ), Vector3( -178.589, 149.426, 567.809 ), Vector3( -178.459, 149.326, 567.619 ), Vector3( -173.916, 147.235, 569.929 ), Vector3( -173.536, 146.925, 569.699 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 4, 4.4, 6.6, 7.6, 10.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -29.51, -58.17, 0 ), Vector3( -29.51, -58.17, 0 ), Vector3( -20.7699, -58.17, 0 ), Vector3( -19.5379, -58.2, 0 ), Vector3( -19.1119, -58.2, 0 ), Vector3( -12.2633, -24.101, -19.8708 ), Vector3( -10.673, -20.071, -21.901 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../GUI/intro/bottom-middle:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 2.3, 3.3, 11 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="SphereMesh" id=2]
+
+material = ExtResource( 1 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 0.2
+height = 0.4
+radial_segments = 32
+rings = 32
+is_hemisphere = false
+_sections_unfolded = [ "material" ]
+
+[sub_resource type="SphereMesh" id=3]
+
+material = ExtResource( 3 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 6.0
+height = 12.0
+radial_segments = 16
+rings = 16
+is_hemisphere = false
+_sections_unfolded = [ "material" ]
+
+[node name="logo" type="Spatial"]
+_sections_unfolded = [ "Transform" ]
+
+[node name="camera_menu" type="Camera" parent="." index="0"]
+transform = Transform( 0.527401, 0.4185, -0.739395, 0, 0.870269, 0.492575, 0.849617, -0.259784, 0.458981, -180.819, 151.68, 569.17 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = true
+fov = 35.0
+size = 1.0
+near = 0.1
+far = 512.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="camera_menu" index="0"]
+root_node = NodePath("..")
+autoplay = "idle"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 0.5
+anims/idle = SubResource( 1 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="amiga" type="MeshInstance" parent="camera_menu" index="1"]
+transform = Transform( 0.890927, -0.454146, 0, 0.389361, 0.763834, -0.514739, 0.233767, 0.458595, 0.857348, 1.7, 0.88, -3.66 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 2 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform", "mesh" ]
+
+[node name="OmniLight" type="OmniLight" parent="camera_menu/amiga" index="0"]
+transform = Transform( 1, -1.54972e-06, 2.98023e-08, 0, 0.999997, 1.49012e-08, 0, 2.5332e-07, 1, -0.531647, -0.172974, 0.203522 )
+layers = 1
+light_color = Color( 0.329412, 0.937255, 1, 1 )
+light_energy = 10.39
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 0.642109
+omni_attenuation = 1.0
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni" ]
+
+[node name="OmniLight2" type="OmniLight" parent="camera_menu/amiga" index="1"]
+transform = Transform( 1, -2.02656e-06, 2.98023e-08, 0, 0.999997, 1.49012e-08, 0, 3.72529e-07, 1, 0.274872, 0.289413, 0.218567 )
+layers = 1
+light_color = Color( 1, 0.866667, 0, 1 )
+light_energy = 16.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 0.642109
+omni_attenuation = 1.0
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni" ]
+
+[node name="tios_logo" parent="." index="1" instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 0.527401, 0.418501, -0.739395, 0, 0.870269, 0.492576, 0.849617, -0.259785, 0.45898, -173.155, 144.783, 564.413 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="plasma" type="MeshInstance" parent="." index="2"]
+transform = Transform( 0.267934, -0.963015, -0.0285004, -0.8658, -0.227699, -0.445582, 0.422613, 0.144062, -0.894787, -137.428, 126.639, 543.546 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 3 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Material", "Transform", "mesh" ]
+

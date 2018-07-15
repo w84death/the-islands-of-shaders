@@ -1,0 +1,152 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://system/tios_main.gd" type="Script" id=1]
+[ext_resource path="res://features/shared/system.tscn" type="PackedScene" id=2]
+[ext_resource path="res://features/gui/code/tios_logo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://features/gui/theme.tres" type="Theme" id=4]
+[ext_resource path="res://features/gui/fps.gd" type="Script" id=5]
+[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=6]
+
+[node name="TIOS_menu" type="Spatial" index="0"]
+script = ExtResource( 1 )
+in_game = false
+is_intro = false
+
+[node name="system" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="tios_logo" parent="." index="1" instance=ExtResource( 3 )]
+
+[node name="Camera" type="Camera" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 0.999915, 0.0130011, 0, -0.0130011, 0.999915, 0, 0.235638, 14.7992 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = true
+fov = 35.0
+size = 1.0
+near = 0.1
+far = 512.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="GUI" type="Control" parent="." index="3"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 4 )
+_sections_unfolded = [ "Theme", "theme" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="menu" type="Control" parent="GUI" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="left_corner" type="Control" parent="GUI/menu" index="0"]
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="fps" type="Label" parent="GUI/menu/left_corner" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 19.0
+margin_top = 20.0
+margin_right = 120.0
+margin_bottom = 99.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 1
+text = "TECH DEMO [60FPS]
+"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 5 )
+_sections_unfolded = [ "Custom Colors", "Custom Constants" ]
+
+[node name="Control" type="Control" parent="GUI/menu" index="1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Label" type="Label" parent="GUI/menu/Control" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -92.0
+margin_top = 51.0
+margin_right = 91.0
+margin_bottom = 89.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "MENU NOT AVAILABLE IN PRE-ALPHA
+press A for NEW GAME"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="corners" type="Control" parent="GUI" index="1" instance=ExtResource( 6 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
