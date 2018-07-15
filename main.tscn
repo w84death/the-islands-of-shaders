@@ -67,7 +67,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="SphereMesh" id=7]
+[sub_resource type="SphereMesh" id=2]
 
 material = ExtResource( 2 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
@@ -79,19 +79,19 @@ rings = 32
 is_hemisphere = false
 _sections_unfolded = [ "material" ]
 
-[sub_resource type="SphereMesh" id=2]
+[sub_resource type="SphereMesh" id=3]
 
 material = ExtResource( 4 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 radius = 6.0
 height = 12.0
-radial_segments = 12
-rings = 12
+radial_segments = 16
+rings = 16
 is_hemisphere = false
 _sections_unfolded = [ "material" ]
 
-[sub_resource type="SphereMesh" id=3]
+[sub_resource type="SphereMesh" id=4]
 
 material = ExtResource( 2 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
@@ -103,7 +103,7 @@ rings = 8
 is_hemisphere = false
 _sections_unfolded = [ "material" ]
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=5]
 
 render_priority = 0
 shader = ExtResource( 13 )
@@ -113,7 +113,7 @@ shader_param/scale = Vector2( 0.1, 0.2 )
 shader_param/texture_map = ExtResource( 14 )
 _sections_unfolded = [ "Shader Param", "shader", "shader_param", "shader_param/texture_map" ]
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=6]
 
 render_priority = 0
 shader = ExtResource( 13 )
@@ -123,7 +123,7 @@ shader_param/scale = Vector2( 0.1, 0.2 )
 shader_param/texture_map = ExtResource( 15 )
 _sections_unfolded = [ "Shader Param", "shader", "shader_param", "shader_param/texture_map" ]
 
-[sub_resource type="ArrayMesh" id=6]
+[sub_resource type="ArrayMesh" id=7]
 
 blend_shape_mode = 1
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
@@ -171,7 +171,7 @@ surfaces/3 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 12,
-"material": SubResource( 4 ),
+"material": SubResource( 5 ),
 "name": "image",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -196,7 +196,7 @@ surfaces/5 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 12,
-"material": SubResource( 5 ),
+"material": SubResource( 6 ),
 "name": "image",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -247,7 +247,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 7 )
+mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform", "mesh" ]
@@ -324,7 +324,7 @@ light_cull_mask = -1
 light_cull_mask = -1
 
 [node name="plasma" type="MeshInstance" parent="logo" index="2"]
-transform = Transform( 0.963107, -0.180914, 0.199235, 0.00956774, -0.716839, -0.697173, 0.268949, 0.673358, -0.688662, -137.428, 126.639, 543.546 )
+transform = Transform( 0.267934, -0.963015, -0.0285004, -0.8658, -0.227699, -0.445582, 0.422613, 0.144062, -0.894787, -137.428, 126.639, 543.546 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -334,10 +334,10 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
-_sections_unfolded = [ "Transform", "mesh" ]
+_sections_unfolded = [ "Material", "Transform", "mesh" ]
 
 [node name="camera_rig" type="Position3D" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 0.913546, -0.406737, 0, 0.406737, 0.913545, -8.23593, 29.161, 950.318 )
@@ -368,7 +368,7 @@ far = 768.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="player" type="MeshInstance" parent="camera_rig" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, -1.19209e-07, 0, 2.08616e-07, 1, 0.0433702, 3.25729, -0.522583 )
+transform = Transform( 1, 0, 0, 0, 1, -1.78814e-07, 0, 1.78814e-07, 1, 1.7081, 6.37543, -0.532959 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -378,7 +378,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "mesh" ]
@@ -454,7 +454,7 @@ visible = false
 spacing = 8.0
 
 [node name="grass2" parent="world_map" index="2"]
-draw_pass_1 = SubResource( 6 )
+draw_pass_1 = SubResource( 7 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "draw_pass_1", "material_override", "process_material", "script" ]
 spacing = 10.0
 

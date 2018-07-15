@@ -33,7 +33,7 @@ subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[node name="tios_logo" type="Spatial"]
+[node name="tios_logo" type="Spatial" index="0"]
 
 [node name="the_islands_of_shaders" type="MeshInstance" parent="." index="0"]
 layers = 1
@@ -127,7 +127,7 @@ spot_angle_attenuation = 2.0
 _sections_unfolded = [ "Editor", "Light", "Shadow", "Spot" ]
 
 [node name="center_spot" type="SpotLight" parent="." index="5"]
-transform = Transform( 0.998994, -0.028734, 0.0344237, 0, 0.767699, 0.640811, -0.04484, -0.640166, 0.766927, 0.159895, 1.40497, 2.92657 )
+transform = Transform( 0.998994, -0.028734, 0.0344237, 0, 0.767699, 0.640811, -0.04484, -0.640166, 0.766927, 0.159895, 1.34837, 2.92657 )
 layers = 1
 light_color = Color( 1, 0.972549, 0.662745, 1 )
 light_energy = 6.86

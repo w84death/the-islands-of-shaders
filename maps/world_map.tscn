@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://features/terrain/code/terrain.material" type="Material" id=1]
 [ext_resource path="res://features/grass/code/grass_shader.material" type="Material" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://features/insects/models/butterfly.obj" type="ArrayMesh" id=17]
 [ext_resource path="res://features/structures/code/bridge.material" type="Material" id=18]
 [ext_resource path="res://features/structures/models/bridge.obj" type="ArrayMesh" id=19]
+[ext_resource path="res://features/gui/code/tios_logo.tscn" type="PackedScene" id=20]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -70,7 +71,7 @@ size = Vector2( 2048, 2048 )
 subdivide_width = 512
 subdivide_depth = 512
 
-[node name="world_map" type="Spatial"]
+[node name="world_map" type="Spatial" index="0"]
 
 [node name="terrain" type="MeshInstance" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90735e-06, 0 )
@@ -271,8 +272,7 @@ rows = 16
 spacing = 12.0
 
 [node name="bridge" type="MeshInstance" parent="." index="7"]
-transform = Transform( 0.424896, 0, 0.263559, 0, 0.5, 0, -0.263559, 0, 0.424896, -198.016, 34.7771, 39.0622 )
-visible = false
+transform = Transform( -0.00302941, -0.0141227, 0.499791, 0.0426555, 0.497971, 0.0143299, -0.498168, 0.0427246, -0.0018123, -10.6072, 49.1325, 916.625 )
 layers = 1
 material_override = ExtResource( 18 )
 cast_shadow = 1
@@ -286,4 +286,8 @@ mesh = ExtResource( 19 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Geometry", "Transform", "material/0", "material_override" ]
+
+[node name="tios_logo" parent="." index="8" instance=ExtResource( 20 )]
+transform = Transform( 7.99984, -0.0508868, 0, 0.0508868, 7.99984, 0, 0, 0, 8, -8.405, 57.041, 919.993 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 

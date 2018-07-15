@@ -35,19 +35,21 @@ vec2 faker(vec2 p){
 
 float voronoi (vec2 uv, float t) {
 	float md = 100.0;
-	float id = 0.0;
+	vec2 gv = fract(uv) - .5;
+	vec2 id = floor(uv);
 	
-	for (float i=0.0; i<MAX_ITER; i++){
-		vec2 n = faker(vec2(i));
-		vec2 p = sin(n*t*SPEED);
-		
-		float d = length(uv.xy-p);
-		if (d<md) {
-			md = d;
-			id = i;
+	for (float y=-1.0; y<=1.0; y++){
+		for (float x=-1.0; x<=1.0; x++){
+			vec2 offs = vec2(x, y);
+			vec2 n = faker(id+offs);
+			vec2 p = offs+sin(n*t*SPEED) * .5;
+			
+			float d = length(gv-p);
+			if (d<md) {
+				md = d;
+			}
 		}
 	}
-	
 	return md;
 }
 
@@ -64,7 +66,8 @@ void fragment(){
 	float height = texture(height_map, uv2.xy).r;
 	float gfx = smoothstep(0.1, water_shore, height);
 	vec3 w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
-	//w_color += voronoi(UV, TIME) * 4.0;
+	w_color += voronoi(UV*256.0, TIME) * .25;
+
 	
 	ROUGHNESS = 0.3 * gfx;
 	METALLIC = 0.8;
