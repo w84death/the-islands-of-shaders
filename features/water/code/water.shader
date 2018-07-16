@@ -1,19 +1,20 @@
 shader_type spatial;
-/* WATER SHADER 3.0 "Back to the roots" */
+/* WATER SHADER 3.1 "Back to the roots" */
 
 uniform vec2 amplitude = vec2(0.5, 0.3);
 uniform vec2 frequency = vec2(.2, .2);
 uniform vec2 time_factor = vec2(2.0, 2.0);
 uniform bool waves_by_height = false;
-uniform bool voronoid_effect = false;
 uniform float water_height = 2.5;
 uniform float water_clearnes = 0.4;
 uniform float water_refraction = 0.014;
 uniform float water_alpha = 0.2;
 uniform float water_shore = 0.37;
 uniform float water_color_contrast = 6.0;
-uniform float MAX_ITER = 512.0;
 uniform float SPEED = 0.1;
+uniform bool VORONOI_ENABLED = false;
+uniform float VORONOI_CELL_SIZE = 64.0;
+uniform float VORONOI_MIX = 0.5;
 
 uniform sampler2D height_map;
 
@@ -67,15 +68,21 @@ void fragment(){
 	float height = texture(height_map, uv2.xy).r;
 	float gfx = smoothstep(0.1, water_shore, height);
 	vec3 w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
-	if (voronoid_effect) { w_color += voronoi(UV*128.0, TIME) * .25; }
-
+	if (VORONOI_ENABLED) { 
+		//w_color += voronoi(uv2*128.0, TIME) * .5; 
+		float v = voronoi(uv2*VORONOI_CELL_SIZE, TIME);
+		float m = VORONOI_MIX;
+		w_color.r += mix(w_color.r, v, m);
+		w_color.g += mix(w_color.r, v, m);
+		w_color.b += mix(w_color.r, v, m);
+	}
 	
 	ROUGHNESS = 0.3 * gfx;
 	METALLIC = 0.8;
 	SPECULAR = 1.0 - gfx;
 	ALPHA = water_alpha;
 	
-	ALBEDO = clamp(w_color, .0, 1.0);
+	ALBEDO = clamp(w_color, 0.0, 1.0);
 	
 	// REFRACTION
 	vec3 ref_normal = normalize( mix(VERTEX,TANGENT * NORMALMAP.x + BINORMAL * NORMALMAP.y + VERTEX * NORMALMAP.z, NORMALMAP_DEPTH) );

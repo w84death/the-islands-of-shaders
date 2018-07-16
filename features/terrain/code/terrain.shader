@@ -1,5 +1,4 @@
 shader_type spatial;
-//render_mode vertex_lighting;
 
 uniform vec2 map_size = vec2(512.0, 512.0);
 uniform float max_height = 18.0;
@@ -55,6 +54,6 @@ void fragment() {
 	}
 	
 	ALBEDO = clamp((color_0 + color_r + color_g + color_b) * underwater_color, 0.0, 1.0);
-	METALLIC = 0.9;
-	ROUGHNESS = 0.9;
+	METALLIC = 0.75;
+	ROUGHNESS = 0.6;
 }

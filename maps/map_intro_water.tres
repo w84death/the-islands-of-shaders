@@ -4,7 +4,7 @@
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
-size = Vector2( 1024, 1024 )
-subdivide_width = 256
-subdivide_depth = 256
+size = Vector2( 512, 512 )
+subdivide_width = 64
+subdivide_depth = 64
 

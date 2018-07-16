@@ -79,7 +79,7 @@ void vertex() {
 		pos.y = -10000.0;
 	}
 	
-	float height_noise = noise.x * 6.0;
+	float height_noise = noise.y * 3.0;
 	
 	// update our transform to place
 	TRANSFORM[3][0] = pos.x;

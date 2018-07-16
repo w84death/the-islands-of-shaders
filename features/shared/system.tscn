@@ -12,7 +12,7 @@
 transform = Transform( 0.429547, -0.852165, 0.298836, 0.5, 0.5, 0.707106, -0.75199, -0.154317, 0.640856, -0.893688, 301.399, -0.614712 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
-light_energy = 7.0
+light_energy = 4.0
 light_indirect_energy = 0.0
 light_negative = false
 light_specular = 1.0
@@ -24,7 +24,7 @@ shadow_bias = 0.0
 shadow_contact = 0.0
 shadow_reverse_cull_face = false
 editor_only = false
-directional_shadow_mode = 2
+directional_shadow_mode = 0
 directional_shadow_split_1 = 0.1
 directional_shadow_split_2 = 0.2
 directional_shadow_split_3 = 0.4

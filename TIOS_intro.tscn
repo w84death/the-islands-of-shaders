@@ -22,10 +22,10 @@ is_intro = true
 [node name="map_intro" parent="." index="0" instance=ExtResource( 2 )]
 
 [node name="logo" parent="." index="1" instance=ExtResource( 3 )]
-transform = Transform( 0.966511, 0, 0.256626, 0, 1, 0, -0.256626, 0, 0.966511, -172.484, 16.9587, -418.935 )
+transform = Transform( 0.648584, 0, -0.761144, 0, 1, 0, 0.761144, 0, 0.648584, 260.02, 45.2141, -282.302 )
 
 [node name="camera_menu" parent="logo" index="0"]
-transform = Transform( 0.527401, 0.4185, -0.739395, 0, 0.870269, 0.492575, 0.849617, -0.259784, 0.45898, -180.819, 151.68, 569.17 )
+transform = Transform( 0.527401, 0.4185, -0.739395, 0, 0.870269, 0.492575, 0.849617, -0.259784, 0.45898, -180.635, 151.55, 568.986 )
 
 [node name="amiga" parent="logo/camera_menu" index="1"]
 editor/display_folded = true
@@ -277,7 +277,7 @@ _sections_unfolded = [ "Margin" ]
 
 [node name="bottom-middle" type="Control" parent="GUI/intro" index="3"]
 editor/display_folded = true
-modulate = Color( 1, 1, 1, 0.909091 )
+modulate = Color( 1, 1, 1, 0.9 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
