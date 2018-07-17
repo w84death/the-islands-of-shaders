@@ -50,7 +50,7 @@ size = Vector2( 2048, 2048 )
 subdivide_width = 512
 subdivide_depth = 512
 
-[node name="world_map" type="Spatial" index="0"]
+[node name="world_map" type="Spatial"]
 
 [node name="terrain" type="MeshInstance" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90735e-06, 0 )

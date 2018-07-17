@@ -36,6 +36,9 @@ is_intro = false
 
 [node name="system" parent="." index="1" instance=ExtResource( 3 )]
 
+[node name="SUN" parent="system" index="0"]
+light_cull_mask = -1
+
 [node name="Camera" type="Camera" parent="." index="2"]
 transform = Transform( -0.994, -0.00137282, 0.105583, 0, 0.999915, 0.0130011, -0.105592, 0.0129284, -0.994325, 24.8746, 46.2028, -173.809 )
 keep_aspect = 1

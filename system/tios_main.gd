@@ -12,9 +12,10 @@ func _input(event):
 		
 	if Input.is_action_pressed("fullscreen"):
 		toggle_fullscreen()
-	if in_game && Input.is_action_pressed("quit"):
-		show_menu()
-	elif Input.is_action_pressed("quit"):
+		
+	if Input.is_action_pressed("quit"):
+		if in_game:
+			show_menu()
 		if is_intro:
 			get_tree().quit()
 		else:
