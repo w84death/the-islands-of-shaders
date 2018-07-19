@@ -1,0 +1,195 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://features/terrain/tex/rocks/rocks.material" type="Material" id=1]
+[ext_resource path="res://features/terrain/tex/stone/rocks.material" type="Material" id=2]
+[ext_resource path="res://features/terrain/tex/paving_stones/paving_stones.material" type="Material" id=3]
+[ext_resource path="res://features/terrain/tex/paving_stones/paving_stones_s.material" type="Material" id=4]
+[ext_resource path="res://features/terrain/tex/marble/marble.material" type="Material" id=5]
+
+[sub_resource type="SphereMesh" id=1]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 1.0
+height = 2.0
+radial_segments = 8
+rings = 4
+is_hemisphere = false
+
+[sub_resource type="CubeMesh" id=2]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+size = Vector3( 4, 0.27, 4 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
+
+[sub_resource type="CubeMesh" id=3]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+size = Vector3( 4, 1, 4 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
+
+[sub_resource type="SphereMesh" id=4]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 1.0
+height = 2.0
+radial_segments = 8
+rings = 4
+is_hemisphere = false
+
+[sub_resource type="CubeMesh" id=5]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+size = Vector3( 4, 1, 4 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
+
+[sub_resource type="SphereMesh" id=6]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 1.0
+height = 2.0
+radial_segments = 8
+rings = 4
+is_hemisphere = false
+
+[node name="map_test" type="Spatial"]
+
+[node name="rock1" type="MeshInstance" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.590481, 0.784854, -3.58437 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 1 )
+_sections_unfolded = [ "Material" ]
+
+[node name="rock2" type="MeshInstance" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.352521, 0, -3.84886 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 2 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Material" ]
+
+[node name="stones1" type="MeshInstance" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.189369, 1.91975 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 3 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+_sections_unfolded = [ "Material" ]
+
+[node name="stones3" type="MeshInstance" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.28937, -0.189369, 1.97027 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 3 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 4 )
+_sections_unfolded = [ "Material" ]
+
+[node name="stones4" type="MeshInstance" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.28937, 0.958309, 1.9212 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 4 )
+_sections_unfolded = [ "Material" ]
+
+[node name="stones2" type="MeshInstance" parent="." index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958309, 1.87068 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+_sections_unfolded = [ "Material" ]
+
+[node name="marble1" type="MeshInstance" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.531983, -0.161494, 7.49674 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 5 )
+_sections_unfolded = [ "Material" ]
+
+[node name="marble2" type="MeshInstance" parent="." index="7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.899681, 7.77519 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 6 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 5 )
+_sections_unfolded = [ "Material" ]
+

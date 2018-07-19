@@ -57,13 +57,14 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="tios_logo" parent="Camera" index="0" instance=ExtResource( 4 )]
 transform = Transform( 1, -4.50381e-10, 9.68575e-08, -1.16415e-10, 0.999916, -0.0130011, 4.47035e-08, 0.0130011, 0.999916, -2.19345e-05, 2.18631, -14.7721 )
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera" index="1"]
 root_node = NodePath("..")
 autoplay = "New Anim"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-playback_speed = 0.02
+playback_speed = 0.04
 "anims/New Anim" = SubResource( 1 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
@@ -86,6 +87,7 @@ __meta__ = {
 }
 
 [node name="menu" type="Control" parent="GUI" index="0"]
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -176,5 +178,9 @@ max_lines_visible = -1
 
 [node name="corners" parent="GUI" index="1" instance=ExtResource( 7 )]
 
+
+[editable path="map_intro"]
+
+[editable path="map_intro/map_test"]
 
 [editable path="system"]
