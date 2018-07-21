@@ -25,6 +25,8 @@ settings/fps/force_fps=60
 
 window/size/width=675
 window/size/height=384
+window/size/fullscreen=true
+window/allow_per_pixel_transparency=true
 window/per_pixel_transparency=true
 window/per_pixel_transparency_splash=true
 window/stretch/mode="viewport"
