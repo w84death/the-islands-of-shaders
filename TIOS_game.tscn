@@ -9,7 +9,7 @@
 [ext_resource path="res://maps/map_intro_hm_512x512.png" type="Texture" id=7]
 [ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=8]
 
-[node name="TIOS_game" type="Spatial"]
+[node name="TIOS_game" type="Spatial" index="0"]
 script = ExtResource( 1 )
 _sections_unfolded = [ "script" ]
 in_game = true
@@ -136,3 +136,5 @@ __meta__ = {
 
 
 [editable path="camera_rig"]
+
+[editable path="map_intro"]

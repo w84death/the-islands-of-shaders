@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://maps/map_intro_terrain.tres" type="PlaneMesh" id=1]
 [ext_resource path="res://maps/map_intro_terrain.material" type="Material" id=2]
@@ -16,6 +16,18 @@
 [ext_resource path="res://features/insects/code/insects.material" type="Material" id=14]
 [ext_resource path="res://maps/map_intro_insects_particle.material" type="Material" id=15]
 [ext_resource path="res://features/insects/models/butterfly.obj" type="ArrayMesh" id=16]
+[ext_resource path="res://features/structures/models/bridge.obj" type="ArrayMesh" id=17]
+[ext_resource path="res://features/structures/code/bridge.material" type="Material" id=18]
+
+[sub_resource type="SphereMesh" id=1]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 6.0
+height = 12.0
+radial_segments = 16
+rings = 8
+is_hemisphere = false
 
 [node name="map_intro" type="Spatial"]
 
@@ -222,4 +234,36 @@ script = ExtResource( 6 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Transform", "material_override", "process_material" ]
 rows = 16
 spacing = 12.0
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="8"]
+transform = Transform( -0.0686534, 0, 0.292039, 0, 0.3, 0, -0.292039, 0, -0.0686534, -48.369, 33.8435, 2.27191 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 17 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 18 )
+_sections_unfolded = [ "Material" ]
+
+[node name="MeshInstance2" type="MeshInstance" parent="." index="9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7378, 41.8079, -28.5157 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 18 )
+_sections_unfolded = [ "Material" ]
 

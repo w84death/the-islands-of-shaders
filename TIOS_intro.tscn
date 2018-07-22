@@ -54,7 +54,7 @@ tracks/2/keys = {
 "values": [ Vector3( 62.8855, 91.785, 0 ), Vector3( 63.8155, 88.695, 0 ), Vector3( 72.2602, 89.8341, 0 ) ]
 }
 
-[node name="TIOS_intro" type="Spatial" index="0"]
+[node name="TIOS_intro" type="Spatial"]
 script = ExtResource( 1 )
 _sections_unfolded = [ "script" ]
 in_game = false
@@ -119,7 +119,6 @@ region_rect = Rect2( 0, 0, 0, 0 )
 _sections_unfolded = [ "Transform", "texture" ]
 
 [node name="map_intro" parent="." index="4" instance=ExtResource( 4 )]
-editor/display_folded = true
 
 [node name="GUI" type="Control" parent="." index="5"]
 editor/display_folded = true
