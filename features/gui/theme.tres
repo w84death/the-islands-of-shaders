@@ -1,15 +1,16 @@
 [gd_resource type="Theme" load_steps=3 format=2]
 
-[ext_resource path="res://features/gui/Marapfhont.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://features/gui/font/UbuntuMono-Bold.ttf" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=1]
 
-size = 32
+size = 18
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [resource]
 

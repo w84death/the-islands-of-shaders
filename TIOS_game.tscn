@@ -3,10 +3,10 @@
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
 [ext_resource path="res://features/shared/system.tscn" type="PackedScene" id=2]
 [ext_resource path="res://features/shared/camera_rig.tscn" type="PackedScene" id=3]
-[ext_resource path="res://maps/world_map.tscn" type="PackedScene" id=4]
+[ext_resource path="res://maps/map_game_test.tscn" type="PackedScene" id=4]
 [ext_resource path="res://features/gui/theme.tres" type="Theme" id=5]
 [ext_resource path="res://features/gui/fps.gd" type="Script" id=6]
-[ext_resource path="res://features/shared/island_0_entities_map.png" type="Texture" id=7]
+[ext_resource path="res://maps/map_intro_hm_512x512.png" type="Texture" id=7]
 [ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=8]
 
 [node name="TIOS_game" type="Spatial"]
@@ -18,9 +18,10 @@ is_intro = false
 [node name="system" parent="." index="0" instance=ExtResource( 2 )]
 
 [node name="camera_rig" parent="." index="1" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 0.913546, -0.406737, 0, 0.406737, 0.913545, 37.3013, 27.0726, 217.752 )
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, 0 )
 
-[node name="world_map" parent="." index="2" instance=ExtResource( 4 )]
+[node name="map_intro" parent="." index="2" instance=ExtResource( 4 )]
 
 [node name="GUI" type="Control" parent="." index="3"]
 anchor_left = 0.0
@@ -133,3 +134,5 @@ __meta__ = {
 
 [node name="corners" parent="GUI" index="1" instance=ExtResource( 8 )]
 
+
+[editable path="camera_rig"]

@@ -11,11 +11,17 @@ uniform sampler2D features_map;
 uniform float max_height = 18.0;
 uniform float water_level = 54.0;
 uniform vec2 heightmap_size = vec2(512.0, 512.0);
+uniform float mountains_level = 0.6;
+uniform float mountains_size = 6.0;
 
 float get_height(vec2 pos) {
 	pos -= 0.5 * heightmap_size;
 	pos /= heightmap_size;
-	return max_height * texture(height_map, pos).r;
+	float h = texture(height_map, pos).r;
+	if (h>mountains_level) {
+		h += (h-mountains_level)*mountains_size;
+	}
+	return max_height * h;
 }
 
 float fake_random(vec2 p){
