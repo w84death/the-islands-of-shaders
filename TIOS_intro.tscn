@@ -54,7 +54,7 @@ tracks/2/keys = {
 "values": [ Vector3( 62.8855, 91.785, 0 ), Vector3( 63.8155, 88.695, 0 ), Vector3( 72.2602, 89.8341, 0 ) ]
 }
 
-[node name="TIOS_intro" type="Spatial"]
+[node name="TIOS_intro" type="Spatial" index="0"]
 script = ExtResource( 1 )
 _sections_unfolded = [ "script" ]
 in_game = false
