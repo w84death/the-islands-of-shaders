@@ -1,107 +1,80 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
 [ext_resource path="res://features/shared/system.tscn" type="PackedScene" id=2]
-[ext_resource path="res://features/gui/models/_free_play.obj" type="ArrayMesh" id=3]
-[ext_resource path="res://features/gui/code/bronze.material" type="Material" id=4]
-[ext_resource path="res://features/gui/models/_join_game.obj" type="ArrayMesh" id=5]
-[ext_resource path="res://features/gui/models/_quit.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://features/gui/theme.tres" type="Theme" id=7]
-[ext_resource path="res://features/gui/fps.gd" type="Script" id=8]
-[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=9]
-[ext_resource path="res://maps/map_intro.tscn" type="PackedScene" id=10]
+[ext_resource path="res://features/animations/menu1.tres" type="Animation" id=3]
+[ext_resource path="res://features/animations/menu2.tres" type="Animation" id=4]
+[ext_resource path="res://features/animations/menu3.tres" type="Animation" id=5]
+[ext_resource path="res://features/gui/models/_free_play.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://features/gui/code/bronze.material" type="Material" id=7]
+[ext_resource path="res://features/gui/models/_join_game.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://features/gui/models/_quit.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://features/gui/theme.tres" type="Theme" id=10]
+[ext_resource path="res://features/gui/fps.gd" type="Script" id=11]
+[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=12]
+[ext_resource path="res://maps/map_intro.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=1]
 
-resource_name = "camera1"
-length = 4.0
+resource_name = "menus"
+length = 12.1
 loop = true
 step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:translation")
-tracks/0/interp = 2
+tracks/0/type = "animation"
+tracks/0/path = NodePath("Camera/camera-anim")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector3( 74.46, 97.1999, 273.919 ), Vector3( 74.46, 97.1999, 204.519 ) ]
+"clips": PoolStringArray( "camera3", "camera2", "camera1" ),
+"times": PoolRealArray( 0.1, 4.1, 8.1 )
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:rotation_degrees")
-tracks/1/interp = 2
+tracks/1/type = "animation"
+tracks/1/path = NodePath("GUI/overdraw/fade/fade-anim")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( -7.31, 5.06, 0 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-
-resource_name = "camera2"
-length = 4.0
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:translation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector3( 70.848, 87.3858, 163.284 ), Vector3( 119.69, 88.2199, 161.398 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:rotation_degrees")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector3( -7.23032, 45.3899, 0 ), Vector3( -7.21001, 61.9399, 0 ) ]
+"clips": PoolStringArray( "fade-in", "fade-out", "fade-in", "fade-out", "fade-in", "fade-out" ),
+"times": PoolRealArray( 0.1, 3, 4.2, 7, 8.2, 11 )
 }
 
 [sub_resource type="Animation" id=3]
 
-resource_name = "camera3"
-length = 4.0
-loop = true
+length = 1.0
+loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 2
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( -16.81, -23.4393, 0 ), Vector3( -16.81, -15.9599, 0 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:translation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
+
+[sub_resource type="Animation" id=4]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -2.98023e-08, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 92.6975, 94.8799, 135.818 ), Vector3( 49.8301, 94.8799, 135.818 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
 [node name="TIOS_menu" type="Spatial" index="0"]
@@ -109,14 +82,24 @@ script = ExtResource( 1 )
 in_game = false
 is_intro = false
 
-[node name="system" parent="." index="0" instance=ExtResource( 2 )]
+[node name="animations" type="AnimationPlayer" parent="." index="0"]
+root_node = NodePath("..")
+autoplay = "menus"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 0.5
+anims/menus = SubResource( 1 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="system" parent="." index="1" instance=ExtResource( 2 )]
 
 [node name="SUN" parent="system" index="0"]
 light_specular = 0.46
 light_cull_mask = -1
 
-[node name="Camera" type="Camera" parent="." index="1"]
-transform = Transform( 0.702279, -0.0895987, 0.706241, 0, 0.992048, 0.125858, -0.711902, -0.0883877, 0.696695, 70.848, 87.3858, 163.284 )
+[node name="Camera" type="Camera" parent="." index="2"]
+transform = Transform( 0.961454, 0.0795194, -0.263215, 0, 0.957269, 0.289199, 0.274964, -0.278052, 0.920371, 49.8301, 94.8799, 135.818 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -131,15 +114,15 @@ near = 0.1
 far = 512.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="animations" type="AnimationPlayer" parent="Camera" index="0"]
+[node name="camera-anim" type="AnimationPlayer" parent="Camera" index="0"]
 root_node = NodePath("..")
-autoplay = "camera2"
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-playback_speed = 0.08
-anims/camera1 = SubResource( 1 )
-anims/camera2 = SubResource( 2 )
-anims/camera3 = SubResource( 3 )
+playback_speed = 0.5
+anims/camera1 = ExtResource( 3 )
+anims/camera2 = ExtResource( 4 )
+anims/camera3 = ExtResource( 5 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
@@ -156,9 +139,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 3 )
+mesh = ExtResource( 6 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 4 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="_join_game" type="MeshInstance" parent="Camera/menu" index="1"]
@@ -172,9 +155,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 5 )
+mesh = ExtResource( 8 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 4 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="_quit" type="MeshInstance" parent="Camera/menu" index="2"]
@@ -188,12 +171,12 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 6 )
+mesh = ExtResource( 9 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 4 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "Material", "Transform" ]
 
-[node name="GUI" type="Control" parent="." index="2"]
+[node name="GUI" type="Control" parent="." index="3"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -204,13 +187,14 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 7 )
+theme = ExtResource( 10 )
 _sections_unfolded = [ "Theme", "theme" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="menu" type="Control" parent="GUI" index="0"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -226,6 +210,7 @@ __meta__ = {
 }
 
 [node name="left_corner" type="Control" parent="GUI/menu" index="0"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -261,10 +246,11 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 8 )
+script = ExtResource( 11 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
 [node name="Control" type="Control" parent="GUI/menu" index="1"]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -299,9 +285,47 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
-[node name="corners" parent="GUI" index="1" instance=ExtResource( 9 )]
+[node name="corners" parent="GUI" index="1" instance=ExtResource( 12 )]
 
-[node name="map_intro" parent="." index="3" instance=ExtResource( 10 )]
+[node name="overdraw" type="Control" parent="GUI" index="2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="fade" type="Panel" parent="GUI/overdraw" index="0"]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Custom Styles", "Visibility", "custom_styles/panel" ]
+
+[node name="fade-anim" type="AnimationPlayer" parent="GUI/overdraw/fade" index="0"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 0.5
+anims/fade-in = SubResource( 3 )
+anims/fade-out = SubResource( 4 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="map_intro" parent="." index="4" instance=ExtResource( 13 )]
 
 
 [editable path="system"]
