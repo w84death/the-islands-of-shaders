@@ -1,0 +1,13 @@
+# Changelog
+Most important milestones will be reported here.
+
+## 2017-7-28
+
+### Added
+- Changelog ;)
+- Few animations for menu camera.
+- Intro first scene
+
+### Changed
+- Terrain shader uses 5x textures.
+- Grass shader uses 5x textutes.

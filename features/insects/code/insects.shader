@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode cull_disabled;
+//render_mode cull_disabled;
 
 uniform sampler2D texture_map : hint_albedo;
 uniform sampler2D normal_map : hint_normal;

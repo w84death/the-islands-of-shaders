@@ -1,33 +1,33 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
 [ext_resource path="res://features/shared/system.tscn" type="PackedScene" id=2]
-[ext_resource path="res://features/gui/code/tios_logo.tscn" type="PackedScene" id=3]
-[ext_resource path="res://features/gui/models/_free_play.obj" type="ArrayMesh" id=4]
-[ext_resource path="res://features/gui/code/bronze.material" type="Material" id=5]
-[ext_resource path="res://features/gui/models/_join_game.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://features/gui/models/_quit.obj" type="ArrayMesh" id=7]
-[ext_resource path="res://features/gui/theme.tres" type="Theme" id=8]
-[ext_resource path="res://features/gui/fps.gd" type="Script" id=9]
-[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=10]
-[ext_resource path="res://maps/map_intro.tscn" type="PackedScene" id=11]
+[ext_resource path="res://features/gui/models/_free_play.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://features/gui/code/bronze.material" type="Material" id=4]
+[ext_resource path="res://features/gui/models/_join_game.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://features/gui/models/_quit.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://features/gui/theme.tres" type="Theme" id=7]
+[ext_resource path="res://features/gui/fps.gd" type="Script" id=8]
+[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=9]
+[ext_resource path="res://maps/map_intro.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 
-length = 3.0
+resource_name = "camera1"
+length = 4.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:translation")
 tracks/0/interp = 2
-tracks/0/loop_wrap = false
+tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.9, 2.4, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 24.8746, 46.2028, -173.809 ), Vector3( 52.2846, 46.2028, 14.4563 ), Vector3( 58.5955, 46.2028, 63.9998 ), Vector3( 24.8746, 46.2028, 123.452 ) ]
+"values": [ Vector3( 74.46, 97.1999, 273.919 ), Vector3( 74.46, 97.1999, 204.519 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:rotation_degrees")
@@ -36,10 +36,72 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6, 1.5, 2.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0, -178.364, 0 ), Vector3( 0, -193.034, 0 ), Vector3( 0, -169.043, 0 ), Vector3( 0, -196.685, 0 ) ]
+"values": [ Vector3( -7.31, 5.06, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "camera2"
+length = 4.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 70.848, 87.3858, 163.284 ), Vector3( 119.69, 88.2199, 161.398 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -7.23032, 45.3899, 0 ), Vector3( -7.21001, 61.9399, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "camera3"
+length = 4.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -16.81, -23.4393, 0 ), Vector3( -16.81, -15.9599, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 92.6975, 94.8799, 135.818 ), Vector3( 49.8301, 94.8799, 135.818 ) ]
 }
 
 [node name="TIOS_menu" type="Spatial" index="0"]
@@ -54,7 +116,7 @@ light_specular = 0.46
 light_cull_mask = -1
 
 [node name="Camera" type="Camera" parent="." index="1"]
-transform = Transform( -0.999185, 0, -0.0285517, 0, 1, 0, 0.02854, 0, -0.999592, 24.8746, 46.2028, 123.452 )
+transform = Transform( 0.702279, -0.0895987, 0.706241, 0, 0.992048, 0.125858, -0.711902, -0.0883877, 0.696695, 70.848, 87.3858, 163.284 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -69,23 +131,22 @@ near = 0.1
 far = 512.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="tios_logo" parent="Camera" index="0" instance=ExtResource( 3 )]
-transform = Transform( 1, -4.50381e-10, 9.68575e-08, -1.16415e-10, 0.999916, -0.0130011, 4.47035e-08, 0.0130011, 0.999916, -2.19345e-05, 2.18631, -14.7721 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera" index="1"]
+[node name="animations" type="AnimationPlayer" parent="Camera" index="0"]
 root_node = NodePath("..")
-autoplay = "New Anim"
+autoplay = "camera2"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-playback_speed = 0.04
-"anims/New Anim" = SubResource( 1 )
+playback_speed = 0.08
+anims/camera1 = SubResource( 1 )
+anims/camera2 = SubResource( 2 )
+anims/camera3 = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="menu" type="Spatial" parent="Camera" index="2"]
+[node name="menu" type="Spatial" parent="Camera" index="1"]
 
 [node name="_free_play" type="MeshInstance" parent="Camera/menu" index="0"]
-transform = Transform( 1, -2.32831e-10, -4.33681e-19, 2.32831e-10, 1, 0, 4.33681e-19, -1.00974e-28, 1, 0, 0, -20 )
+transform = Transform( 1, -2.32831e-10, 0, 2.21435e-10, 0.951057, 0.309017, -7.19487e-11, -0.309017, 0.951057, 0, 0, -20 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -95,13 +156,29 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 4 )
+mesh = ExtResource( 3 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 4 )
 _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="_join_game" type="MeshInstance" parent="Camera/menu" index="1"]
-transform = Transform( 1, 0, 0, 2.32831e-10, 1, 0, 0, -1.86265e-09, 1, 0, -1.5, -20 )
+transform = Transform( 1, -2.32831e-10, -4.12457e-19, 2.21435e-10, 0.951057, 0.309017, -7.19487e-11, -0.309017, 0.951057, 0, -1.5, -20 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 5 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 4 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="_quit" type="MeshInstance" parent="Camera/menu" index="2"]
+transform = Transform( 1, -2.32831e-10, -4.12457e-19, 2.21435e-10, 0.951057, 0.309017, -7.19487e-11, -0.309017, 0.951057, 0, -3, -20 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -113,24 +190,8 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 6 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 4 )
 _sections_unfolded = [ "Material", "Transform" ]
-
-[node name="_quit" type="MeshInstance" parent="Camera/menu" index="2"]
-transform = Transform( 1, 0, 0, 2.32831e-10, 1, 0, 0, -1.86265e-09, 1, 0, -3, -20 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = ExtResource( 7 )
-skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
-_sections_unfolded = [ "Material" ]
 
 [node name="GUI" type="Control" parent="." index="2"]
 anchor_left = 0.0
@@ -143,7 +204,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 8 )
+theme = ExtResource( 7 )
 _sections_unfolded = [ "Theme", "theme" ]
 __meta__ = {
 "_edit_lock_": true
@@ -165,7 +226,6 @@ __meta__ = {
 }
 
 [node name="left_corner" type="Control" parent="GUI/menu" index="0"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -201,15 +261,14 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
 [node name="Control" type="Control" parent="GUI/menu" index="1"]
-visible = false
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -222,10 +281,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -139.5
-margin_top = -39.5
-margin_right = 139.5
-margin_bottom = 39.5
+margin_left = -140.0
+margin_top = -90.0
+margin_right = 139.0
+margin_bottom = -11.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -240,13 +299,9 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
-[node name="corners" parent="GUI" index="1" instance=ExtResource( 10 )]
-margin_left = 1.0
-margin_top = -2.0
-margin_right = 1.0
-margin_bottom = -2.0
+[node name="corners" parent="GUI" index="1" instance=ExtResource( 9 )]
 
-[node name="map_intro" parent="." index="3" instance=ExtResource( 11 )]
+[node name="map_intro" parent="." index="3" instance=ExtResource( 10 )]
 
 
 [editable path="system"]

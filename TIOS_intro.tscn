@@ -54,7 +54,7 @@ tracks/2/keys = {
 "values": [ Vector3( 62.8855, 91.785, 0 ), Vector3( 63.8155, 88.695, 0 ), Vector3( 72.2602, 89.8341, 0 ) ]
 }
 
-[node name="TIOS_intro" type="Spatial" index="0"]
+[node name="TIOS_intro" type="Spatial"]
 script = ExtResource( 1 )
 _sections_unfolded = [ "script" ]
 in_game = false
@@ -121,7 +121,6 @@ _sections_unfolded = [ "Transform", "texture" ]
 [node name="map_intro" parent="." index="4" instance=ExtResource( 4 )]
 
 [node name="GUI" type="Control" parent="." index="5"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -133,7 +132,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 5 )
-_sections_unfolded = [ "Theme", "theme" ]
+_sections_unfolded = [ "theme" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -370,8 +369,6 @@ offset = Vector2( 0, 6 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
 [node name="corners" parent="GUI" index="1" instance=ExtResource( 10 )]
-margin_left = 1.0
-margin_right = 1.0
 
 
 [editable path="map_intro"]

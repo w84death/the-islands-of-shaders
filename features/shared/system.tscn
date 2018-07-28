@@ -31,7 +31,7 @@ directional_shadow_split_3 = 0.4
 directional_shadow_blend_splits = true
 directional_shadow_normal_bias = 1.14
 directional_shadow_bias_split_scale = 0.04
-directional_shadow_depth_range = 1
+directional_shadow_depth_range = 0
 directional_shadow_max_distance = 386.0
 _sections_unfolded = [ "Directional Shadow", "Editor", "Light", "Shadow", "Transform" ]
 
