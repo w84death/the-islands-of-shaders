@@ -144,7 +144,6 @@ common/physics_fps=75
 
 [rendering]
 
-quality/shadows/filter_mode=2
 quality/subsurface_scattering/quality=0
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0.27451, 0.27451, 0.27451, 1 )

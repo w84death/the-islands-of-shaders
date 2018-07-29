@@ -1,23 +1,25 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://maps/map_intro_terrain.tres" type="PlaneMesh" id=1]
 [ext_resource path="res://maps/map_intro_terrain.material" type="Material" id=2]
-[ext_resource path="res://features/grass/code/grass_shader.material" type="Material" id=3]
+[ext_resource path="res://features/grass/code/new_grass_1.material" type="Material" id=3]
 [ext_resource path="res://maps/map_intro_grass_particle.material" type="Material" id=4]
-[ext_resource path="res://features/grass/models/grass.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://features/grass/models/grass2_low.obj" type="ArrayMesh" id=5]
 [ext_resource path="res://system/particle_follow_camera_rig.gd" type="Script" id=6]
-[ext_resource path="res://features/grass/code/poprotas.material" type="Material" id=7]
-[ext_resource path="res://maps/map_intro_paprotas_particle.material" type="Material" id=8]
-[ext_resource path="res://features/grass/models/paprota.obj" type="ArrayMesh" id=9]
-[ext_resource path="res://maps/map_intro_palms_particle.material" type="Material" id=10]
-[ext_resource path="res://features/trees/models/palm.mesh" type="ArrayMesh" id=11]
-[ext_resource path="res://maps/map_intro_water.tres" type="PlaneMesh" id=12]
-[ext_resource path="res://maps/map_intro_water.material" type="Material" id=13]
-[ext_resource path="res://features/insects/code/insects.material" type="Material" id=14]
-[ext_resource path="res://maps/map_intro_insects_particle.material" type="Material" id=15]
-[ext_resource path="res://features/insects/models/butterfly.obj" type="ArrayMesh" id=16]
-[ext_resource path="res://features/structures/models/bridge.obj" type="ArrayMesh" id=17]
-[ext_resource path="res://features/structures/code/bridge.material" type="Material" id=18]
+[ext_resource path="res://features/grass/code/grass2.material" type="Material" id=7]
+[ext_resource path="res://maps/map_intro_grass2_particle.material" type="Material" id=8]
+[ext_resource path="res://features/grass/code/poprotas.material" type="Material" id=9]
+[ext_resource path="res://maps/map_intro_paprotas_particle.material" type="Material" id=10]
+[ext_resource path="res://features/grass/models/paprota.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://maps/map_intro_palms_particle.material" type="Material" id=12]
+[ext_resource path="res://features/trees/models/palm.mesh" type="ArrayMesh" id=13]
+[ext_resource path="res://maps/map_intro_water.tres" type="PlaneMesh" id=14]
+[ext_resource path="res://maps/map_intro_water.material" type="Material" id=15]
+[ext_resource path="res://features/insects/code/insects.material" type="Material" id=16]
+[ext_resource path="res://maps/map_intro_insects_particle.material" type="Material" id=17]
+[ext_resource path="res://features/insects/models/butterfly.obj" type="ArrayMesh" id=18]
+[ext_resource path="res://features/structures/models/bridge.obj" type="ArrayMesh" id=19]
+[ext_resource path="res://features/structures/code/bridge.material" type="Material" id=20]
 
 [node name="map_intro" type="Spatial"]
 
@@ -72,8 +74,8 @@ _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_
 rows = 128
 spacing = 6.0
 
-[node name="paprotes" type="Particles" parent="." index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.178728, 0.808505, -2.6553 )
+[node name="grass2" type="Particles" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0918102, -0.19283, -2.77525 )
 layers = 1
 material_override = ExtResource( 7 )
 cast_shadow = 1
@@ -98,13 +100,45 @@ local_coords = false
 draw_order = 0
 process_material = ExtResource( 8 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 9 )
+draw_pass_1 = ExtResource( 5 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Geometry", "Process Material", "material_override", "process_material", "script" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "material_override", "process_material", "script" ]
 rows = 64
 spacing = 12.0
 
-[node name="palms" type="Particles" parent="." index="3"]
+[node name="paprotes" type="Particles" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.178728, 0.808505, -2.6553 )
+layers = 1
+material_override = ExtResource( 9 )
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = true
+amount = 1024
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 1.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -9.63663, -2.37216, -8.1309, 21.0731, 10.0266, 16.2618 )
+local_coords = false
+draw_order = 0
+process_material = ExtResource( 10 )
+draw_passes = 1
+draw_pass_1 = ExtResource( 11 )
+script = ExtResource( 6 )
+_sections_unfolded = [ "Geometry", "Process Material", "material_override", "process_material", "script" ]
+rows = 32
+spacing = 24.0
+
+[node name="palms" type="Particles" parent="." index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7398, 1.84899, 7.00503 )
 layers = 1
 material_override = null
@@ -128,15 +162,15 @@ fract_delta = true
 visibility_aabb = AABB( -9.63663, -2.37216, -8.1309, 21.0731, 10.0266, 16.2618 )
 local_coords = false
 draw_order = 0
-process_material = ExtResource( 10 )
+process_material = ExtResource( 12 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 11 )
+draw_pass_1 = ExtResource( 13 )
 script = ExtResource( 6 )
 _sections_unfolded = [ "Draw Passes", "Process Material", "Transform", "draw_pass_1", "material_override", "process_material" ]
 rows = 64
 spacing = 14.0
 
-[node name="water" type="MeshInstance" parent="." index="4"]
+[node name="water" type="MeshInstance" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75734, 0 )
 layers = 1
 material_override = null
@@ -147,18 +181,18 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 12 )
+mesh = ExtResource( 14 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 13 )
+material/0 = ExtResource( 15 )
 _sections_unfolded = [ "Material", "material/0", "material_override", "mesh" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="insects" type="Particles" parent="." index="5"]
+[node name="insects" type="Particles" parent="." index="6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.138, 0 )
 layers = 1
-material_override = ExtResource( 14 )
+material_override = ExtResource( 16 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -179,15 +213,15 @@ fract_delta = true
 visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
 local_coords = false
 draw_order = 0
-process_material = ExtResource( 15 )
+process_material = ExtResource( 17 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 16 )
+draw_pass_1 = ExtResource( 18 )
 script = ExtResource( 6 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Transform", "material_override", "process_material" ]
 rows = 16
 spacing = 12.0
 
-[node name="MeshInstance" type="MeshInstance" parent="." index="6"]
+[node name="MeshInstance" type="MeshInstance" parent="." index="7"]
 transform = Transform( -0.0686534, 0, 0.292039, 0, 0.3, 0, -0.292039, 0, -0.0686534, -48.369, 33.8435, 2.27191 )
 layers = 1
 material_override = null
@@ -198,8 +232,8 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 17 )
+mesh = ExtResource( 19 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 18 )
+material/0 = ExtResource( 20 )
 _sections_unfolded = [ "Material", "Transform" ]
 

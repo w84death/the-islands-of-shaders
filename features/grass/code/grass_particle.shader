@@ -57,7 +57,7 @@ void vertex() {
 	
 	// apply our height
 	pos.y = get_height(pos.xz);
-	pos.y -= (noise.x * 0.3 );
+	//pos.y -= (noise.x * 0.2 );
 	
 	float y2 = get_height(pos.xz + vec2(1.0, 0.0));
 	float y3 = get_height(pos.xz + vec2(0.0, 1.0));
@@ -85,7 +85,7 @@ void vertex() {
 		pos.y = -10000.0;
 	}
 	
-	float height_noise = noise.y * 3.0;
+	float height_noise = noise.y * 4.0;
 	
 	// update our transform to place
 	TRANSFORM[3][0] = pos.x;

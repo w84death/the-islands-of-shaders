@@ -20,10 +20,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 3.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.7, 2.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 216.709, 46.0156, -88.5518 ), Vector3( 196.371, 46.0156, -102.57 ), Vector3( 196.371, 50.6169, -102.57 ) ]
+"values": [ Vector3( 64.6997, 46.2639, 162.025 ), Vector3( 64.6997, 46.2639, 143.991 ), Vector3( 54.8359, 46.2639, 138.565 ), Vector3( 70.8419, 46.2639, 136.195 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:rotation_degrees")
@@ -32,10 +32,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2, 3.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.7, 2.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 90.4603, 0 ), Vector3( 0, 118.246, 0 ), Vector3( -12.9574, 118.266, -1.37815 ) ]
+"values": [ Vector3( 0, 13.6822, 0 ), Vector3( 1.89511, 9.42366, 0.461526 ), Vector3( 1.5003, -5.77758, 0.365375 ), Vector3( 0.710667, 34.1513, 0.173072 ) ]
 }
 
 [node name="EXTRAS" type="Spatial" index="0"]
@@ -47,6 +47,10 @@ is_intro = true
 [node name="map_intro" parent="." index="0" instance=ExtResource( 2 )]
 
 [node name="system" parent="." index="1" instance=ExtResource( 3 )]
+
+[node name="SUN" parent="system" index="0"]
+light_energy = 1.0
+light_cull_mask = -1
 
 [node name="GUI" type="Control" parent="." index="2"]
 editor/display_folded = true
@@ -69,8 +73,7 @@ __meta__ = {
 [node name="corners" parent="GUI" index="0" instance=ExtResource( 5 )]
 
 [node name="Camera" type="Camera" parent="." index="3"]
-editor/display_folded = true
-transform = Transform( -0.468684, -0.208822, 0.858329, -0.0234385, 0.974255, 0.224227, -0.883055, 0.0849739, -0.461513, 196.371, 50.6169, -102.57 )
+transform = Transform( 0.999145, -0.00787898, -0.0405948, 0.00675523, 0.999592, -0.0277455, 0.0407968, 0.0274476, 0.99879, 57.0746, 46.2639, 139.796 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -79,7 +82,7 @@ v_offset = 0.0
 doppler_tracking = 0
 projection = 0
 current = true
-fov = 35.0
+fov = 50.0
 size = 1.0
 near = 0.05
 far = 512.0
@@ -90,18 +93,22 @@ root_node = NodePath("..")
 autoplay = "New Anim"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-playback_speed = 0.1
+playback_speed = 1.0
 "anims/New Anim" = SubResource( 1 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="zlote-gody" parent="." index="4" instance=ExtResource( 6 )]
-editor/display_folded = true
-transform = Transform( 0.16924, -0.463525, 0.969085, 0, 1.94515, 0.232597, -1.99283, -0.0393648, 0.0822994, 177.82, 45.7011, -91.4029 )
+transform = Transform( 1.97871, -0.0676972, 0.141534, 0, 1.94515, 0.232597, -0.291051, -0.460241, 0.96222, 58.5805, 45.9494, 123.515 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="OmniLight" parent="zlote-gody" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51252, 0.874044, -0.229108 )
 
+[node name="stand" parent="zlote-gody" index="8"]
+visible = false
+
+
+[editable path="system"]
 
 [editable path="zlote-gody"]

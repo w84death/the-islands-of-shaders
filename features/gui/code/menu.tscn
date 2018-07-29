@@ -1,0 +1,313 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://features/gui/models/_free_play.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://features/gui/code/bronze.material" type="Material" id=2]
+[ext_resource path="res://features/gui/code/red_carpet.material" type="Material" id=3]
+[ext_resource path="res://features/animations/menu_plate_in.tres" type="Animation" id=4]
+[ext_resource path="res://features/animations/menu_plate_out.tres" type="Animation" id=5]
+[ext_resource path="res://features/gui/models/_join_game.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://features/gui/models/_quit.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://features/shared/amiga.material" type="Material" id=8]
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "demo"
+length = 4.5
+loop = true
+step = 0.1
+tracks/0/type = "animation"
+tracks/0/path = NodePath("_free_play/plate/free_play_anim")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "menu_plate_in", "menu_plate_out" ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("_join_game/plate2/join_game_anim")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "menu_plate_in", "menu_plate_out" ),
+"times": PoolRealArray( 1.5, 2.5 )
+}
+tracks/2/type = "animation"
+tracks/2/path = NodePath("_quit/plate3/quit_anim")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": PoolStringArray( "menu_plate_in", "menu_plate_out" ),
+"times": PoolRealArray( 3, 4 )
+}
+
+[sub_resource type="CubeMesh" id=1]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+size = Vector3( 10, 1.72, 0.1 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "in"
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "out"
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
+[sub_resource type="SphereMesh" id=4]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 0.5
+height = 1.0
+radial_segments = 8
+rings = 4
+is_hemisphere = false
+
+[node name="menu" type="Spatial" index="0"]
+
+[node name="animations" type="AnimationPlayer" parent="." index="0"]
+root_node = NodePath("..")
+autoplay = "demo"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 2.0
+anims/demo = SubResource( 5 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="_free_play" type="MeshInstance" parent="." index="1"]
+transform = Transform( 1, -2.32831e-10, 0, 2.21435e-10, 0.951057, 0.309017, -7.19487e-11, -0.309017, 0.951057, 0, 1, -20 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="plate" type="MeshInstance" parent="_free_play" index="0"]
+transform = Transform( 0.999994, 0.00345985, 3.09335e-10, -0.00345985, 0.999994, 8.94064e-08, -8.60423e-16, -8.9407e-08, 1, -1.67476e-10, 0.632909, -0.438646 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="free_play_anim" type="AnimationPlayer" parent="_free_play/plate" index="0"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 2.0
+anims/menu_plate_in = ExtResource( 4 )
+anims/menu_plate_out = ExtResource( 5 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="_join_game" type="MeshInstance" parent="." index="2"]
+transform = Transform( 1, -2.32831e-10, -4.12457e-19, 2.21435e-10, 0.951057, 0.309017, -7.19487e-11, -0.309017, 0.951057, 0, -1.03927, -20 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 6 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="plate2" type="MeshInstance" parent="_join_game" index="0"]
+transform = Transform( 0.999994, -0.00345984, -1.51235e-10, 0, -4.37114e-08, 0.999999, -0.00345985, -0.999993, -4.37111e-08, -3.50049e-10, -0.151235, -0.69343 )
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="join_game_anim" type="AnimationPlayer" parent="_join_game/plate2" index="0"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 2.0
+anims/menu_plate_in = ExtResource( 4 )
+anims/menu_plate_out = ExtResource( 5 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="_quit" type="MeshInstance" parent="." index="3"]
+transform = Transform( 1, -2.32831e-10, -4.12457e-19, 2.21435e-10, 0.951057, 0.309017, -7.19487e-11, -0.309017, 0.951057, 0, -3, -20 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 7 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="plate3" type="MeshInstance" parent="_quit" index="0"]
+transform = Transform( 0.999994, -0.00345984, -1.51235e-10, 0, -4.37114e-08, 0.999999, -0.00345985, -0.999993, -4.37111e-08, -3.50049e-10, -0.151235, -0.69343 )
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="quit_anim" type="AnimationPlayer" parent="_quit/plate3" index="0"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 2.0
+anims/in = SubResource( 2 )
+anims/menu_plate_in = ExtResource( 4 )
+anims/menu_plate_out = ExtResource( 5 )
+anims/out = SubResource( 3 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="amiga" type="MeshInstance" parent="." index="4"]
+transform = Transform( 0.139642, 0.559883, -0.81672, -0.491553, 0.755193, 0.433659, 0.859579, 0.340904, 0.380669, -4.95303, 1.88132, -19.45 )
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 8 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="SpotLight" type="SpotLight" parent="." index="5"]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -2.06745, 1.18687, -10.8893 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 8.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+spot_range = 14.9376
+spot_attenuation = 1.0
+spot_angle = 77.2
+spot_angle_attenuation = 1.0
+_sections_unfolded = [ "Light", "Spot", "Transform" ]
+

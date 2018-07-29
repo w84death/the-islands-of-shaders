@@ -10,7 +10,7 @@ func _input(event):
 		if not in_game and not is_intro or event is InputEventMouseButton:
 			show_game()
 		
-	if Input.is_action_pressed("fullscreen"):
+	if Input.is_action_just_released("fullscreen"):
 		toggle_fullscreen()
 		
 	if Input.is_action_pressed("quit"):

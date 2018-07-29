@@ -1,18 +1,15 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
 [ext_resource path="res://features/shared/system.tscn" type="PackedScene" id=2]
 [ext_resource path="res://features/animations/menu1.tres" type="Animation" id=3]
 [ext_resource path="res://features/animations/menu2.tres" type="Animation" id=4]
 [ext_resource path="res://features/animations/menu3.tres" type="Animation" id=5]
-[ext_resource path="res://features/gui/models/_free_play.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://features/gui/code/bronze.material" type="Material" id=7]
-[ext_resource path="res://features/gui/models/_join_game.obj" type="ArrayMesh" id=8]
-[ext_resource path="res://features/gui/models/_quit.obj" type="ArrayMesh" id=9]
-[ext_resource path="res://features/gui/theme.tres" type="Theme" id=10]
-[ext_resource path="res://features/gui/fps.gd" type="Script" id=11]
-[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=12]
-[ext_resource path="res://maps/map_intro.tscn" type="PackedScene" id=13]
+[ext_resource path="res://features/gui/code/menu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://features/gui/theme.tres" type="Theme" id=7]
+[ext_resource path="res://features/gui/fps.gd" type="Script" id=8]
+[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=9]
+[ext_resource path="res://maps/map_intro.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 
@@ -41,7 +38,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.1, 3, 4.2, 7, 8.2, 11 )
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 
 length = 1.0
 loop = false
@@ -58,8 +55,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 length = 1.0
 loop = false
@@ -76,8 +85,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
 
-[node name="TIOS_menu" type="Spatial" index="0"]
+[node name="TIOS_menu" type="Spatial"]
 script = ExtResource( 1 )
 in_game = false
 is_intro = false
@@ -99,7 +120,7 @@ light_specular = 0.46
 light_cull_mask = -1
 
 [node name="Camera" type="Camera" parent="." index="2"]
-transform = Transform( 0.961454, 0.0795194, -0.263215, 0, 0.957269, 0.289199, 0.274964, -0.278052, 0.920371, 49.8301, 94.8799, 135.818 )
+transform = Transform( 0.660726, -0.0944207, 0.744665, 0, 0.992057, 0.125789, -0.750627, -0.0831121, 0.655478, 80.4536, 87.5498, 162.913 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -126,55 +147,7 @@ anims/camera3 = ExtResource( 5 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="menu" type="Spatial" parent="Camera" index="1"]
-
-[node name="_free_play" type="MeshInstance" parent="Camera/menu" index="0"]
-transform = Transform( 1, -2.32831e-10, 0, 2.21435e-10, 0.951057, 0.309017, -7.19487e-11, -0.309017, 0.951057, 0, 0, -20 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = ExtResource( 6 )
-skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
-_sections_unfolded = [ "Material", "Transform" ]
-
-[node name="_join_game" type="MeshInstance" parent="Camera/menu" index="1"]
-transform = Transform( 1, -2.32831e-10, -4.12457e-19, 2.21435e-10, 0.951057, 0.309017, -7.19487e-11, -0.309017, 0.951057, 0, -1.5, -20 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = ExtResource( 8 )
-skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
-_sections_unfolded = [ "Material", "Transform" ]
-
-[node name="_quit" type="MeshInstance" parent="Camera/menu" index="2"]
-transform = Transform( 1, -2.32831e-10, -4.12457e-19, 2.21435e-10, 0.951057, 0.309017, -7.19487e-11, -0.309017, 0.951057, 0, -3, -20 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = ExtResource( 9 )
-skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
-_sections_unfolded = [ "Material", "Transform" ]
+[node name="menu" parent="Camera" index="1" instance=ExtResource( 6 )]
 
 [node name="GUI" type="Control" parent="." index="3"]
 anchor_left = 0.0
@@ -187,7 +160,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 10 )
+theme = ExtResource( 7 )
 _sections_unfolded = [ "Theme", "theme" ]
 __meta__ = {
 "_edit_lock_": true
@@ -246,7 +219,7 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 11 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
 [node name="Control" type="Control" parent="GUI/menu" index="1"]
@@ -285,7 +258,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Custom Colors", "Custom Constants" ]
 
-[node name="corners" parent="GUI" index="1" instance=ExtResource( 12 )]
+[node name="corners" parent="GUI" index="1" instance=ExtResource( 9 )]
 
 [node name="overdraw" type="Control" parent="GUI" index="2"]
 anchor_left = 0.0
@@ -301,7 +274,7 @@ size_flags_vertical = 1
 
 [node name="fade" type="Panel" parent="GUI/overdraw" index="0"]
 modulate = Color( 0, 0, 0, 1 )
-self_modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 1, 1, 1, 3.31137e-08 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -320,12 +293,12 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 0.5
-anims/fade-in = SubResource( 3 )
-anims/fade-out = SubResource( 4 )
+anims/fade-in = SubResource( 2 )
+anims/fade-out = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="map_intro" parent="." index="4" instance=ExtResource( 13 )]
+[node name="map_intro" parent="." index="4" instance=ExtResource( 10 )]
 
 
 [editable path="system"]
