@@ -1,0 +1,33 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+
+resource_name = "start from grass"
+length = 5.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3.5, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -16.7951, 43.2411, -119.765 ), Vector3( -16.7951, 43.2411, -119.765 ), Vector3( -16.7951, 43.2411, -119.765 ), Vector3( -16.7951, 56.1711, -119.765 ), Vector3( -16.7951, 55.8511, -119.765 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 1.7, 3.1, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 62.8855, 91.785, 0 ), Vector3( 62.8855, 91.785, 0 ), Vector3( 75.7455, 91.785, 0 ), Vector3( 75.7455, 62.585, 0 ), Vector3( 75.7455, 62.585, 0 ) ]
+}
+

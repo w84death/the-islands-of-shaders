@@ -1,20 +1,24 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://system/tios_main.gd" type="Script" id=1]
 [ext_resource path="res://features/shared/system.tscn" type="PackedScene" id=2]
-[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=3]
-[ext_resource path="res://maps/map_intro.tscn" type="PackedScene" id=4]
-[ext_resource path="res://features/gui/theme.tres" type="Theme" id=5]
-[ext_resource path="res://features/gui/fps.gd" type="Script" id=6]
-[ext_resource path="res://system/gimp-logo.png" type="Texture" id=7]
-[ext_resource path="res://system/godot.png" type="Texture" id=8]
-[ext_resource path="res://system/Wings3d.png" type="Texture" id=9]
-[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=10]
+[ext_resource path="res://features/animations/intro-chasin_a.tres" type="Animation" id=3]
+[ext_resource path="res://features/animations/intro-start_ftom_grass.tres" type="Animation" id=4]
+[ext_resource path="res://features/gui/p1x_pixelart.png" type="Texture" id=5]
+[ext_resource path="res://features/animations/intro-p1x_flayout.tres" type="Animation" id=6]
+[ext_resource path="res://maps/map_intro.tscn" type="PackedScene" id=7]
+[ext_resource path="res://features/gui/theme.tres" type="Theme" id=8]
+[ext_resource path="res://system/gimp-logo.png" type="Texture" id=9]
+[ext_resource path="res://system/godot.png" type="Texture" id=10]
+[ext_resource path="res://system/Wings3d.png" type="Texture" id=11]
+[ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=12]
+[ext_resource path="res://features/animations/overdraw-fade_in.tres" type="Animation" id=13]
+[ext_resource path="res://features/animations/overdraw-fade_out.tres" type="Animation" id=14]
 
 [sub_resource type="Animation" id=1]
 
 resource_name = "intro movie"
-length = 30.0
+length = 15.0
 loop = false
 step = 0.1
 tracks/0/type = "animation"
@@ -24,8 +28,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"clips": PoolStringArray( "intro" ),
-"times": PoolRealArray( -0.2 )
+"clips": PoolStringArray( "intro", "start from grass", "chasing a" ),
+"times": PoolRealArray( 7.45058e-09, 0.2, 4 )
 }
 tracks/1/type = "animation"
 tracks/1/path = NodePath("p1x/p1x_logo_anim")
@@ -34,48 +38,35 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"clips": PoolStringArray(  ),
-"times": PoolRealArray(  )
+"clips": PoolStringArray( "p1x_flyout" ),
+"times": PoolRealArray( 1.3 )
+}
+tracks/2/type = "animation"
+tracks/2/path = NodePath("GUI/overdraw/fade/animation_fade")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": PoolStringArray( "overdraw-fade_in", "overdraw-fade_out" ),
+"times": PoolRealArray( 0, 9.1 )
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 10.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show_menu"
+} ]
 }
 
-[sub_resource type="Animation" id=2]
-
-length = 4.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2.1, 3.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 73.2667, 38, -27.953 ), Vector3( 71.6967, 37.63, -31.123 ), Vector3( 70.9667, 37.8, -30.173 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 2.1, 3.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 62.8855, 91.785, 0 ), Vector3( 63.7455, 91.355, 0 ), Vector3( 62.8155, 92.295, 0 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-
-resource_name = "show"
-length = 1.0
-loop = false
-step = 0.1
-
-[node name="TIOS_intro" type="Spatial"]
+[node name="TIOS_intro" type="Spatial" index="0"]
 script = ExtResource( 1 )
 _sections_unfolded = [ "script" ]
 in_game = false
@@ -83,7 +74,7 @@ is_intro = true
 
 [node name="animations" type="AnimationPlayer" parent="." index="0"]
 root_node = NodePath("..")
-autoplay = ""
+autoplay = "intro movie"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
@@ -93,7 +84,7 @@ blend_times = [  ]
 [node name="system" parent="." index="1" instance=ExtResource( 2 )]
 
 [node name="Camera" type="Camera" parent="." index="2"]
-transform = Transform( -0.0311492, 0.889665, 0.455549, 0, 0.45577, -0.890098, -0.999515, -0.0277258, -0.0141969, 73.2667, 38, -27.953 )
+transform = Transform( 0.460433, 0.860364, 0.218577, 0, 0.24623, -0.969212, -0.887695, 0.446257, 0.113372, -16.7951, 55.8511, -119.765 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -114,11 +105,13 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/intro = SubResource( 2 )
+"anims/chasing a" = ExtResource( 3 )
+"anims/start from grass" = ExtResource( 4 )
 blend_times = [  ]
 
 [node name="p1x" type="Sprite3D" parent="." index="3"]
-transform = Transform( 4.37114e-08, 0, -1, 0, 0, 0, -1, 0, -4.37114e-08, -256, 170.365, 0 )
+transform = Transform( 4.37114e-08, 0, -1, 0, 0, 0, -1, 0, -4.37114e-08, 207.01, 172.205, -123.99 )
+visible = false
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -140,13 +133,13 @@ transparent = true
 shaded = false
 double_sided = true
 alpha_cut = 0
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 vframes = 1
 hframes = 1
 frame = 0
 region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
-_sections_unfolded = [ "Transform", "texture" ]
+_sections_unfolded = [ "Transform", "Visibility", "texture" ]
 
 [node name="p1x_logo_anim" type="AnimationPlayer" parent="p1x" index="0"]
 root_node = NodePath("..")
@@ -154,10 +147,10 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/show = SubResource( 3 )
+anims/p1x_flyout = ExtResource( 6 )
 blend_times = [  ]
 
-[node name="map_intro" parent="." index="4" instance=ExtResource( 4 )]
+[node name="map_intro" parent="." index="4" instance=ExtResource( 7 )]
 
 [node name="GUI" type="Control" parent="." index="5"]
 anchor_left = 0.0
@@ -170,7 +163,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 5 )
+theme = ExtResource( 8 )
 _sections_unfolded = [ "theme" ]
 __meta__ = {
 "_edit_lock_": true
@@ -191,84 +184,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="left_corner" type="Control" parent="GUI/intro" index="0"]
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
-[node name="fps" type="Label" parent="GUI/intro/left_corner" index="0"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 19.0
-margin_top = 20.0
-margin_right = 120.0
-margin_bottom = 99.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 1
-text = "TECH DEMO [60FPS]
-"
-uppercase = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-script = ExtResource( 6 )
-_sections_unfolded = [ "Custom Colors", "Custom Constants" ]
-
-[node name="corner" type="Control" parent="GUI/intro" index="1"]
-modulate = Color( 1, 1, 1, 0.909091 )
-anchor_left = 1.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Visibility" ]
-
-[node name="info" type="Label" parent="GUI/intro/corner" index="0"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -101.0
-margin_top = 20.0
-margin_right = -29.0
-margin_bottom = 39.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_constants/line_spacing = -6
-text = "PRESS A"
-align = 2
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Custom Constants" ]
-
-[node name="center" type="Control" parent="GUI/intro" index="2"]
+[node name="center" type="Control" parent="GUI/intro" index="0"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -281,7 +197,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="bottom-middle" type="Control" parent="GUI/intro" index="3"]
+[node name="bottom-middle" type="Control" parent="GUI/intro" index="1"]
 modulate = Color( 1, 1, 1, 0.909091 )
 anchor_left = 0.5
 anchor_top = 1.0
@@ -333,7 +249,7 @@ _sections_unfolded = [ "Rect" ]
 [node name="logo" type="Sprite" parent="GUI/intro/bottom-middle/applications/gimp" index="0"]
 modulate = Color( 1, 1, 1, 0.501961 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 7 )
+texture = ExtResource( 9 )
 offset = Vector2( 0, 32 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
@@ -356,7 +272,7 @@ _sections_unfolded = [ "Rect" ]
 [node name="logo" type="Sprite" parent="GUI/intro/bottom-middle/applications/godot" index="0"]
 modulate = Color( 1, 1, 1, 0.501961 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 8 )
+texture = ExtResource( 10 )
 offset = Vector2( 0, 32 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
@@ -379,7 +295,7 @@ _sections_unfolded = [ "Rect" ]
 [node name="logo" type="Sprite" parent="GUI/intro/bottom-middle/applications/wings3d" index="0"]
 modulate = Color( 1, 1, 1, 0.501961 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 9 )
+texture = ExtResource( 11 )
 offset = Vector2( 0, 32 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
@@ -403,11 +319,71 @@ _sections_unfolded = [ "Rect" ]
 modulate = Color( 1, 1, 1, 0.501961 )
 self_modulate = Color( 0, 0, 0, 1 )
 scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 offset = Vector2( 0, 6 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "texture" ]
 
-[node name="corners" parent="GUI" index="1" instance=ExtResource( 10 )]
+[node name="info" type="Label" parent="GUI/intro/bottom-middle" index="1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -109.0
+margin_top = -90.0
+margin_right = 108.0
+margin_bottom = -71.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_constants/line_spacing = -6
+text = "PRESS A or ENTER!"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="corners" parent="GUI" index="1" instance=ExtResource( 12 )]
+
+[node name="overdraw" type="Control" parent="GUI" index="2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="fade" type="Panel" parent="GUI/overdraw" index="0"]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="animation_fade" type="AnimationPlayer" parent="GUI/overdraw/fade" index="0"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/overdraw-fade_in = ExtResource( 13 )
+anims/overdraw-fade_out = ExtResource( 14 )
+blend_times = [  ]
 
 
 [editable path="map_intro"]

@@ -1,0 +1,33 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+
+resource_name = "chasing a"
+length = 8.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 3.6, 4.1, 5, 5.8, 6.6, 7.4, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -16.7951, 55.8511, -119.765 ), Vector3( -16.7951, 60.4911, -119.765 ), Vector3( -16.7951, 60.4911, -75.7219 ), Vector3( -16.7951, 60.4911, -5.06479 ), Vector3( -27.0792, 52.3247, 17.0239 ), Vector3( -53.0036, 52.3247, 33.7413 ), Vector3( -49.3836, 47.4739, 86.3481 ), Vector3( -40.799, 38.9179, 110.621 ), Vector3( -50.2138, 42.7724, 141.501 ), Vector3( -53.2403, 46.7701, 156.962 ), Vector3( -53.2403, 46.7701, 191.842 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 3.6, 4.1, 5, 5.8, 6.6, 7.4, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 62.8855, 91.785, 0 ), Vector3( -21.6097, 160.632, 20.8051 ), Vector3( -26.9622, 169.756, -1.13046 ), Vector3( -26.3121, 150, -48.3081 ), Vector3( -26.3121, 130.688, -48.3081 ), Vector3( -18.8882, 119.821, -3.18943 ), Vector3( -34.6286, 173.295, -1.26003 ), Vector3( -31.6748, 163.794, -41.9129 ), Vector3( -1.45342, 144.834, 17.0608 ), Vector3( 22.3171, 155.416, 13.4376 ), Vector3( -7.05457, 153.735, 2.67146 ) ]
+}
+

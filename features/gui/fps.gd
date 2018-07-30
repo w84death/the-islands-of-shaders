@@ -12,4 +12,4 @@ func _process(delta):
 	if current_fps < fps:
 		fps -= 1
 		 
-	set_text(str(fps).pad_zeros(2) + "_FPS")
+	set_text('FPS *' + str(fps).pad_zeros(2))

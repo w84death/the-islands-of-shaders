@@ -38,7 +38,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 13.6822, 0 ), Vector3( 1.89511, 9.42366, 0.461526 ), Vector3( 1.5003, -5.77758, 0.365375 ), Vector3( 0.710667, 34.1513, 0.173072 ) ]
 }
 
-[node name="EXTRAS" type="Spatial" index="0"]
+[node name="EXTRAS" type="Spatial"]
 script = ExtResource( 1 )
 _sections_unfolded = [ "script" ]
 in_game = false
@@ -104,9 +104,22 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="OmniLight" parent="zlote-gody" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51252, 0.874044, -0.229108 )
+light_cull_mask = -1
 
-[node name="stand" parent="zlote-gody" index="8"]
-visible = false
+[node name="left_spot" parent="zlote-gody" index="3"]
+light_cull_mask = -1
+
+[node name="right_spot" parent="zlote-gody" index="4"]
+light_cull_mask = -1
+
+[node name="center_spot" parent="zlote-gody" index="5"]
+light_cull_mask = -1
+
+[node name="center_spot3" parent="zlote-gody" index="6"]
+light_cull_mask = -1
+
+[node name="center_spot2" parent="zlote-gody" index="7"]
+light_cull_mask = -1
 
 
 [editable path="system"]
