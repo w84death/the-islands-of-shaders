@@ -9,7 +9,7 @@
 [ext_resource path="res://features/gui/corners.tscn" type="PackedScene" id=7]
 [ext_resource path="res://maps/map_intro.tscn" type="PackedScene" id=8]
 
-[node name="TIOS_game" type="Spatial"]
+[node name="TIOS_game" type="Spatial" index="0"]
 script = ExtResource( 1 )
 _sections_unfolded = [ "script" ]
 in_game = true
@@ -87,9 +87,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 198.0
-margin_right = 289.0
-margin_bottom = 39.0
+margin_left = 164.0
+margin_right = 268.0
+margin_bottom = 43.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -114,9 +114,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 313.0
-margin_right = 488.0
-margin_bottom = 39.0
+margin_left = 292.0
+margin_right = 492.0
+margin_bottom = 43.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -140,9 +140,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 512.0
-margin_right = 632.0
-margin_bottom = 39.0
+margin_left = 516.0
+margin_right = 652.0
+margin_bottom = 43.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -152,7 +152,7 @@ size_flags_vertical = 4
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 1
-text = "LIVES >60
+text = "LIVES *60
 "
 align = 1
 valign = 1
@@ -166,9 +166,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 656.0
-margin_right = 762.0
-margin_bottom = 39.0
+margin_left = 676.0
+margin_right = 796.0
+margin_bottom = 43.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -178,7 +178,7 @@ size_flags_vertical = 4
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 1
-text = "TIME )91
+text = "TIME :91
 "
 align = 1
 valign = 1

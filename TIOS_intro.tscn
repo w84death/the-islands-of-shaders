@@ -164,7 +164,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 8 )
-_sections_unfolded = [ "theme" ]
+_sections_unfolded = [ "Theme", "theme" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -212,6 +212,7 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Visibility" ]
 
 [node name="applications" type="HBoxContainer" parent="GUI/intro/bottom-middle" index="0"]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -328,10 +329,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -109.0
+margin_left = -124.0
 margin_top = -90.0
-margin_right = 108.0
-margin_bottom = -71.0
+margin_right = 124.0
+margin_bottom = -70.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
